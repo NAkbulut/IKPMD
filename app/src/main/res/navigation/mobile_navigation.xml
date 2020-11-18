@@ -10,13 +10,13 @@
         android:name="com.example.ikpmd_periode2.ui.home.HomeFragment"
         android:label="@string/title_home"
         android:gravity="center"
-        tools:layout="@layout/fragment_home" />
+        tools:layout="@layout/fragment_pokedex" />
 
     <fragment
         android:id="@+id/navigation_dashboard"
         android:name="com.example.ikpmd_periode2.ui.dashboard.DashboardFragment"
         android:label="@string/title_dashboard"
         android:gravity="center"
-        tools:layout="@layout/fragment_dashboard" />
+        tools:layout="@layout/fragment_favorites" />
 
 </navigation>
