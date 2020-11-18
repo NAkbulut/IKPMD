@@ -1,6 +1,8 @@
 package com.example.ikpmd_periode2;
 
 import android.os.Bundle;
+import android.util.Log;
+import android.view.View;
 
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 
@@ -26,6 +28,10 @@ public class MainActivity extends AppCompatActivity {
         NavigationUI.setupActionBarWithNavController(this, navController, appBarConfiguration);
         NavigationUI.setupWithNavController(navView, navController);
         //yeet
+    }
+
+    public void onClick(View V) {
+        Log.d("MainActivity- onClick", "Clicked!");
     }
 
 }
