@@ -7,6 +7,7 @@
         android:label="@string/app_name"
         android:supportsRtl="true"
         android:theme="@style/Theme.IKPMD_Periode2">
+        <activity android:name=".PokeDetails"></activity>
         <activity
             android:name=".MainActivity"
             android:label="@string/title_activity_main">
