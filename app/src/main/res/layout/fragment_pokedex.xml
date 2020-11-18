@@ -10,7 +10,11 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:orientation="vertical"
-        android:weightSum="5">
+        android:weightSum="5"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
 
         <androidx.gridlayout.widget.GridLayout
             android:layout_width="match_parent"
@@ -36,23 +40,24 @@
                     android:weightSum="3">
 
                     <ImageView
-                        android:layout_weight="2"
                         android:id="@+id/imageView2"
                         android:layout_width="50dp"
                         android:layout_height="50dp"
                         android:layout_margin="15dp"
+                        android:layout_weight="2"
                         android:src="@drawable/pkmn" />
 
                     <TextView
                         android:id="@+id/textView2"
-                        android:layout_marginStart="15dp"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
+                        android:layout_marginStart="15dp"
                         android:layout_weight="2"
                         android:text="Pokemon"
-                        android:textSize="16sp"/>
+                        android:textSize="16sp" />
                 </LinearLayout>
             </androidx.cardview.widget.CardView>
+
             <androidx.cardview.widget.CardView
                 android:layout_width="0dp"
                 android:layout_height="0dp"
@@ -69,23 +74,24 @@
                     android:weightSum="3">
 
                     <ImageView
-                        android:layout_weight="2"
                         android:id="@+id/imageView2"
                         android:layout_width="50dp"
                         android:layout_height="50dp"
                         android:layout_margin="15dp"
+                        android:layout_weight="2"
                         android:src="@drawable/pkmn" />
 
                     <TextView
                         android:id="@+id/textView2"
-                        android:layout_marginStart="15dp"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
+                        android:layout_marginStart="15dp"
                         android:layout_weight="2"
                         android:text="Pokemon"
-                        android:textSize="16sp"/>
+                        android:textSize="16sp" />
                 </LinearLayout>
             </androidx.cardview.widget.CardView>
+
             <androidx.cardview.widget.CardView
                 android:layout_width="0dp"
                 android:layout_height="0dp"
@@ -102,23 +108,24 @@
                     android:weightSum="3">
 
                     <ImageView
-                        android:layout_weight="2"
                         android:id="@+id/imageView2"
                         android:layout_width="50dp"
                         android:layout_height="50dp"
                         android:layout_margin="15dp"
+                        android:layout_weight="2"
                         android:src="@drawable/pkmn" />
 
                     <TextView
                         android:id="@+id/textView2"
-                        android:layout_marginStart="15dp"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
+                        android:layout_marginStart="15dp"
                         android:layout_weight="2"
                         android:text="Pokemon"
-                        android:textSize="16sp"/>
+                        android:textSize="16sp" />
                 </LinearLayout>
             </androidx.cardview.widget.CardView>
+
             <androidx.cardview.widget.CardView
                 android:layout_width="0dp"
                 android:layout_height="0dp"
@@ -135,21 +142,21 @@
                     android:weightSum="3">
 
                     <ImageView
-                        android:layout_weight="2"
                         android:id="@+id/imageView2"
                         android:layout_width="50dp"
                         android:layout_height="50dp"
                         android:layout_margin="15dp"
+                        android:layout_weight="2"
                         android:src="@drawable/pkmn" />
 
                     <TextView
                         android:id="@+id/textView2"
-                        android:layout_marginStart="15dp"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
+                        android:layout_marginStart="15dp"
                         android:layout_weight="2"
                         android:text="Pokemon"
-                        android:textSize="16sp"/>
+                        android:textSize="16sp" />
                 </LinearLayout>
             </androidx.cardview.widget.CardView>
         </androidx.gridlayout.widget.GridLayout>
