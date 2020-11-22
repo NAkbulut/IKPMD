@@ -6,7 +6,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="#252426"
-    android:paddingTop="?attr/actionBarSize">
+    android:paddingTop="0dp">
 
     <com.google.android.material.bottomnavigation.BottomNavigationView
         android:id="@+id/nav_view"
@@ -27,10 +27,10 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:background="#000000"
-        app:defaultNavHost="true"
 
+        app:defaultNavHost="true"
         app:navGraph="@navigation/mobile_navigation"
         tools:layout_editor_absoluteX="0dp"
-        tools:layout_editor_absoluteY="0dp" />
+        tools:layout_editor_absoluteY="-7dp" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
