@@ -3,4 +3,6 @@
     <string name="title_activity_main">PokeDex IKPMD</string>
     <string name="title_home">PokeDex</string>
     <string name="title_dashboard">Favorites</string>
+
+    <string name="pkmn_name1">Pokemon Name</string>
 </resources>

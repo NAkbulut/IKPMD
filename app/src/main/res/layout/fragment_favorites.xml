@@ -1,7 +1,1487 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    tools:context=".ui.dashboard.DashboardFragment"/>
+    android:layout_height="match_parent">
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:weightSum="1"
+        android:paddingBottom="30dp">
+
+
+        <GridLayout
+            android:id="@+id/mainGrid"
+            android:layout_width="match_parent"
+            android:layout_height="1500dp"
+            android:layout_weight="10"
+            android:alignmentMode="alignMargins"
+            android:columnCount="1"
+            android:columnOrderPreserved="false"
+            android:padding="14dp"
+            android:rowCount="3">
+
+            <!-- Row 1 -->
+
+            <!-- Column 1 -->
+            <androidx.cardview.widget.CardView
+                android:layout_width="0dp"
+                android:layout_height="50dp"
+                android:layout_rowWeight="1"
+                android:layout_columnWeight="1"
+                android:layout_marginLeft="16dp"
+                android:layout_marginRight="16dp"
+                android:layout_marginBottom="20dp"
+                android:elevation="4dp"
+                android:onClick="Switcher"
+                app:cardCornerRadius="10dp"
+                tools:ignore="OnClick">
+
+
+                <ProgressBar
+                    android:id="@+id/progressBar1"
+                    style="?android:attr/progressBarStyleHorizontal"
+                    android:layout_width="40dp"
+                    android:layout_height="match_parent"
+                    android:layout_gravity="right"
+                    android:background="@drawable/circle_shape"
+                    android:indeterminate="false"
+                    android:max="100"
+                    android:progress="65"
+                    android:progressDrawable="@drawable/circular_progress_bar"
+                    android:translationX="-30dp"
+                    android:translationY="10dp" />
+
+                <ProgressBar
+                    android:id="@+id/progressBar2"
+                    style="?android:attr/progressBarStyleHorizontal"
+                    android:layout_width="40dp"
+                    android:layout_height="match_parent"
+                    android:layout_gravity="right"
+                    android:background="@drawable/circle_shape"
+                    android:indeterminate="false"
+                    android:max="100"
+                    android:progress="65"
+                    android:progressDrawable="@drawable/circular_progress_bar"
+                    android:translationX="-80dp"
+                    android:translationY="10dp" />
+
+                <ProgressBar
+                    android:id="@+id/progressBar3"
+                    style="?android:attr/progressBarStyleHorizontal"
+                    android:layout_width="40dp"
+                    android:layout_height="match_parent"
+                    android:layout_gravity="right"
+                    android:background="@drawable/circle_shape"
+                    android:indeterminate="false"
+                    android:max="100"
+                    android:progress="65"
+                    android:progressDrawable="@drawable/circular_progress_bar"
+                    android:translationX="-130dp"
+                    android:translationY="10dp" />
+
+                <ProgressBar
+                    android:id="@+id/progressBar4"
+                    style="?android:attr/progressBarStyleHorizontal"
+                    android:layout_width="40dp"
+                    android:layout_height="match_parent"
+                    android:layout_gravity="right"
+                    android:background="@drawable/circle_shape"
+                    android:indeterminate="false"
+                    android:max="100"
+                    android:progress="65"
+                    android:progressDrawable="@drawable/circular_progress_bar"
+                    android:translationX="-180dp"
+                    android:translationY="10dp" />
+
+                <ProgressBar
+                    android:id="@+id/progressBar6"
+                    style="?android:attr/progressBarStyleHorizontal"
+                    android:layout_width="40dp"
+                    android:layout_height="match_parent"
+                    android:layout_gravity="right"
+                    android:background="@drawable/circle_shape"
+                    android:indeterminate="false"
+                    android:max="100"
+                    android:progress="65"
+                    android:progressDrawable="@drawable/circular_progress_bar"
+                    android:translationX="-230dp"
+                    android:translationY="10dp" />
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_row="0"
+                    android:layout_column="11"
+                    android:layout_margin="16dp"
+                    android:orientation="vertical"
+                    android:weightSum="3">
+
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center_vertical"
+                        android:paddingTop="0dp"
+                        android:text="@string/pkmn_name1"
+                        android:textAlignment="center"
+                        android:textColor="@android:color/black"
+                        android:textSize="15sp"
+                        android:textStyle="bold" />
+
+
+                    <ImageView
+                        android:layout_width="50dp"
+                        android:layout_height="match_parent"
+                        android:layout_alignParentLeft="true"
+                        android:layout_gravity="center_vertical"
+                        android:paddingTop="0dp"
+                        android:src="@drawable/pkmn"
+                        android:translationY="-10dp" />
+
+
+                </LinearLayout>
+
+            </androidx.cardview.widget.CardView>
+
+            <!-- Column 2 -->
+            <androidx.cardview.widget.CardView
+                android:layout_width="0dp"
+                android:layout_height="50dp"
+                android:layout_rowWeight="1"
+                android:layout_columnWeight="1"
+                android:layout_marginLeft="16dp"
+                android:layout_marginRight="16dp"
+                android:layout_marginBottom="20dp"
+                android:elevation="4dp"
+                android:onClick="Switcher"
+                app:cardCornerRadius="10dp"
+                tools:ignore="OnClick">
+
+
+                <ProgressBar
+                    android:id="@+id/progressBar1"
+                    style="?android:attr/progressBarStyleHorizontal"
+                    android:layout_width="40dp"
+                    android:layout_height="match_parent"
+                    android:layout_gravity="right"
+                    android:background="@drawable/circle_shape"
+                    android:indeterminate="false"
+                    android:max="100"
+                    android:progress="65"
+                    android:progressDrawable="@drawable/circular_progress_bar"
+                    android:translationX="-30dp"
+                    android:translationY="10dp" />
+
+                <ProgressBar
+                    android:id="@+id/progressBar2"
+                    style="?android:attr/progressBarStyleHorizontal"
+                    android:layout_width="40dp"
+                    android:layout_height="match_parent"
+                    android:layout_gravity="right"
+                    android:background="@drawable/circle_shape"
+                    android:indeterminate="false"
+                    android:max="100"
+                    android:progress="65"
+                    android:progressDrawable="@drawable/circular_progress_bar"
+                    android:translationX="-80dp"
+                    android:translationY="10dp" />
+
+                <ProgressBar
+                    android:id="@+id/progressBar3"
+                    style="?android:attr/progressBarStyleHorizontal"
+                    android:layout_width="40dp"
+                    android:layout_height="match_parent"
+                    android:layout_gravity="right"
+                    android:background="@drawable/circle_shape"
+                    android:indeterminate="false"
+                    android:max="100"
+                    android:progress="65"
+                    android:progressDrawable="@drawable/circular_progress_bar"
+                    android:translationX="-130dp"
+                    android:translationY="10dp" />
+
+                <ProgressBar
+                    android:id="@+id/progressBar4"
+                    style="?android:attr/progressBarStyleHorizontal"
+                    android:layout_width="40dp"
+                    android:layout_height="match_parent"
+                    android:layout_gravity="right"
+                    android:background="@drawable/circle_shape"
+                    android:indeterminate="false"
+                    android:max="100"
+                    android:progress="65"
+                    android:progressDrawable="@drawable/circular_progress_bar"
+                    android:translationX="-180dp"
+                    android:translationY="10dp" />
+
+                <ProgressBar
+                    android:id="@+id/progressBar6"
+                    style="?android:attr/progressBarStyleHorizontal"
+                    android:layout_width="40dp"
+                    android:layout_height="match_parent"
+                    android:layout_gravity="right"
+                    android:background="@drawable/circle_shape"
+                    android:indeterminate="false"
+                    android:max="100"
+                    android:progress="65"
+                    android:progressDrawable="@drawable/circular_progress_bar"
+                    android:translationX="-230dp"
+                    android:translationY="10dp" />
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_row="0"
+                    android:layout_column="11"
+                    android:layout_margin="16dp"
+                    android:orientation="vertical"
+                    android:weightSum="3">
+
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center_vertical"
+                        android:paddingTop="0dp"
+                        android:text="@string/pkmn_name1"
+                        android:textAlignment="center"
+                        android:textColor="@android:color/black"
+                        android:textSize="15sp"
+                        android:textStyle="bold" />
+
+
+                    <ImageView
+                        android:layout_width="50dp"
+                        android:layout_height="match_parent"
+                        android:layout_alignParentLeft="true"
+                        android:layout_gravity="center_vertical"
+                        android:paddingTop="0dp"
+                        android:src="@drawable/pkmn"
+                        android:translationY="-10dp" />
+
+
+                </LinearLayout>
+
+            </androidx.cardview.widget.CardView>
+
+
+            <!-- Row 2 -->
+
+            <!-- Column 1 -->
+            <androidx.cardview.widget.CardView
+                android:layout_width="0dp"
+                android:layout_height="50dp"
+                android:layout_rowWeight="1"
+                android:layout_columnWeight="1"
+                android:layout_marginLeft="16dp"
+                android:layout_marginRight="16dp"
+                android:layout_marginBottom="20dp"
+                android:elevation="4dp"
+                android:onClick="Switcher"
+                app:cardCornerRadius="10dp"
+                tools:ignore="OnClick">
+
+
+                <ProgressBar
+                    android:id="@+id/progressBar1"
+                    style="?android:attr/progressBarStyleHorizontal"
+                    android:layout_width="40dp"
+                    android:layout_height="match_parent"
+                    android:layout_gravity="right"
+                    android:background="@drawable/circle_shape"
+                    android:indeterminate="false"
+                    android:max="100"
+                    android:progress="65"
+                    android:progressDrawable="@drawable/circular_progress_bar"
+                    android:translationX="-30dp"
+                    android:translationY="10dp" />
+
+                <ProgressBar
+                    android:id="@+id/progressBar2"
+                    style="?android:attr/progressBarStyleHorizontal"
+                    android:layout_width="40dp"
+                    android:layout_height="match_parent"
+                    android:layout_gravity="right"
+                    android:background="@drawable/circle_shape"
+                    android:indeterminate="false"
+                    android:max="100"
+                    android:progress="65"
+                    android:progressDrawable="@drawable/circular_progress_bar"
+                    android:translationX="-80dp"
+                    android:translationY="10dp" />
+
+                <ProgressBar
+                    android:id="@+id/progressBar3"
+                    style="?android:attr/progressBarStyleHorizontal"
+                    android:layout_width="40dp"
+                    android:layout_height="match_parent"
+                    android:layout_gravity="right"
+                    android:background="@drawable/circle_shape"
+                    android:indeterminate="false"
+                    android:max="100"
+                    android:progress="65"
+                    android:progressDrawable="@drawable/circular_progress_bar"
+                    android:translationX="-130dp"
+                    android:translationY="10dp" />
+
+                <ProgressBar
+                    android:id="@+id/progressBar4"
+                    style="?android:attr/progressBarStyleHorizontal"
+                    android:layout_width="40dp"
+                    android:layout_height="match_parent"
+                    android:layout_gravity="right"
+                    android:background="@drawable/circle_shape"
+                    android:indeterminate="false"
+                    android:max="100"
+                    android:progress="65"
+                    android:progressDrawable="@drawable/circular_progress_bar"
+                    android:translationX="-180dp"
+                    android:translationY="10dp" />
+
+                <ProgressBar
+                    android:id="@+id/progressBar6"
+                    style="?android:attr/progressBarStyleHorizontal"
+                    android:layout_width="40dp"
+                    android:layout_height="match_parent"
+                    android:layout_gravity="right"
+                    android:background="@drawable/circle_shape"
+                    android:indeterminate="false"
+                    android:max="100"
+                    android:progress="65"
+                    android:progressDrawable="@drawable/circular_progress_bar"
+                    android:translationX="-230dp"
+                    android:translationY="10dp" />
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_row="0"
+                    android:layout_column="11"
+                    android:layout_margin="16dp"
+                    android:orientation="vertical"
+                    android:weightSum="3">
+
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center_vertical"
+                        android:paddingTop="0dp"
+                        android:text="@string/pkmn_name1"
+                        android:textAlignment="center"
+                        android:textColor="@android:color/black"
+                        android:textSize="15sp"
+                        android:textStyle="bold" />
+
+
+                    <ImageView
+                        android:layout_width="50dp"
+                        android:layout_height="match_parent"
+                        android:layout_alignParentLeft="true"
+                        android:layout_gravity="center_vertical"
+                        android:paddingTop="0dp"
+                        android:src="@drawable/pkmn"
+                        android:translationY="-10dp" />
+
+
+                </LinearLayout>
+
+            </androidx.cardview.widget.CardView>
+
+            <!-- Column 2 -->
+            <androidx.cardview.widget.CardView
+                android:layout_width="0dp"
+                android:layout_height="50dp"
+                android:layout_rowWeight="1"
+                android:layout_columnWeight="1"
+                android:layout_marginLeft="16dp"
+                android:layout_marginRight="16dp"
+                android:layout_marginBottom="20dp"
+                android:elevation="4dp"
+                android:onClick="Switcher"
+                app:cardCornerRadius="10dp"
+                tools:ignore="OnClick">
+
+
+                <ProgressBar
+                    android:id="@+id/progressBar1"
+                    style="?android:attr/progressBarStyleHorizontal"
+                    android:layout_width="40dp"
+                    android:layout_height="match_parent"
+                    android:layout_gravity="right"
+                    android:background="@drawable/circle_shape"
+                    android:indeterminate="false"
+                    android:max="100"
+                    android:progress="65"
+                    android:progressDrawable="@drawable/circular_progress_bar"
+                    android:translationX="-30dp"
+                    android:translationY="10dp" />
+
+                <ProgressBar
+                    android:id="@+id/progressBar2"
+                    style="?android:attr/progressBarStyleHorizontal"
+                    android:layout_width="40dp"
+                    android:layout_height="match_parent"
+                    android:layout_gravity="right"
+                    android:background="@drawable/circle_shape"
+                    android:indeterminate="false"
+                    android:max="100"
+                    android:progress="65"
+                    android:progressDrawable="@drawable/circular_progress_bar"
+                    android:translationX="-80dp"
+                    android:translationY="10dp" />
+
+                <ProgressBar
+                    android:id="@+id/progressBar3"
+                    style="?android:attr/progressBarStyleHorizontal"
+                    android:layout_width="40dp"
+                    android:layout_height="match_parent"
+                    android:layout_gravity="right"
+                    android:background="@drawable/circle_shape"
+                    android:indeterminate="false"
+                    android:max="100"
+                    android:progress="65"
+                    android:progressDrawable="@drawable/circular_progress_bar"
+                    android:translationX="-130dp"
+                    android:translationY="10dp" />
+
+                <ProgressBar
+                    android:id="@+id/progressBar4"
+                    style="?android:attr/progressBarStyleHorizontal"
+                    android:layout_width="40dp"
+                    android:layout_height="match_parent"
+                    android:layout_gravity="right"
+                    android:background="@drawable/circle_shape"
+                    android:indeterminate="false"
+                    android:max="100"
+                    android:progress="65"
+                    android:progressDrawable="@drawable/circular_progress_bar"
+                    android:translationX="-180dp"
+                    android:translationY="10dp" />
+
+                <ProgressBar
+                    android:id="@+id/progressBar6"
+                    style="?android:attr/progressBarStyleHorizontal"
+                    android:layout_width="40dp"
+                    android:layout_height="match_parent"
+                    android:layout_gravity="right"
+                    android:background="@drawable/circle_shape"
+                    android:indeterminate="false"
+                    android:max="100"
+                    android:progress="65"
+                    android:progressDrawable="@drawable/circular_progress_bar"
+                    android:translationX="-230dp"
+                    android:translationY="10dp" />
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_row="0"
+                    android:layout_column="11"
+                    android:layout_margin="16dp"
+                    android:orientation="vertical"
+                    android:weightSum="3">
+
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center_vertical"
+                        android:paddingTop="0dp"
+                        android:text="@string/pkmn_name1"
+                        android:textAlignment="center"
+                        android:textColor="@android:color/black"
+                        android:textSize="15sp"
+                        android:textStyle="bold" />
+
+
+                    <ImageView
+                        android:layout_width="50dp"
+                        android:layout_height="match_parent"
+                        android:layout_alignParentLeft="true"
+                        android:layout_gravity="center_vertical"
+                        android:paddingTop="0dp"
+                        android:src="@drawable/pkmn"
+                        android:translationY="-10dp" />
+
+
+                </LinearLayout>
+
+            </androidx.cardview.widget.CardView>
+
+
+            <!-- Row 2 -->
+
+            <!-- Column 1 -->
+            <androidx.cardview.widget.CardView
+                android:layout_width="0dp"
+                android:layout_height="50dp"
+                android:layout_rowWeight="1"
+                android:layout_columnWeight="1"
+                android:layout_marginLeft="16dp"
+                android:layout_marginRight="16dp"
+                android:layout_marginBottom="20dp"
+                android:elevation="4dp"
+                android:onClick="Switcher"
+                app:cardCornerRadius="10dp"
+                tools:ignore="OnClick">
+
+
+                <ProgressBar
+                    android:id="@+id/progressBar1"
+                    style="?android:attr/progressBarStyleHorizontal"
+                    android:layout_width="40dp"
+                    android:layout_height="match_parent"
+                    android:layout_gravity="right"
+                    android:background="@drawable/circle_shape"
+                    android:indeterminate="false"
+                    android:max="100"
+                    android:progress="65"
+                    android:progressDrawable="@drawable/circular_progress_bar"
+                    android:translationX="-30dp"
+                    android:translationY="10dp" />
+
+                <ProgressBar
+                    android:id="@+id/progressBar2"
+                    style="?android:attr/progressBarStyleHorizontal"
+                    android:layout_width="40dp"
+                    android:layout_height="match_parent"
+                    android:layout_gravity="right"
+                    android:background="@drawable/circle_shape"
+                    android:indeterminate="false"
+                    android:max="100"
+                    android:progress="65"
+                    android:progressDrawable="@drawable/circular_progress_bar"
+                    android:translationX="-80dp"
+                    android:translationY="10dp" />
+
+                <ProgressBar
+                    android:id="@+id/progressBar3"
+                    style="?android:attr/progressBarStyleHorizontal"
+                    android:layout_width="40dp"
+                    android:layout_height="match_parent"
+                    android:layout_gravity="right"
+                    android:background="@drawable/circle_shape"
+                    android:indeterminate="false"
+                    android:max="100"
+                    android:progress="65"
+                    android:progressDrawable="@drawable/circular_progress_bar"
+                    android:translationX="-130dp"
+                    android:translationY="10dp" />
+
+                <ProgressBar
+                    android:id="@+id/progressBar4"
+                    style="?android:attr/progressBarStyleHorizontal"
+                    android:layout_width="40dp"
+                    android:layout_height="match_parent"
+                    android:layout_gravity="right"
+                    android:background="@drawable/circle_shape"
+                    android:indeterminate="false"
+                    android:max="100"
+                    android:progress="65"
+                    android:progressDrawable="@drawable/circular_progress_bar"
+                    android:translationX="-180dp"
+                    android:translationY="10dp" />
+
+                <ProgressBar
+                    android:id="@+id/progressBar6"
+                    style="?android:attr/progressBarStyleHorizontal"
+                    android:layout_width="40dp"
+                    android:layout_height="match_parent"
+                    android:layout_gravity="right"
+                    android:background="@drawable/circle_shape"
+                    android:indeterminate="false"
+                    android:max="100"
+                    android:progress="65"
+                    android:progressDrawable="@drawable/circular_progress_bar"
+                    android:translationX="-230dp"
+                    android:translationY="10dp" />
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_row="0"
+                    android:layout_column="11"
+                    android:layout_margin="16dp"
+                    android:orientation="vertical"
+                    android:weightSum="3">
+
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center_vertical"
+                        android:paddingTop="0dp"
+                        android:text="@string/pkmn_name1"
+                        android:textAlignment="center"
+                        android:textColor="@android:color/black"
+                        android:textSize="15sp"
+                        android:textStyle="bold" />
+
+
+                    <ImageView
+                        android:layout_width="50dp"
+                        android:layout_height="match_parent"
+                        android:layout_alignParentLeft="true"
+                        android:layout_gravity="center_vertical"
+                        android:paddingTop="0dp"
+                        android:src="@drawable/pkmn"
+                        android:translationY="-10dp" />
+
+
+                </LinearLayout>
+
+            </androidx.cardview.widget.CardView>
+
+            <!-- Column 2 -->
+            <androidx.cardview.widget.CardView
+                android:layout_width="0dp"
+                android:layout_height="50dp"
+                android:layout_rowWeight="1"
+                android:layout_columnWeight="1"
+                android:layout_marginLeft="16dp"
+                android:layout_marginRight="16dp"
+                android:layout_marginBottom="20dp"
+                android:elevation="4dp"
+                android:onClick="Switcher"
+                app:cardCornerRadius="10dp"
+                tools:ignore="OnClick">
+
+
+                <ProgressBar
+                    android:id="@+id/progressBar1"
+                    style="?android:attr/progressBarStyleHorizontal"
+                    android:layout_width="40dp"
+                    android:layout_height="match_parent"
+                    android:layout_gravity="right"
+                    android:background="@drawable/circle_shape"
+                    android:indeterminate="false"
+                    android:max="100"
+                    android:progress="65"
+                    android:progressDrawable="@drawable/circular_progress_bar"
+                    android:translationX="-30dp"
+                    android:translationY="10dp" />
+
+                <ProgressBar
+                    android:id="@+id/progressBar2"
+                    style="?android:attr/progressBarStyleHorizontal"
+                    android:layout_width="40dp"
+                    android:layout_height="match_parent"
+                    android:layout_gravity="right"
+                    android:background="@drawable/circle_shape"
+                    android:indeterminate="false"
+                    android:max="100"
+                    android:progress="65"
+                    android:progressDrawable="@drawable/circular_progress_bar"
+                    android:translationX="-80dp"
+                    android:translationY="10dp" />
+
+                <ProgressBar
+                    android:id="@+id/progressBar3"
+                    style="?android:attr/progressBarStyleHorizontal"
+                    android:layout_width="40dp"
+                    android:layout_height="match_parent"
+                    android:layout_gravity="right"
+                    android:background="@drawable/circle_shape"
+                    android:indeterminate="false"
+                    android:max="100"
+                    android:progress="65"
+                    android:progressDrawable="@drawable/circular_progress_bar"
+                    android:translationX="-130dp"
+                    android:translationY="10dp" />
+
+                <ProgressBar
+                    android:id="@+id/progressBar4"
+                    style="?android:attr/progressBarStyleHorizontal"
+                    android:layout_width="40dp"
+                    android:layout_height="match_parent"
+                    android:layout_gravity="right"
+                    android:background="@drawable/circle_shape"
+                    android:indeterminate="false"
+                    android:max="100"
+                    android:progress="65"
+                    android:progressDrawable="@drawable/circular_progress_bar"
+                    android:translationX="-180dp"
+                    android:translationY="10dp" />
+
+                <ProgressBar
+                    android:id="@+id/progressBar6"
+                    style="?android:attr/progressBarStyleHorizontal"
+                    android:layout_width="40dp"
+                    android:layout_height="match_parent"
+                    android:layout_gravity="right"
+                    android:background="@drawable/circle_shape"
+                    android:indeterminate="false"
+                    android:max="100"
+                    android:progress="65"
+                    android:progressDrawable="@drawable/circular_progress_bar"
+                    android:translationX="-230dp"
+                    android:translationY="10dp" />
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_row="0"
+                    android:layout_column="11"
+                    android:layout_margin="16dp"
+                    android:orientation="vertical"
+                    android:weightSum="3">
+
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center_vertical"
+                        android:paddingTop="0dp"
+                        android:text="@string/pkmn_name1"
+                        android:textAlignment="center"
+                        android:textColor="@android:color/black"
+                        android:textSize="15sp"
+                        android:textStyle="bold" />
+
+
+                    <ImageView
+                        android:layout_width="50dp"
+                        android:layout_height="match_parent"
+                        android:layout_alignParentLeft="true"
+                        android:layout_gravity="center_vertical"
+                        android:paddingTop="0dp"
+                        android:src="@drawable/pkmn"
+                        android:translationY="-10dp" />
+
+
+                </LinearLayout>
+
+            </androidx.cardview.widget.CardView>
+
+            <androidx.cardview.widget.CardView
+                android:layout_width="0dp"
+                android:layout_height="50dp"
+                android:layout_rowWeight="1"
+                android:layout_columnWeight="1"
+                android:layout_marginLeft="16dp"
+                android:layout_marginRight="16dp"
+                android:layout_marginBottom="20dp"
+                android:elevation="4dp"
+                android:onClick="Switcher"
+                app:cardCornerRadius="10dp"
+                tools:ignore="OnClick">
+
+
+                <ProgressBar
+                    android:id="@+id/progressBar1"
+                    style="?android:attr/progressBarStyleHorizontal"
+                    android:layout_width="40dp"
+                    android:layout_height="match_parent"
+                    android:layout_gravity="right"
+                    android:background="@drawable/circle_shape"
+                    android:indeterminate="false"
+                    android:max="100"
+                    android:progress="65"
+                    android:progressDrawable="@drawable/circular_progress_bar"
+                    android:translationX="-30dp"
+                    android:translationY="10dp" />
+
+                <ProgressBar
+                    android:id="@+id/progressBar2"
+                    style="?android:attr/progressBarStyleHorizontal"
+                    android:layout_width="40dp"
+                    android:layout_height="match_parent"
+                    android:layout_gravity="right"
+                    android:background="@drawable/circle_shape"
+                    android:indeterminate="false"
+                    android:max="100"
+                    android:progress="65"
+                    android:progressDrawable="@drawable/circular_progress_bar"
+                    android:translationX="-80dp"
+                    android:translationY="10dp" />
+
+                <ProgressBar
+                    android:id="@+id/progressBar3"
+                    style="?android:attr/progressBarStyleHorizontal"
+                    android:layout_width="40dp"
+                    android:layout_height="match_parent"
+                    android:layout_gravity="right"
+                    android:background="@drawable/circle_shape"
+                    android:indeterminate="false"
+                    android:max="100"
+                    android:progress="65"
+                    android:progressDrawable="@drawable/circular_progress_bar"
+                    android:translationX="-130dp"
+                    android:translationY="10dp" />
+
+                <ProgressBar
+                    android:id="@+id/progressBar4"
+                    style="?android:attr/progressBarStyleHorizontal"
+                    android:layout_width="40dp"
+                    android:layout_height="match_parent"
+                    android:layout_gravity="right"
+                    android:background="@drawable/circle_shape"
+                    android:indeterminate="false"
+                    android:max="100"
+                    android:progress="65"
+                    android:progressDrawable="@drawable/circular_progress_bar"
+                    android:translationX="-180dp"
+                    android:translationY="10dp" />
+
+                <ProgressBar
+                    android:id="@+id/progressBar6"
+                    style="?android:attr/progressBarStyleHorizontal"
+                    android:layout_width="40dp"
+                    android:layout_height="match_parent"
+                    android:layout_gravity="right"
+                    android:background="@drawable/circle_shape"
+                    android:indeterminate="false"
+                    android:max="100"
+                    android:progress="65"
+                    android:progressDrawable="@drawable/circular_progress_bar"
+                    android:translationX="-230dp"
+                    android:translationY="10dp" />
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_row="0"
+                    android:layout_column="11"
+                    android:layout_margin="16dp"
+                    android:orientation="vertical"
+                    android:weightSum="3">
+
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center_vertical"
+                        android:paddingTop="0dp"
+                        android:text="@string/pkmn_name1"
+                        android:textAlignment="center"
+                        android:textColor="@android:color/black"
+                        android:textSize="15sp"
+                        android:textStyle="bold" />
+
+
+                    <ImageView
+                        android:layout_width="50dp"
+                        android:layout_height="match_parent"
+                        android:layout_alignParentLeft="true"
+                        android:layout_gravity="center_vertical"
+                        android:paddingTop="0dp"
+                        android:src="@drawable/pkmn"
+                        android:translationY="-10dp" />
+
+
+                </LinearLayout>
+
+            </androidx.cardview.widget.CardView>
+
+            <androidx.cardview.widget.CardView
+                android:layout_width="0dp"
+                android:layout_height="50dp"
+                android:layout_rowWeight="1"
+                android:layout_columnWeight="1"
+                android:layout_marginLeft="16dp"
+                android:layout_marginRight="16dp"
+                android:layout_marginBottom="20dp"
+                android:elevation="4dp"
+                android:onClick="Switcher"
+                app:cardCornerRadius="10dp"
+                tools:ignore="OnClick">
+
+
+                <ProgressBar
+                    android:id="@+id/progressBar1"
+                    style="?android:attr/progressBarStyleHorizontal"
+                    android:layout_width="40dp"
+                    android:layout_height="match_parent"
+                    android:layout_gravity="right"
+                    android:background="@drawable/circle_shape"
+                    android:indeterminate="false"
+                    android:max="100"
+                    android:progress="65"
+                    android:progressDrawable="@drawable/circular_progress_bar"
+                    android:translationX="-30dp"
+                    android:translationY="10dp" />
+
+                <ProgressBar
+                    android:id="@+id/progressBar2"
+                    style="?android:attr/progressBarStyleHorizontal"
+                    android:layout_width="40dp"
+                    android:layout_height="match_parent"
+                    android:layout_gravity="right"
+                    android:background="@drawable/circle_shape"
+                    android:indeterminate="false"
+                    android:max="100"
+                    android:progress="65"
+                    android:progressDrawable="@drawable/circular_progress_bar"
+                    android:translationX="-80dp"
+                    android:translationY="10dp" />
+
+                <ProgressBar
+                    android:id="@+id/progressBar3"
+                    style="?android:attr/progressBarStyleHorizontal"
+                    android:layout_width="40dp"
+                    android:layout_height="match_parent"
+                    android:layout_gravity="right"
+                    android:background="@drawable/circle_shape"
+                    android:indeterminate="false"
+                    android:max="100"
+                    android:progress="65"
+                    android:progressDrawable="@drawable/circular_progress_bar"
+                    android:translationX="-130dp"
+                    android:translationY="10dp" />
+
+                <ProgressBar
+                    android:id="@+id/progressBar4"
+                    style="?android:attr/progressBarStyleHorizontal"
+                    android:layout_width="40dp"
+                    android:layout_height="match_parent"
+                    android:layout_gravity="right"
+                    android:background="@drawable/circle_shape"
+                    android:indeterminate="false"
+                    android:max="100"
+                    android:progress="65"
+                    android:progressDrawable="@drawable/circular_progress_bar"
+                    android:translationX="-180dp"
+                    android:translationY="10dp" />
+
+                <ProgressBar
+                    android:id="@+id/progressBar6"
+                    style="?android:attr/progressBarStyleHorizontal"
+                    android:layout_width="40dp"
+                    android:layout_height="match_parent"
+                    android:layout_gravity="right"
+                    android:background="@drawable/circle_shape"
+                    android:indeterminate="false"
+                    android:max="100"
+                    android:progress="65"
+                    android:progressDrawable="@drawable/circular_progress_bar"
+                    android:translationX="-230dp"
+                    android:translationY="10dp" />
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_row="0"
+                    android:layout_column="11"
+                    android:layout_margin="16dp"
+                    android:orientation="vertical"
+                    android:weightSum="3">
+
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center_vertical"
+                        android:paddingTop="0dp"
+                        android:text="@string/pkmn_name1"
+                        android:textAlignment="center"
+                        android:textColor="@android:color/black"
+                        android:textSize="15sp"
+                        android:textStyle="bold" />
+
+
+                    <ImageView
+                        android:layout_width="50dp"
+                        android:layout_height="match_parent"
+                        android:layout_alignParentLeft="true"
+                        android:layout_gravity="center_vertical"
+                        android:paddingTop="0dp"
+                        android:src="@drawable/pkmn"
+                        android:translationY="-10dp" />
+
+
+                </LinearLayout>
+
+            </androidx.cardview.widget.CardView>
+
+            <androidx.cardview.widget.CardView
+                android:layout_width="0dp"
+                android:layout_height="50dp"
+                android:layout_rowWeight="1"
+                android:layout_columnWeight="1"
+                android:layout_marginLeft="16dp"
+                android:layout_marginRight="16dp"
+                android:layout_marginBottom="20dp"
+                android:elevation="4dp"
+                android:onClick="Switcher"
+                app:cardCornerRadius="10dp"
+                tools:ignore="OnClick">
+
+
+                <ProgressBar
+                    android:id="@+id/progressBar1"
+                    style="?android:attr/progressBarStyleHorizontal"
+                    android:layout_width="40dp"
+                    android:layout_height="match_parent"
+                    android:layout_gravity="right"
+                    android:background="@drawable/circle_shape"
+                    android:indeterminate="false"
+                    android:max="100"
+                    android:progress="65"
+                    android:progressDrawable="@drawable/circular_progress_bar"
+                    android:translationX="-30dp"
+                    android:translationY="10dp" />
+
+                <ProgressBar
+                    android:id="@+id/progressBar2"
+                    style="?android:attr/progressBarStyleHorizontal"
+                    android:layout_width="40dp"
+                    android:layout_height="match_parent"
+                    android:layout_gravity="right"
+                    android:background="@drawable/circle_shape"
+                    android:indeterminate="false"
+                    android:max="100"
+                    android:progress="65"
+                    android:progressDrawable="@drawable/circular_progress_bar"
+                    android:translationX="-80dp"
+                    android:translationY="10dp" />
+
+                <ProgressBar
+                    android:id="@+id/progressBar3"
+                    style="?android:attr/progressBarStyleHorizontal"
+                    android:layout_width="40dp"
+                    android:layout_height="match_parent"
+                    android:layout_gravity="right"
+                    android:background="@drawable/circle_shape"
+                    android:indeterminate="false"
+                    android:max="100"
+                    android:progress="65"
+                    android:progressDrawable="@drawable/circular_progress_bar"
+                    android:translationX="-130dp"
+                    android:translationY="10dp" />
+
+                <ProgressBar
+                    android:id="@+id/progressBar4"
+                    style="?android:attr/progressBarStyleHorizontal"
+                    android:layout_width="40dp"
+                    android:layout_height="match_parent"
+                    android:layout_gravity="right"
+                    android:background="@drawable/circle_shape"
+                    android:indeterminate="false"
+                    android:max="100"
+                    android:progress="65"
+                    android:progressDrawable="@drawable/circular_progress_bar"
+                    android:translationX="-180dp"
+                    android:translationY="10dp" />
+
+                <ProgressBar
+                    android:id="@+id/progressBar6"
+                    style="?android:attr/progressBarStyleHorizontal"
+                    android:layout_width="40dp"
+                    android:layout_height="match_parent"
+                    android:layout_gravity="right"
+                    android:background="@drawable/circle_shape"
+                    android:indeterminate="false"
+                    android:max="100"
+                    android:progress="65"
+                    android:progressDrawable="@drawable/circular_progress_bar"
+                    android:translationX="-230dp"
+                    android:translationY="10dp" />
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_row="0"
+                    android:layout_column="11"
+                    android:layout_margin="16dp"
+                    android:orientation="vertical"
+                    android:weightSum="3">
+
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center_vertical"
+                        android:paddingTop="0dp"
+                        android:text="@string/pkmn_name1"
+                        android:textAlignment="center"
+                        android:textColor="@android:color/black"
+                        android:textSize="15sp"
+                        android:textStyle="bold" />
+
+
+                    <ImageView
+                        android:layout_width="50dp"
+                        android:layout_height="match_parent"
+                        android:layout_alignParentLeft="true"
+                        android:layout_gravity="center_vertical"
+                        android:paddingTop="0dp"
+                        android:src="@drawable/pkmn"
+                        android:translationY="-10dp" />
+
+
+                </LinearLayout>
+
+            </androidx.cardview.widget.CardView>
+
+            <androidx.cardview.widget.CardView
+                android:layout_width="0dp"
+                android:layout_height="50dp"
+                android:layout_rowWeight="1"
+                android:layout_columnWeight="1"
+                android:layout_marginLeft="16dp"
+                android:layout_marginRight="16dp"
+                android:layout_marginBottom="20dp"
+                android:elevation="4dp"
+                android:onClick="Switcher"
+                app:cardCornerRadius="10dp"
+                tools:ignore="OnClick">
+
+
+                <ProgressBar
+                    android:id="@+id/progressBar1"
+                    style="?android:attr/progressBarStyleHorizontal"
+                    android:layout_width="40dp"
+                    android:layout_height="match_parent"
+                    android:layout_gravity="right"
+                    android:background="@drawable/circle_shape"
+                    android:indeterminate="false"
+                    android:max="100"
+                    android:progress="65"
+                    android:progressDrawable="@drawable/circular_progress_bar"
+                    android:translationX="-30dp"
+                    android:translationY="10dp" />
+
+                <ProgressBar
+                    android:id="@+id/progressBar2"
+                    style="?android:attr/progressBarStyleHorizontal"
+                    android:layout_width="40dp"
+                    android:layout_height="match_parent"
+                    android:layout_gravity="right"
+                    android:background="@drawable/circle_shape"
+                    android:indeterminate="false"
+                    android:max="100"
+                    android:progress="65"
+                    android:progressDrawable="@drawable/circular_progress_bar"
+                    android:translationX="-80dp"
+                    android:translationY="10dp" />
+
+                <ProgressBar
+                    android:id="@+id/progressBar3"
+                    style="?android:attr/progressBarStyleHorizontal"
+                    android:layout_width="40dp"
+                    android:layout_height="match_parent"
+                    android:layout_gravity="right"
+                    android:background="@drawable/circle_shape"
+                    android:indeterminate="false"
+                    android:max="100"
+                    android:progress="65"
+                    android:progressDrawable="@drawable/circular_progress_bar"
+                    android:translationX="-130dp"
+                    android:translationY="10dp" />
+
+                <ProgressBar
+                    android:id="@+id/progressBar4"
+                    style="?android:attr/progressBarStyleHorizontal"
+                    android:layout_width="40dp"
+                    android:layout_height="match_parent"
+                    android:layout_gravity="right"
+                    android:background="@drawable/circle_shape"
+                    android:indeterminate="false"
+                    android:max="100"
+                    android:progress="65"
+                    android:progressDrawable="@drawable/circular_progress_bar"
+                    android:translationX="-180dp"
+                    android:translationY="10dp" />
+
+                <ProgressBar
+                    android:id="@+id/progressBar6"
+                    style="?android:attr/progressBarStyleHorizontal"
+                    android:layout_width="40dp"
+                    android:layout_height="match_parent"
+                    android:layout_gravity="right"
+                    android:background="@drawable/circle_shape"
+                    android:indeterminate="false"
+                    android:max="100"
+                    android:progress="65"
+                    android:progressDrawable="@drawable/circular_progress_bar"
+                    android:translationX="-230dp"
+                    android:translationY="10dp" />
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_row="0"
+                    android:layout_column="11"
+                    android:layout_margin="16dp"
+                    android:orientation="vertical"
+                    android:weightSum="3">
+
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center_vertical"
+                        android:paddingTop="0dp"
+                        android:text="@string/pkmn_name1"
+                        android:textAlignment="center"
+                        android:textColor="@android:color/black"
+                        android:textSize="15sp"
+                        android:textStyle="bold" />
+
+
+                    <ImageView
+                        android:layout_width="50dp"
+                        android:layout_height="match_parent"
+                        android:layout_alignParentLeft="true"
+                        android:layout_gravity="center_vertical"
+                        android:paddingTop="0dp"
+                        android:src="@drawable/pkmn"
+                        android:translationY="-10dp" />
+
+
+                </LinearLayout>
+
+            </androidx.cardview.widget.CardView>
+
+            <androidx.cardview.widget.CardView
+                android:layout_width="0dp"
+                android:layout_height="50dp"
+                android:layout_rowWeight="1"
+                android:layout_columnWeight="1"
+                android:layout_marginLeft="16dp"
+                android:layout_marginRight="16dp"
+                android:layout_marginBottom="20dp"
+                android:elevation="4dp"
+                android:onClick="Switcher"
+                app:cardCornerRadius="10dp"
+                tools:ignore="OnClick">
+
+
+                <ProgressBar
+                    android:id="@+id/progressBar1"
+                    style="?android:attr/progressBarStyleHorizontal"
+                    android:layout_width="40dp"
+                    android:layout_height="match_parent"
+                    android:layout_gravity="right"
+                    android:background="@drawable/circle_shape"
+                    android:indeterminate="false"
+                    android:max="100"
+                    android:progress="65"
+                    android:progressDrawable="@drawable/circular_progress_bar"
+                    android:translationX="-30dp"
+                    android:translationY="10dp" />
+
+                <ProgressBar
+                    android:id="@+id/progressBar2"
+                    style="?android:attr/progressBarStyleHorizontal"
+                    android:layout_width="40dp"
+                    android:layout_height="match_parent"
+                    android:layout_gravity="right"
+                    android:background="@drawable/circle_shape"
+                    android:indeterminate="false"
+                    android:max="100"
+                    android:progress="65"
+                    android:progressDrawable="@drawable/circular_progress_bar"
+                    android:translationX="-80dp"
+                    android:translationY="10dp" />
+
+                <ProgressBar
+                    android:id="@+id/progressBar3"
+                    style="?android:attr/progressBarStyleHorizontal"
+                    android:layout_width="40dp"
+                    android:layout_height="match_parent"
+                    android:layout_gravity="right"
+                    android:background="@drawable/circle_shape"
+                    android:indeterminate="false"
+                    android:max="100"
+                    android:progress="65"
+                    android:progressDrawable="@drawable/circular_progress_bar"
+                    android:translationX="-130dp"
+                    android:translationY="10dp" />
+
+                <ProgressBar
+                    android:id="@+id/progressBar4"
+                    style="?android:attr/progressBarStyleHorizontal"
+                    android:layout_width="40dp"
+                    android:layout_height="match_parent"
+                    android:layout_gravity="right"
+                    android:background="@drawable/circle_shape"
+                    android:indeterminate="false"
+                    android:max="100"
+                    android:progress="65"
+                    android:progressDrawable="@drawable/circular_progress_bar"
+                    android:translationX="-180dp"
+                    android:translationY="10dp" />
+
+                <ProgressBar
+                    android:id="@+id/progressBar6"
+                    style="?android:attr/progressBarStyleHorizontal"
+                    android:layout_width="40dp"
+                    android:layout_height="match_parent"
+                    android:layout_gravity="right"
+                    android:background="@drawable/circle_shape"
+                    android:indeterminate="false"
+                    android:max="100"
+                    android:progress="65"
+                    android:progressDrawable="@drawable/circular_progress_bar"
+                    android:translationX="-230dp"
+                    android:translationY="10dp" />
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_row="0"
+                    android:layout_column="11"
+                    android:layout_margin="16dp"
+                    android:orientation="vertical"
+                    android:weightSum="3">
+
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center_vertical"
+                        android:paddingTop="0dp"
+                        android:text="@string/pkmn_name1"
+                        android:textAlignment="center"
+                        android:textColor="@android:color/black"
+                        android:textSize="15sp"
+                        android:textStyle="bold" />
+
+
+                    <ImageView
+                        android:layout_width="50dp"
+                        android:layout_height="match_parent"
+                        android:layout_alignParentLeft="true"
+                        android:layout_gravity="center_vertical"
+                        android:paddingTop="0dp"
+                        android:src="@drawable/pkmn"
+                        android:translationY="-10dp" />
+
+
+                </LinearLayout>
+
+            </androidx.cardview.widget.CardView>
+
+            <androidx.cardview.widget.CardView
+                android:layout_width="0dp"
+                android:layout_height="50dp"
+                android:layout_rowWeight="1"
+                android:layout_columnWeight="1"
+                android:layout_marginLeft="16dp"
+                android:layout_marginRight="16dp"
+                android:layout_marginBottom="20dp"
+                android:elevation="4dp"
+                android:onClick="Switcher"
+                app:cardCornerRadius="10dp"
+                tools:ignore="OnClick">
+
+
+                <ProgressBar
+                    android:id="@+id/progressBar1"
+                    style="?android:attr/progressBarStyleHorizontal"
+                    android:layout_width="40dp"
+                    android:layout_height="match_parent"
+                    android:layout_gravity="right"
+                    android:background="@drawable/circle_shape"
+                    android:indeterminate="false"
+                    android:max="100"
+                    android:progress="65"
+                    android:progressDrawable="@drawable/circular_progress_bar"
+                    android:translationX="-30dp"
+                    android:translationY="10dp" />
+
+                <ProgressBar
+                    android:id="@+id/progressBar2"
+                    style="?android:attr/progressBarStyleHorizontal"
+                    android:layout_width="40dp"
+                    android:layout_height="match_parent"
+                    android:layout_gravity="right"
+                    android:background="@drawable/circle_shape"
+                    android:indeterminate="false"
+                    android:max="100"
+                    android:progress="65"
+                    android:progressDrawable="@drawable/circular_progress_bar"
+                    android:translationX="-80dp"
+                    android:translationY="10dp" />
+
+                <ProgressBar
+                    android:id="@+id/progressBar3"
+                    style="?android:attr/progressBarStyleHorizontal"
+                    android:layout_width="40dp"
+                    android:layout_height="match_parent"
+                    android:layout_gravity="right"
+                    android:background="@drawable/circle_shape"
+                    android:indeterminate="false"
+                    android:max="100"
+                    android:progress="65"
+                    android:progressDrawable="@drawable/circular_progress_bar"
+                    android:translationX="-130dp"
+                    android:translationY="10dp" />
+
+                <ProgressBar
+                    android:id="@+id/progressBar4"
+                    style="?android:attr/progressBarStyleHorizontal"
+                    android:layout_width="40dp"
+                    android:layout_height="match_parent"
+                    android:layout_gravity="right"
+                    android:background="@drawable/circle_shape"
+                    android:indeterminate="false"
+                    android:max="100"
+                    android:progress="65"
+                    android:progressDrawable="@drawable/circular_progress_bar"
+                    android:translationX="-180dp"
+                    android:translationY="10dp" />
+
+                <ProgressBar
+                    android:id="@+id/progressBar6"
+                    style="?android:attr/progressBarStyleHorizontal"
+                    android:layout_width="40dp"
+                    android:layout_height="match_parent"
+                    android:layout_gravity="right"
+                    android:background="@drawable/circle_shape"
+                    android:indeterminate="false"
+                    android:max="100"
+                    android:progress="65"
+                    android:progressDrawable="@drawable/circular_progress_bar"
+                    android:translationX="-230dp"
+                    android:translationY="10dp" />
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_row="0"
+                    android:layout_column="11"
+                    android:layout_margin="16dp"
+                    android:orientation="vertical"
+                    android:weightSum="3">
+
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center_vertical"
+                        android:paddingTop="0dp"
+                        android:text="@string/pkmn_name1"
+                        android:textAlignment="center"
+                        android:textColor="@android:color/black"
+                        android:textSize="15sp"
+                        android:textStyle="bold" />
+
+
+                    <ImageView
+                        android:layout_width="50dp"
+                        android:layout_height="match_parent"
+                        android:layout_alignParentLeft="true"
+                        android:layout_gravity="center_vertical"
+                        android:paddingTop="0dp"
+                        android:src="@drawable/pkmn"
+                        android:translationY="-10dp" />
+
+
+                </LinearLayout>
+
+            </androidx.cardview.widget.CardView>
+
+
+        </GridLayout>
+
+    </LinearLayout>
+
+</ScrollView>
