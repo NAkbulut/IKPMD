@@ -7,15 +7,30 @@
     android:background="#2B2828"
     tools:context=".PokeDetails">
 
+    <TextView
+        android:id="@+id/textName"
+        android:layout_width="187dp"
+        android:layout_height="82dp"
+        android:layout_below="@+id/imageView"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentEnd="true"
+        android:layout_marginStart="107dp"
+        android:layout_marginTop="-11dp"
+        android:layout_marginEnd="118dp"
+        android:gravity="center"
+        android:text="Bulbasaur"
+        android:textColor="#FFFFFF"
+        android:textSize="30dp" />
+
     <androidx.gridlayout.widget.GridLayout
         android:layout_width="180dp"
         android:layout_height="180dp"
         android:layout_alignParentStart="true"
         android:layout_alignParentEnd="true"
         android:layout_alignParentBottom="true"
-        android:layout_marginStart="35dp"
-        android:layout_marginEnd="35dp"
-        android:layout_marginBottom="27dp">
+        android:layout_marginStart="34dp"
+        android:layout_marginEnd="36dp"
+        android:layout_marginBottom="17dp">
 
         <TextView
             android:id="@+id/textHP"
@@ -194,7 +209,7 @@
         android:layout_marginEnd="50dp"
         android:layout_marginBottom="270dp"
         android:gravity="center"
-        android:text="Weight"
+        android:text="Height"
         android:textColor="#A59B9B" />
 
     <TextView
@@ -268,23 +283,6 @@
         android:text="Poison"
         android:textColor="#FFFFFF"
         android:textStyle="bold" />
-
-    <TextView
-        android:id="@+id/textName"
-        android:layout_width="187dp"
-        android:layout_height="82dp"
-        android:layout_alignParentStart="true"
-        android:layout_alignParentTop="true"
-        android:layout_alignParentEnd="true"
-        android:layout_alignParentBottom="true"
-        android:layout_marginStart="113dp"
-        android:layout_marginTop="245dp"
-        android:layout_marginEnd="111dp"
-        android:layout_marginBottom="403dp"
-        android:gravity="center"
-        android:text="Bulbasaur"
-        android:textColor="#FFFFFF"
-        android:textSize="30dp" />
 
     <ImageView
         android:id="@+id/imageView"
