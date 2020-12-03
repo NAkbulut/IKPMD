@@ -1,4 +1,4 @@
-package com.example.ikpmd_periode2;
+package com.example.ikpmd_periode2.models;
 import java.io.Serializable;
 
 public class pokemon implements Serializable{
