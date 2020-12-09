@@ -19,5 +19,6 @@ public class DatabaseInfo {
         public static final String Weight = "Weight";
         public static final String Height = "Height";
     }
+
 }
 

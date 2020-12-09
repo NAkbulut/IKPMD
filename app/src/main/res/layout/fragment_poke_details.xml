@@ -5,6 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="#2B2828"
+    android:elevation="1dp"
     tools:context=".PokeDetails">
 
     <TextView
@@ -21,6 +22,26 @@
         android:text="Bulbasaur"
         android:textColor="#FFFFFF"
         android:textSize="30dp" />
+
+    <com.github.ivbaranov.mfb.MaterialFavoriteButton
+        android:id="@+id/Favorite_Button"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_above="@+id/textName"
+        android:layout_alignParentEnd="true"
+        android:layout_marginEnd="10dp"
+        android:layout_marginBottom="167dp"
+        android:baselineAlignBottom="false"
+        android:elevation="1dp"
+        android:foregroundGravity="center"
+        app:mfb_animate_favorite="true"
+        app:mfb_bounce_duration="300"
+        app:mfb_favorite_image="@drawable/ic_baseline_star_24"
+        app:mfb_not_favorite_image="@drawable/ic_baseline_star_border_24"
+        app:mfb_padding="12"
+        app:mfb_rotation_angle="360"
+        app:mfb_rotation_duration="400"
+        app:mfb_size="64" />
 
     <androidx.gridlayout.widget.GridLayout
         android:layout_width="180dp"

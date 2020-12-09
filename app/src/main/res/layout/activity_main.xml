@@ -27,7 +27,6 @@
         android:layout_width="409dp"
         android:layout_height="657dp"
         android:background="#000000"
-
         app:defaultNavHost="true"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.5"

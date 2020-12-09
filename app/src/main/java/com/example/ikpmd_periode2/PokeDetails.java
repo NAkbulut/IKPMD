@@ -1,19 +1,24 @@
 package com.example.ikpmd_periode2;
 
-import androidx.appcompat.app.AppCompatActivity;
-
-import android.content.SharedPreferences;
 import android.os.Bundle;
-import android.util.Log;
+import android.view.LayoutInflater;
+import android.view.View;
+import android.view.ViewGroup;
 
-public class PokeDetails extends AppCompatActivity {
+import androidx.fragment.app.Fragment;
+
+public class PokeDetails extends Fragment {
+
 
     @Override
-    protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_poke_details);
+    public View onCreateView(LayoutInflater inflater,
+                             ViewGroup container, Bundle savedInstanceState) {
+        View root = inflater.inflate(R.layout.fragment_poke_details, container, false);
 
-
-
+        return root;
     }
+
+
+
+
 }

@@ -16,7 +16,7 @@
         android:id="@+id/navigation_dashboard"
         android:name="com.example.ikpmd_periode2.ui.dashboard.DashboardFragment"
         android:label="@string/title_dashboard"
-        android:gravity="center"
+        android:layout_gravity="center"
         tools:layout="@layout/fragment_favorites" />
 
 </navigation>
