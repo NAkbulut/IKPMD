@@ -1,7 +1,7 @@
 package com.example.ikpmd_periode2.models;
 import java.io.Serializable;
 
-public class pokemon implements Serializable{
+public class pokemonmodel implements Serializable{
     private String Name;
     private String type1;
     private String type2;
@@ -14,7 +14,7 @@ public class pokemon implements Serializable{
     private int Weight;
     private int Height;
 
-    public pokemon(String name, String type1, String type2, int HP, int ATK, int SP_ATK, int DEF, int SP_DEF, int SPD, int weight, int height) {
+    public pokemonmodel(String name, String type1, String type2, int HP, int ATK, int SP_ATK, int DEF, int SP_DEF, int SPD, int weight, int height) {
         Name = name;
         this.type1 = type1;
         this.type2 = type2;
@@ -28,7 +28,7 @@ public class pokemon implements Serializable{
         Height = height;
     }
 
-    public pokemon(){
+    public pokemonmodel(){
     }
 
     public String getName() {
