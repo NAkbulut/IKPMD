@@ -17,8 +17,7 @@ public class DatabaseInfo {
         public static final String SP_DEF = "SP_DEF";
         public static final String SPD = "SPD";
         public static final String Weight = "Weight";
-        public static final String Height = "Height";
-    }
+        public static final String Height = "Height";}
 
 }
 

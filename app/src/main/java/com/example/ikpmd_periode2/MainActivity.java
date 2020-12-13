@@ -1,15 +1,22 @@
 package com.example.ikpmd_periode2;
 
+import android.content.ContentValues;
 import android.content.Context;
+import android.content.Intent;
 import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
 import android.os.Bundle;
 import android.os.StrictMode;
 import android.view.View;
 
+import com.example.ikpmd_periode2.database.DatabaseHelper;
+import com.example.ikpmd_periode2.database.DatabaseInfo;
+import com.example.ikpmd_periode2.ui.LoadingDBFragment;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentTransaction;
 import androidx.navigation.NavController;
 import androidx.navigation.Navigation;
 import androidx.navigation.ui.AppBarConfiguration;
@@ -21,6 +28,7 @@ import java.util.List;
 import me.sargunvohra.lib.pokekotlin.client.PokeApi;
 import me.sargunvohra.lib.pokekotlin.client.PokeApiClient;
 import me.sargunvohra.lib.pokekotlin.model.Pokemon;
+import me.sargunvohra.lib.pokekotlin.model.PokemonStat;
 import me.sargunvohra.lib.pokekotlin.model.PokemonType;
 import me.sargunvohra.lib.pokekotlin.model.Type;
 
@@ -54,12 +62,73 @@ public class MainActivity extends AppCompatActivity {
         return haveConnectedWifi || haveConnectedMobile;
     }
 
-    private void makeClassesFromJSON() {
+    private void valuesToDB() {
         PokeApi pokeApi = new PokeApiClient();
-        Pokemon bulbasaur = pokeApi.getPokemon(1);
-        List<PokemonType> yeet = bulbasaur.getTypes();
-        System.out.println(bulbasaur);
-        System.out.println(yeet);
+        for (int i = 0; i < 151; ++i){
+            int k = i + 1;
+            int j = 0;
+            int l = 0;
+
+            Pokemon poketemp = pokeApi.getPokemon(k);
+            DatabaseHelper dbHelper = DatabaseHelper.getHelper(this);
+            ContentValues values = new ContentValues();
+
+            String pokename = poketemp.getName();
+            System.out.println(pokename);
+            values.put(DatabaseInfo.PokemonTable_Columns.Name, pokename);
+            System.out.println("NAME LOADED");
+
+            List<PokemonType> types = poketemp.getTypes();
+            for (PokemonType temp : types){
+                if (j == 0){
+                    values.put(DatabaseInfo.PokemonTable_Columns.type1, temp.component2().component1());
+                    if (types.size() == 2) {
+                        j = 1;
+                    }
+                }
+                if (j == 1){
+                    values.put(DatabaseInfo.PokemonTable_Columns.type2, temp.component2().component1());
+
+                }
+            }
+            System.out.println("TYPES LOADED");
+
+            String pokeheight = Integer.toString(poketemp.getHeight());
+            values.put(DatabaseInfo.PokemonTable_Columns.Height, pokeheight);
+            System.out.println("HEIGHT LOADED");
+
+            String pokeweight = Integer.toString(poketemp.getWeight());
+            values.put(DatabaseInfo.PokemonTable_Columns.Weight, pokeweight);
+            System.out.println("WEIGHT LOADED");
+
+            List<PokemonStat> stats = poketemp.getStats();
+            for (PokemonStat temp : stats){
+                if (l == 0) {
+                    values.put(DatabaseInfo.PokemonTable_Columns.HP, temp.component3());
+                }
+                if (l == 1) {
+                    values.put(DatabaseInfo.PokemonTable_Columns.ATK, temp.component3());
+                }
+                if (l == 2) {
+                    values.put(DatabaseInfo.PokemonTable_Columns.DEF, temp.component3());
+                }
+                if (l == 3) {
+                    values.put(DatabaseInfo.PokemonTable_Columns.SP_ATK, temp.component3());
+                }
+                if (l == 4) {
+                    values.put(DatabaseInfo.PokemonTable_Columns.SP_DEF, temp.component3());
+                }
+                if (l == 5) {
+                    values.put(DatabaseInfo.PokemonTable_Columns.SPD, temp.component3());
+                }
+                l = l + 1;
+            }
+            System.out.println("STATS LOADED");
+
+            System.out.println("INSERTING DATA");
+            dbHelper.insert(DatabaseInfo.PokemonTable.POKEMONTABLE, null, values);
+            System.out.println("DATA INSERTED");
+        }
     }
 
 
@@ -88,16 +157,8 @@ public class MainActivity extends AppCompatActivity {
         StrictMode.ThreadPolicy policy = new StrictMode.ThreadPolicy.Builder().permitAll().build();
         StrictMode.setThreadPolicy(policy);
 
-        try {
-            System.out.println("test1");
-            makeClassesFromJSON();
-            System.out.println("test2");
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
 
 
-        //System.out.println("yeet");
 
 
 
@@ -106,7 +167,18 @@ public class MainActivity extends AppCompatActivity {
 
     }
 
-
+    @Override
+    protected void onStart() {
+        super.onStart();
+        setContentView(R.layout.fragment_loading_d_b);
+        try {
+            System.out.println("Start DB");
+            valuesToDB();
+            System.out.println("End DB");
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
 
     //onStart is wat moet er gebeuren als de app wordt gestart
 
