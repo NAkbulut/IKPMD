@@ -7,6 +7,9 @@ import android.view.ViewGroup;
 
 import androidx.fragment.app.Fragment;
 
+import com.github.ivbaranov.mfb.MaterialFavoriteButton;
+import com.google.android.material.snackbar.Snackbar;
+
 public class PokeDetails extends Fragment {
 
 
@@ -15,8 +18,13 @@ public class PokeDetails extends Fragment {
                              ViewGroup container, Bundle savedInstanceState) {
         View root = inflater.inflate(R.layout.fragment_poke_details, container, false);
 
+
+
+
         return root;
     }
+
+
 
 
 

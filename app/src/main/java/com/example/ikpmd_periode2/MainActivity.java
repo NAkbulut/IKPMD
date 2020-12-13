@@ -1,5 +1,7 @@
 package com.example.ikpmd_periode2;
 
+import android.annotation.SuppressLint;
+import android.app.FragmentManager;
 import android.content.ContentValues;
 import android.content.Context;
 import android.content.Intent;
@@ -7,12 +9,18 @@ import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
 import android.os.Bundle;
 import android.os.StrictMode;
+import android.util.Log;
 import android.view.View;
+import android.widget.ImageButton;
 
+import com.example.ikpmd_periode2.ui.dashboard.DashboardFragment;
+import com.example.ikpmd_periode2.ui.home.HomeFragment;
+import com.github.ivbaranov.mfb.MaterialFavoriteButton;
 import com.example.ikpmd_periode2.database.DatabaseHelper;
 import com.example.ikpmd_periode2.database.DatabaseInfo;
 import com.example.ikpmd_periode2.ui.LoadingDBFragment;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
+import com.google.android.material.snackbar.Snackbar;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.Fragment;
@@ -34,14 +42,46 @@ import me.sargunvohra.lib.pokekotlin.model.Type;
 
 
 public class MainActivity extends AppCompatActivity {
+    Fragment a = new PokeDetails();
+    Fragment b = new DashboardFragment();
+    Fragment c = new HomeFragment();
 
 
     ////////////////////////SELFWRITEN
 
     //Switches view to pokedetails if clicked on a pokemonmodel in the mainactivity
-    public void Switcher(View v){
-        setContentView(R.layout.fragment_poke_details);
+    public void Switcher_main_to_poke(View v){
+        try{
+            FragmentTransaction ft = getSupportFragmentManager().beginTransaction();
+            ft.replace(R.id.nav_host_fragment, a);
+            ft.addToBackStack(null);
+            ft.commit();
+        }catch (Exception e) {
+            e.printStackTrace();
+        }
+
+
+
         //startActivity(new Intent(MainActivity.this,PokeDetails.class));
+    }
+
+
+
+
+
+
+    public void Switcher_poke(View v){
+        FragmentManager fm = getFragmentManager();
+        if (fm.getBackStackEntryCount() > 0) {
+            Log.i("MainActivity", "popping backstack");
+            //fm.popBackStack();
+            fm.popBackStack();
+        }else {
+            Log.i("MainActivity", "nothing on backstack, calling super");
+            //fm.popBackStack();
+            super.onBackPressed();
+        }
+
     }
 
 
@@ -128,6 +168,8 @@ public class MainActivity extends AppCompatActivity {
             System.out.println("INSERTING DATA");
             dbHelper.insert(DatabaseInfo.PokemonTable.POKEMONTABLE, null, values);
             System.out.println("DATA INSERTED");
+
+
         }
     }
 
@@ -157,8 +199,16 @@ public class MainActivity extends AppCompatActivity {
         StrictMode.ThreadPolicy policy = new StrictMode.ThreadPolicy.Builder().permitAll().build();
         StrictMode.setThreadPolicy(policy);
 
+        try {
+            System.out.println("test1");
+            valuesToDB();
+            System.out.println("test2");
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
 
 
+        //System.out.println("yeet");
 
 
 
@@ -170,14 +220,25 @@ public class MainActivity extends AppCompatActivity {
     @Override
     protected void onStart() {
         super.onStart();
-        setContentView(R.layout.fragment_loading_d_b);
-        try {
-            System.out.println("Start DB");
-            valuesToDB();
-            System.out.println("End DB");
-        } catch (Exception e) {
+        MaterialFavoriteButton favbtn = (MaterialFavoriteButton) findViewById(R.id.Favorite_Button);
+
+        try{
+            favbtn.setOnFavoriteChangeListener(
+                    new MaterialFavoriteButton.OnFavoriteChangeListener() {
+                        @Override
+                        public void onFavoriteChanged(MaterialFavoriteButton buttonView, boolean favorite) {
+                            if(favorite){
+                                System.out.println("added to fav");
+                                Snackbar.make(buttonView, "Added to Favorites", Snackbar.LENGTH_SHORT).show();
+                            }
+                        }
+                    });
+        }catch (Exception e) {
             e.printStackTrace();
         }
+
+
+
     }
 
     //onStart is wat moet er gebeuren als de app wordt gestart

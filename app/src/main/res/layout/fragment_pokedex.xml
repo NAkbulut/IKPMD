@@ -38,7 +38,7 @@
                 android:layout_marginBottom="20dp"
                 app:cardCornerRadius="10dp"
                 android:elevation="4dp"
-                android:onClick="Switcher"
+                android:onClick="Switcher_main_to_poke"
                 tools:ignore="OnClick">
 
                 <LinearLayout
@@ -80,7 +80,7 @@
                 android:layout_marginBottom="20dp"
                 app:cardCornerRadius="10dp"
                 android:elevation="4dp"
-                android:onClick="Switcher"
+                android:onClick="Switcher_main_to_poke"
                 tools:ignore="OnClick">
 
                 <LinearLayout
@@ -125,7 +125,7 @@
                 android:layout_marginBottom="20dp"
                 app:cardCornerRadius="10dp"
                 android:elevation="4dp"
-                android:onClick="Switcher"
+                android:onClick="Switcher_main_to_poke"
                 tools:ignore="OnClick">
 
                 <LinearLayout
@@ -167,7 +167,7 @@
                 android:layout_marginBottom="20dp"
                 app:cardCornerRadius="10dp"
                 android:elevation="4dp"
-                android:onClick="Switcher"
+                android:onClick="Switcher_main_to_poke"
                 tools:ignore="OnClick">
 
                 <LinearLayout
@@ -212,7 +212,7 @@
                 android:layout_marginBottom="20dp"
                 app:cardCornerRadius="10dp"
                 android:elevation="4dp"
-                android:onClick="Switcher"
+                android:onClick="Switcher_main_to_poke"
                 tools:ignore="OnClick">
 
                 <LinearLayout
@@ -254,7 +254,7 @@
                 android:layout_marginBottom="20dp"
                 app:cardCornerRadius="10dp"
                 android:elevation="4dp"
-                android:onClick="Switcher"
+                android:onClick="Switcher_main_to_poke"
                 tools:ignore="OnClick">
 
                 <LinearLayout
@@ -295,7 +295,7 @@
                 android:layout_marginBottom="20dp"
                 app:cardCornerRadius="10dp"
                 android:elevation="4dp"
-                android:onClick="Switcher"
+                android:onClick="Switcher_main_to_poke"
                 tools:ignore="OnClick">
 
                 <LinearLayout
@@ -336,7 +336,7 @@
                 android:layout_marginBottom="20dp"
                 app:cardCornerRadius="10dp"
                 android:elevation="4dp"
-                android:onClick="Switcher"
+                android:onClick="Switcher_main_to_poke"
                 tools:ignore="OnClick">
 
                 <LinearLayout
@@ -377,7 +377,7 @@
                 android:layout_marginBottom="20dp"
                 app:cardCornerRadius="10dp"
                 android:elevation="4dp"
-                android:onClick="Switcher"
+                android:onClick="Switcher_main_to_poke"
                 tools:ignore="OnClick">
 
                 <LinearLayout
@@ -418,7 +418,7 @@
                 android:layout_marginBottom="20dp"
                 app:cardCornerRadius="10dp"
                 android:elevation="4dp"
-                android:onClick="Switcher"
+                android:onClick="Switcher_main_to_poke"
                 tools:ignore="OnClick">
 
                 <LinearLayout
@@ -459,7 +459,7 @@
                 android:layout_marginBottom="20dp"
                 app:cardCornerRadius="10dp"
                 android:elevation="4dp"
-                android:onClick="Switcher"
+                android:onClick="Switcher_main_to_poke"
                 tools:ignore="OnClick">
 
                 <LinearLayout
@@ -500,7 +500,7 @@
                 android:layout_marginBottom="20dp"
                 app:cardCornerRadius="10dp"
                 android:elevation="4dp"
-                android:onClick="Switcher"
+                android:onClick="Switcher_main_to_poke"
                 tools:ignore="OnClick">
 
                 <LinearLayout
