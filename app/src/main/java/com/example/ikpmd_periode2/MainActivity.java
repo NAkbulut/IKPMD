@@ -201,7 +201,7 @@ public class MainActivity extends AppCompatActivity {
 
         try {
             System.out.println("test1");
-            valuesToDB();
+            //valuesToDB();
             System.out.println("test2");
         } catch (Exception e) {
             e.printStackTrace();
