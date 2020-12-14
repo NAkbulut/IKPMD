@@ -36,7 +36,13 @@ public class PokeDetails extends Fragment {
                 new MaterialFavoriteButton.OnFavoriteChangeListener() {
                     @Override
                     public void onFavoriteChanged(MaterialFavoriteButton buttonView, boolean favorite) {
-                        Snackbar.make(buttonView, "Added to favorites", Snackbar.LENGTH_SHORT).show();
+                        if(favorite){
+                            Snackbar.make(buttonView, "Added to favorites", Snackbar.LENGTH_SHORT).show();
+
+                        }else{
+                            Snackbar.make(buttonView, "Removed from favorites", Snackbar.LENGTH_SHORT).show();
+
+                        }
                     }
                 });
     }
