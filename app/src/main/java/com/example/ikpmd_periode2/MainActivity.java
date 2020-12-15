@@ -1,5 +1,7 @@
 package com.example.ikpmd_periode2;
 
+import android.annotation.SuppressLint;
+import android.app.FragmentManager;
 import android.content.ContentValues;
 import android.content.Context;
 import android.content.Intent;
@@ -7,8 +9,13 @@ import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
 import android.os.Bundle;
 import android.os.StrictMode;
+import android.util.Log;
 import android.view.View;
+import android.widget.ImageButton;
 
+import com.example.ikpmd_periode2.ui.dashboard.DashboardFragment;
+import com.example.ikpmd_periode2.ui.home.HomeFragment;
+import com.github.ivbaranov.mfb.MaterialFavoriteButton;
 import com.example.ikpmd_periode2.database.DatabaseHelper;
 import com.example.ikpmd_periode2.database.DatabaseInfo;
 import com.example.ikpmd_periode2.ui.LoadingDBFragment;
@@ -18,6 +25,7 @@ import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
+import com.google.android.material.snackbar.Snackbar;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
@@ -25,6 +33,7 @@ import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentTransaction;
 import androidx.navigation.NavController;
 import androidx.navigation.Navigation;
+import androidx.navigation.fragment.NavHostFragment;
 import androidx.navigation.ui.AppBarConfiguration;
 import androidx.navigation.ui.NavigationUI;
 
@@ -40,35 +49,34 @@ import me.sargunvohra.lib.pokekotlin.model.Type;
 
 
 public class MainActivity extends AppCompatActivity {
+    Fragment a = new PokeDetails();
+    Fragment b = new DashboardFragment();
+    Fragment c = new HomeFragment();
+    Fragment d = new LoadingDBFragment();
+    Fragment e = new NavHostFragment();
 
 
     ////////////////////////SELFWRITEN
 
     //Switches view to pokedetails if clicked on a pokemonmodel in the mainactivity
-    public void Switcher(View v){
-        setContentView(R.layout.fragment_poke_details);
+    public void Switcher_main_to_poke(View v){
+        try{
+            FragmentTransaction ft = getSupportFragmentManager().beginTransaction();
+            ft.replace(R.id.nav_host_fragment, a);
+            ft.addToBackStack(null);
+            ft.commit();
+        }catch (Exception e) {
+            e.printStackTrace();
+        }
+
+
+
         //startActivity(new Intent(MainActivity.this,PokeDetails.class));
     }
 
 
-    public boolean checkIfOnline(){
-        boolean haveConnectedWifi = false;
-        boolean haveConnectedMobile = false;
-
-        ConnectivityManager cm = (ConnectivityManager) getSystemService(Context.CONNECTIVITY_SERVICE);
-        NetworkInfo[] netInfo = cm.getAllNetworkInfo();
-        for (NetworkInfo ni : netInfo) {
-            if (ni.getTypeName().equalsIgnoreCase("WIFI"))
-                if (ni.isConnected())
-                    haveConnectedWifi = true;
-            if (ni.getTypeName().equalsIgnoreCase("MOBILE"))
-                if (ni.isConnected())
-                    haveConnectedMobile = true;
-        }
-        return haveConnectedWifi || haveConnectedMobile;
-    }
-
-    private void valuesToDB() {
+    public boolean valuesToDB() {
+        boolean DB_done = false;
         PokeApi pokeApi = new PokeApiClient();
         for (int i = 0; i < 151; ++i){
             int k = i + 1;
@@ -134,8 +142,67 @@ public class MainActivity extends AppCompatActivity {
             System.out.println("INSERTING DATA");
             dbHelper.insert(DatabaseInfo.PokemonTable.POKEMONTABLE, null, values);
             System.out.println("DATA INSERTED");
+
+
+
         }
+        System.out.println("All data has been inserted");
+
+
+        try{
+            FragmentTransaction ft = getSupportFragmentManager().beginTransaction();
+            ft.replace(R.id.nav_host_fragment, e);
+            ft.addToBackStack(null);
+            ft.commit();
+
+        }catch (Exception e) {
+            e.printStackTrace();
+        }
+
+        DB_done = true;
+        return DB_done;
+
     }
+
+
+
+    public void Switcher_poke(View v){
+        FragmentManager fm = getFragmentManager();
+        if (fm.getBackStackEntryCount() > 0) {
+            Log.i("MainActivity", "popping backstack");
+            //fm.popBackStack();
+            fm.popBackStack();
+        }else {
+            Log.i("MainActivity", "nothing on backstack, calling super");
+            //fm.popBackStack();
+            super.onBackPressed();
+        }
+
+    }
+
+
+    public boolean checkIfOnline(){
+        boolean haveConnectedWifi = false;
+        boolean haveConnectedMobile = false;
+
+        ConnectivityManager cm = (ConnectivityManager) getSystemService(Context.CONNECTIVITY_SERVICE);
+        NetworkInfo[] netInfo = cm.getAllNetworkInfo();
+        for (NetworkInfo ni : netInfo) {
+            if (ni.getTypeName().equalsIgnoreCase("WIFI"))
+                if (ni.isConnected())
+                    haveConnectedWifi = true;
+            if (ni.getTypeName().equalsIgnoreCase("MOBILE"))
+                if (ni.isConnected())
+                    haveConnectedMobile = true;
+        }
+        return haveConnectedWifi || haveConnectedMobile;
+    }
+
+
+
+
+
+
 
     //////////////////////ANDROID FRAMEWORK
 
@@ -177,8 +244,15 @@ public class MainActivity extends AppCompatActivity {
         StrictMode.ThreadPolicy policy = new StrictMode.ThreadPolicy.Builder().permitAll().build();
         StrictMode.setThreadPolicy(policy);
 
+        try{
+            FragmentTransaction ft = getSupportFragmentManager().beginTransaction();
+            ft.replace(R.id.nav_host_fragment, d);
+            ft.addToBackStack(null);
+            ft.commit();
 
-
+        }catch (Exception e) {
+            e.printStackTrace();
+        }
 
 
 
@@ -190,6 +264,27 @@ public class MainActivity extends AppCompatActivity {
     @Override
     protected void onStart() {
         super.onStart();
+
+        if(d.isAdded()){
+            Runnable backGroundRunnable = new Runnable() {
+                public void run(){
+                    valuesToDB();
+                }};
+            Thread sampleThread = new Thread(backGroundRunnable);
+            sampleThread.start();
+        }
+    }
+
+
+    @Override
+    public void onBackPressed() {
+        try{
+            FragmentTransaction ft = getSupportFragmentManager().beginTransaction();
+            ft.replace(R.id.nav_host_fragment, e);
+            ft.addToBackStack(null);
+            ft.commit();
+
+        }catch (Exception e) {
         setContentView(R.layout.fragment_loading_d_b);
         messWithFirebase();
         try {

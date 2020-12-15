@@ -3,7 +3,8 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    >
 
 
     <LinearLayout
@@ -37,7 +38,7 @@
                 android:layout_marginRight="16dp"
                 android:layout_marginBottom="20dp"
                 android:elevation="4dp"
-                android:onClick="Switcher"
+                android:onClick="Switcher_main_to_poke"
                 app:cardCornerRadius="10dp"
                 tools:ignore="OnClick">
 
@@ -158,7 +159,7 @@
                 android:layout_marginRight="16dp"
                 android:layout_marginBottom="20dp"
                 android:elevation="4dp"
-                android:onClick="Switcher"
+                android:onClick="Switcher_main_to_poke"
                 app:cardCornerRadius="10dp"
                 tools:ignore="OnClick">
 
@@ -282,7 +283,7 @@
                 android:layout_marginRight="16dp"
                 android:layout_marginBottom="20dp"
                 android:elevation="4dp"
-                android:onClick="Switcher"
+                android:onClick="Switcher_main_to_poke"
                 app:cardCornerRadius="10dp"
                 tools:ignore="OnClick">
 
@@ -403,7 +404,7 @@
                 android:layout_marginRight="16dp"
                 android:layout_marginBottom="20dp"
                 android:elevation="4dp"
-                android:onClick="Switcher"
+                android:onClick="Switcher_main_to_poke"
                 app:cardCornerRadius="10dp"
                 tools:ignore="OnClick">
 
@@ -527,7 +528,7 @@
                 android:layout_marginRight="16dp"
                 android:layout_marginBottom="20dp"
                 android:elevation="4dp"
-                android:onClick="Switcher"
+                android:onClick="Switcher_main_to_poke"
                 app:cardCornerRadius="10dp"
                 tools:ignore="OnClick">
 
@@ -648,7 +649,7 @@
                 android:layout_marginRight="16dp"
                 android:layout_marginBottom="20dp"
                 android:elevation="4dp"
-                android:onClick="Switcher"
+                android:onClick="Switcher_main_to_poke"
                 app:cardCornerRadius="10dp"
                 tools:ignore="OnClick">
 
@@ -768,7 +769,7 @@
                 android:layout_marginRight="16dp"
                 android:layout_marginBottom="20dp"
                 android:elevation="4dp"
-                android:onClick="Switcher"
+                android:onClick="Switcher_main_to_poke"
                 app:cardCornerRadius="10dp"
                 tools:ignore="OnClick">
 
@@ -888,7 +889,7 @@
                 android:layout_marginRight="16dp"
                 android:layout_marginBottom="20dp"
                 android:elevation="4dp"
-                android:onClick="Switcher"
+                android:onClick="Switcher_main_to_poke"
                 app:cardCornerRadius="10dp"
                 tools:ignore="OnClick">
 
@@ -1008,7 +1009,7 @@
                 android:layout_marginRight="16dp"
                 android:layout_marginBottom="20dp"
                 android:elevation="4dp"
-                android:onClick="Switcher"
+                android:onClick="Switcher_main_to_poke"
                 app:cardCornerRadius="10dp"
                 tools:ignore="OnClick">
 
@@ -1128,7 +1129,7 @@
                 android:layout_marginRight="16dp"
                 android:layout_marginBottom="20dp"
                 android:elevation="4dp"
-                android:onClick="Switcher"
+                android:onClick="Switcher_main_to_poke"
                 app:cardCornerRadius="10dp"
                 tools:ignore="OnClick">
 
@@ -1248,7 +1249,7 @@
                 android:layout_marginRight="16dp"
                 android:layout_marginBottom="20dp"
                 android:elevation="4dp"
-                android:onClick="Switcher"
+                android:onClick="Switcher_main_to_poke"
                 app:cardCornerRadius="10dp"
                 tools:ignore="OnClick">
 
@@ -1368,7 +1369,7 @@
                 android:layout_marginRight="16dp"
                 android:layout_marginBottom="20dp"
                 android:elevation="4dp"
-                android:onClick="Switcher"
+                android:onClick="Switcher_main_to_poke"
                 app:cardCornerRadius="10dp"
                 tools:ignore="OnClick">
 
