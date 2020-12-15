@@ -13,7 +13,13 @@ import com.example.ikpmd_periode2.database.DatabaseHelper;
 import com.example.ikpmd_periode2.database.DatabaseInfo;
 import com.example.ikpmd_periode2.ui.LoadingDBFragment;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentTransaction;
@@ -131,12 +137,26 @@ public class MainActivity extends AppCompatActivity {
         }
     }
 
-
-
-
-
     //////////////////////ANDROID FRAMEWORK
 
+    private void messWithFirebase(){
+        FirebaseDatabase database = FirebaseDatabase.getInstance("https://ikpmd-aba46-default-rtdb.europe-west1.firebasedatabase.app/");
+        DatabaseReference myRef = database.getReference("message");
+        myRef.setValue("Hello world!");
+
+        myRef.addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                String value = dataSnapshot.getValue(String.class);
+                System.out.println("New Value ="+value);
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError error) {
+                System.out.println("Failed to read value."+error.toException());
+            }
+        });
+    };
     //onCreate is wat moet er gebeuren bij buildtime
 
     @Override
@@ -171,9 +191,10 @@ public class MainActivity extends AppCompatActivity {
     protected void onStart() {
         super.onStart();
         setContentView(R.layout.fragment_loading_d_b);
+        messWithFirebase();
         try {
             System.out.println("Start DB");
-            valuesToDB();
+            //valuesToDB();
             System.out.println("End DB");
         } catch (Exception e) {
             e.printStackTrace();
