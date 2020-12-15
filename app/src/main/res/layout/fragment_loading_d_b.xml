@@ -19,6 +19,11 @@
         android:id="@+id/progressBar"
         style="?android:attr/progressBarStyle"
         android:layout_width="match_parent"
-        android:layout_height="match_parent" />
+        android:layout_height="match_parent"
+        android:foregroundTint="#F44336"
+        android:progressBackgroundTint="#F44336"
+        android:progressTint="#F44336"
+        android:secondaryProgressTint="#F44336"
+        android:indeterminateTint="#F44336"/>
 
 </FrameLayout>

@@ -244,7 +244,13 @@ public class MainActivity extends AppCompatActivity {
         if(d.isAdded()){
             Runnable backGroundRunnable = new Runnable() {
                 public void run(){
-                    valuesToDB();
+                    try{
+                        valuesToDB();
+                    }catch(Exception e){
+                        e.printStackTrace();
+                    }
+
+
                 }};
             Thread sampleThread = new Thread(backGroundRunnable);
             sampleThread.start();
