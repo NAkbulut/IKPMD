@@ -27,6 +27,7 @@ import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentTransaction;
 import androidx.navigation.NavController;
 import androidx.navigation.Navigation;
+import androidx.navigation.fragment.NavHostFragment;
 import androidx.navigation.ui.AppBarConfiguration;
 import androidx.navigation.ui.NavigationUI;
 
@@ -45,6 +46,8 @@ public class MainActivity extends AppCompatActivity {
     Fragment a = new PokeDetails();
     Fragment b = new DashboardFragment();
     Fragment c = new HomeFragment();
+    Fragment d = new LoadingDBFragment();
+    Fragment e = new NavHostFragment();
 
 
     ////////////////////////SELFWRITEN
@@ -66,43 +69,8 @@ public class MainActivity extends AppCompatActivity {
     }
 
 
-
-
-
-
-    public void Switcher_poke(View v){
-        FragmentManager fm = getFragmentManager();
-        if (fm.getBackStackEntryCount() > 0) {
-            Log.i("MainActivity", "popping backstack");
-            //fm.popBackStack();
-            fm.popBackStack();
-        }else {
-            Log.i("MainActivity", "nothing on backstack, calling super");
-            //fm.popBackStack();
-            super.onBackPressed();
-        }
-
-    }
-
-
-    public boolean checkIfOnline(){
-        boolean haveConnectedWifi = false;
-        boolean haveConnectedMobile = false;
-
-        ConnectivityManager cm = (ConnectivityManager) getSystemService(Context.CONNECTIVITY_SERVICE);
-        NetworkInfo[] netInfo = cm.getAllNetworkInfo();
-        for (NetworkInfo ni : netInfo) {
-            if (ni.getTypeName().equalsIgnoreCase("WIFI"))
-                if (ni.isConnected())
-                    haveConnectedWifi = true;
-            if (ni.getTypeName().equalsIgnoreCase("MOBILE"))
-                if (ni.isConnected())
-                    haveConnectedMobile = true;
-        }
-        return haveConnectedWifi || haveConnectedMobile;
-    }
-
-    private void valuesToDB() {
+    public boolean valuesToDB() {
+        boolean DB_done = false;
         PokeApi pokeApi = new PokeApiClient();
         for (int i = 0; i < 151; ++i){
             int k = i + 1;
@@ -170,8 +138,61 @@ public class MainActivity extends AppCompatActivity {
             System.out.println("DATA INSERTED");
 
 
+
         }
+        System.out.println("All data has been inserted");
+
+
+        try{
+            FragmentTransaction ft = getSupportFragmentManager().beginTransaction();
+            ft.replace(R.id.nav_host_fragment, e);
+            ft.addToBackStack(null);
+            ft.commit();
+
+        }catch (Exception e) {
+            e.printStackTrace();
+        }
+
+        DB_done = true;
+        return DB_done;
+
     }
+
+
+
+    public void Switcher_poke(View v){
+        FragmentManager fm = getFragmentManager();
+        if (fm.getBackStackEntryCount() > 0) {
+            Log.i("MainActivity", "popping backstack");
+            //fm.popBackStack();
+            fm.popBackStack();
+        }else {
+            Log.i("MainActivity", "nothing on backstack, calling super");
+            //fm.popBackStack();
+            super.onBackPressed();
+        }
+
+    }
+
+
+    public boolean checkIfOnline(){
+        boolean haveConnectedWifi = false;
+        boolean haveConnectedMobile = false;
+
+        ConnectivityManager cm = (ConnectivityManager) getSystemService(Context.CONNECTIVITY_SERVICE);
+        NetworkInfo[] netInfo = cm.getAllNetworkInfo();
+        for (NetworkInfo ni : netInfo) {
+            if (ni.getTypeName().equalsIgnoreCase("WIFI"))
+                if (ni.isConnected())
+                    haveConnectedWifi = true;
+            if (ni.getTypeName().equalsIgnoreCase("MOBILE"))
+                if (ni.isConnected())
+                    haveConnectedMobile = true;
+        }
+        return haveConnectedWifi || haveConnectedMobile;
+    }
+
+
 
 
 
@@ -199,16 +220,15 @@ public class MainActivity extends AppCompatActivity {
         StrictMode.ThreadPolicy policy = new StrictMode.ThreadPolicy.Builder().permitAll().build();
         StrictMode.setThreadPolicy(policy);
 
-        try {
-            System.out.println("test1");
-            //valuesToDB();
-            System.out.println("test2");
-        } catch (Exception e) {
+        try{
+            FragmentTransaction ft = getSupportFragmentManager().beginTransaction();
+            ft.replace(R.id.nav_host_fragment, d);
+            ft.addToBackStack(null);
+            ft.commit();
+
+        }catch (Exception e) {
             e.printStackTrace();
         }
-
-
-        //System.out.println("yeet");
 
 
 
@@ -220,25 +240,29 @@ public class MainActivity extends AppCompatActivity {
     @Override
     protected void onStart() {
         super.onStart();
-        MaterialFavoriteButton favbtn = (MaterialFavoriteButton) findViewById(R.id.Favorite_Button);
 
+        if(d.isAdded()){
+            Runnable backGroundRunnable = new Runnable() {
+                public void run(){
+                    valuesToDB();
+                }};
+            Thread sampleThread = new Thread(backGroundRunnable);
+            sampleThread.start();
+        }
+    }
+
+
+    @Override
+    public void onBackPressed() {
         try{
-            favbtn.setOnFavoriteChangeListener(
-                    new MaterialFavoriteButton.OnFavoriteChangeListener() {
-                        @Override
-                        public void onFavoriteChanged(MaterialFavoriteButton buttonView, boolean favorite) {
-                            if(favorite){
-                                System.out.println("added to fav");
-                                Snackbar.make(buttonView, "Added to Favorites", Snackbar.LENGTH_SHORT).show();
-                            }
-                        }
-                    });
+            FragmentTransaction ft = getSupportFragmentManager().beginTransaction();
+            ft.replace(R.id.nav_host_fragment, e);
+            ft.addToBackStack(null);
+            ft.commit();
+
         }catch (Exception e) {
             e.printStackTrace();
         }
-
-
-
     }
 
     //onStart is wat moet er gebeuren als de app wordt gestart
