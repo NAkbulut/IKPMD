@@ -4,6 +4,7 @@ import android.app.FragmentManager;
 import android.content.ContentValues;
 import android.content.Context;
 import android.database.Cursor;
+import android.database.sqlite.SQLiteDatabase;
 import android.graphics.drawable.Drawable;
 import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
@@ -762,7 +763,26 @@ public class MainActivity extends AppCompatActivity {
         MainActivity dbhelper = this;
         DatabaseHelper dbHelper2 = DatabaseHelper.getHelper(dbhelper);
 
-        if(dbHelper2.getProfilesCount(DatabaseInfo.PokemonTable.POKEMONTABLE) != 151){
+        if(dbHelper2.getProfilesCount(DatabaseInfo.PokemonTable.POKEMONTABLE) == 151){
+            try {
+                FragmentTransaction ft = getSupportFragmentManager().beginTransaction();
+                ft.replace(R.id.nav_host_fragment, e);
+                ft.addToBackStack(null);
+                ft.commit();
+
+
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
+        }else {
+            //System.out.println("TESTESTESTESTESTESTESTSETESTSETS");
+            //DatabaseHelper dbHelper = DatabaseHelper.getHelper(dbhelper);
+            //SQLiteDatabase db = dbHelper.getWritableDatabase();
+            //System.out.println("HERE WE GOOOOOOOOOOOOOOOOOOOO");
+            //db.execSQL ("drop table "+DatabaseInfo.PokemonTable.POKEMONTABLE);
+            //System.out.println("RESUTLAAAAT");
+            //System.out.println(dbHelper.getProfilesCount(DatabaseInfo.PokemonTable.POKEMONTABLE));
+            //System.out.println("DONE");
             if (d.isAdded()) {
                 Runnable backGroundRunnable = new Runnable() {
                     public void run() {
@@ -775,32 +795,7 @@ public class MainActivity extends AppCompatActivity {
                 };
                 Thread sampleThread = new Thread(backGroundRunnable);
                 sampleThread.start();
-        }else{
-                try {
-                    FragmentTransaction ft = getSupportFragmentManager().beginTransaction();
-                    ft.replace(R.id.nav_host_fragment, e);
-                    ft.addToBackStack(null);
-                    ft.commit();
-
-                } catch (Exception e) {
-                    e.printStackTrace();
-                }
             }
-
-
-
-            /*
-            if (sampleThread.isAlive() == true){
-                for(int i=1; i< 151; i++){
-                    int resID = getResources().getIdentifier("pokename"+i,"id", getPackageName());
-                    TextView textView = (TextView) findViewById(resID);
-                    //System.out.println();
-                    System.out.println("midget");
-                    textView.setText(getAllDBItems().get(i).get(0));
-                }
-            }
-
-            */
         }
 
 
