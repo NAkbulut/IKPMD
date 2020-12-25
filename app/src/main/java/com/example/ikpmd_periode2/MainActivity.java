@@ -576,13 +576,10 @@ public class MainActivity extends AppCompatActivity {
         }
 
 
-
-
-
         //checks how many rows in db table
         DatabaseHelper dbHelper2 = DatabaseHelper.getHelper(dbhelper);
         dbHelper2.getProfilesCount(DatabaseInfo.PokemonTable.POKEMONTABLE);
-        getAllDBItems();
+        //getAllDBItems();
         // switches back to normal start screen instead of DB loading fragment
         try {
             FragmentTransaction ft = getSupportFragmentManager().beginTransaction();
@@ -593,6 +590,8 @@ public class MainActivity extends AppCompatActivity {
         } catch (Exception e) {
             e.printStackTrace();
         }
+
+
 
     }
 
@@ -720,7 +719,7 @@ public class MainActivity extends AppCompatActivity {
                 null);
         c.moveToFirst();
         List<List<String>> List_of_all_pokes = new ArrayList<>();
-        for(int i = 1; i < dbHelper2.getProfilesCount(DatabaseInfo.PokemonTable.POKEMONTABLE); ++i){
+        for(int i = 0; i < dbHelper2.getProfilesCount(DatabaseInfo.PokemonTable.POKEMONTABLE); ++i){
             String name = (String) c.getString(c.getColumnIndex("Name"));
             String type1 = (String) c.getString(c.getColumnIndex("Type1"));
             String type2 = (String) c.getString(c.getColumnIndex("Type2"));
@@ -748,10 +747,38 @@ public class MainActivity extends AppCompatActivity {
             //System.out.println(pk_list);
             c.moveToPosition(i);
         }
-
+        System.out.println(List_of_all_pokes.size());
+        System.out.println("size of list");
         return List_of_all_pokes;
         //System.out.println(getAllDBItems(dbHelper2));
         //dbHelper2.getProfilesCount(DatabaseInfo.PokemonTable.POKEMONTABLE);
+    }
+
+
+    public void setGridFillables(){
+
+        System.out.println("mind");
+
+        MainActivity dbhelper = this;
+        DatabaseHelper dbHelper2 = DatabaseHelper.getHelper(dbhelper);
+        System.out.println("yeetest");
+        for(int i = 0; i < 151; ++i){
+            String name = getAllDBItems().get(i).get(0);
+            int e = i+1;
+            String textviewID = "pokename" + e;
+            int resID = getResources().getIdentifier(textviewID, "id", getPackageName());
+            TextView pokenam = (TextView) findViewById(resID);
+            pokenam.setText(name);
+            System.out.println("yeetest4");
+            pokenam.getText();
+            //String type1 = getAllDBItems().get(i).get(1);
+            //String type2 = getAllDBItems().get(i).get(2);
+        }
+        // globally
+
+
+        //in your OnCreate() method
+
     }
 
 
@@ -762,7 +789,20 @@ public class MainActivity extends AppCompatActivity {
         MainActivity dbhelper = this;
         DatabaseHelper dbHelper2 = DatabaseHelper.getHelper(dbhelper);
 
-        if(dbHelper2.getProfilesCount(DatabaseInfo.PokemonTable.POKEMONTABLE) != 151){
+        if(dbHelper2.getProfilesCount(DatabaseInfo.PokemonTable.POKEMONTABLE) == 151){
+            setGridFillables();
+            try {
+                FragmentTransaction ft = getSupportFragmentManager().beginTransaction();
+                ft.replace(R.id.nav_host_fragment, e);
+                ft.addToBackStack(null);
+                ft.commit();
+
+
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
+        }else {
+
             if (d.isAdded()) {
                 Runnable backGroundRunnable = new Runnable() {
                     public void run() {
@@ -775,17 +815,12 @@ public class MainActivity extends AppCompatActivity {
                 };
                 Thread sampleThread = new Thread(backGroundRunnable);
                 sampleThread.start();
-        }else{
-                try {
-                    FragmentTransaction ft = getSupportFragmentManager().beginTransaction();
-                    ft.replace(R.id.nav_host_fragment, e);
-                    ft.addToBackStack(null);
-                    ft.commit();
-
-                } catch (Exception e) {
-                    e.printStackTrace();
-                }
+                //setGridFillables();
             }
+
+        }
+
+
 
 
 
@@ -801,21 +836,6 @@ public class MainActivity extends AppCompatActivity {
             }
 
             */
-        }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
     }
 
