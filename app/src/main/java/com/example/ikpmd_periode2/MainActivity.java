@@ -4,7 +4,11 @@ import android.app.FragmentManager;
 import android.content.ContentValues;
 import android.content.Context;
 import android.database.Cursor;
+import android.database.sqlite.SQLiteDatabase;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
 import android.graphics.drawable.Drawable;
+import android.media.Image;
 import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
 import android.os.Bundle;
@@ -12,8 +16,10 @@ import android.os.StrictMode;
 import android.util.Log;
 import android.view.View;
 import android.widget.GridView;
+import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.bumptech.glide.Glide;
 import com.example.ikpmd_periode2.grids.MainGridAdapter;
 import com.example.ikpmd_periode2.grids.MainGridData;
 import com.example.ikpmd_periode2.ui.dashboard.DashboardFragment;
@@ -39,6 +45,7 @@ import androidx.navigation.ui.AppBarConfiguration;
 import androidx.navigation.ui.NavigationUI;
 
 
+import java.net.URL;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.concurrent.TimeUnit;
@@ -62,6 +69,30 @@ public class MainActivity extends AppCompatActivity {
 
     //Switches view to pokedetails if clicked on a pokemonmodel in the mainactivity
     public void Switcher_main_to_poke(View v) {
+        List allDB = getAllDBItems();
+        for(int i = 0; i < 151; ++i) {
+            String name = getAllDBItems().get(i).get(0);
+            int e = i + 1;
+            String textviewID = "pokename" + e;
+            int resID = getResources().getIdentifier(textviewID, "id", getPackageName());
+            TextView pokenam = (TextView) findViewById(resID);
+            if (name == pokenam.getText()) {
+                System.out.println("START TEST");
+                System.out.println(getAllDBItems().get(i));
+                System.out.println("END TEST");
+                String type1 = getAllDBItems().get(i).get(1);
+                String type2 = getAllDBItems().get(i).get(2);
+                String hp = getAllDBItems().get(i).get(3);
+                String atk = getAllDBItems().get(i).get(4);
+                String spatk = getAllDBItems().get(i).get(5);
+                String def = getAllDBItems().get(i).get(6);
+                String spdef = getAllDBItems().get(i).get(7);
+                String spd = getAllDBItems().get(i).get(8);
+                String weight = getAllDBItems().get(i).get(9);
+                String height = getAllDBItems().get(i).get(10);
+                break;
+            }
+        }
         try {
             FragmentTransaction ft = getSupportFragmentManager().beginTransaction();
             ft.replace(R.id.nav_host_fragment, a);
@@ -675,7 +706,6 @@ public class MainActivity extends AppCompatActivity {
         StrictMode.ThreadPolicy policy = new StrictMode.ThreadPolicy.Builder().permitAll().build();
         StrictMode.setThreadPolicy(policy);
 
-
         //makes sure app starts with loading DB screen
         try {
             FragmentTransaction ft = getSupportFragmentManager().beginTransaction();
@@ -802,7 +832,6 @@ public class MainActivity extends AppCompatActivity {
                 e.printStackTrace();
             }
         }else {
-
             if (d.isAdded()) {
                 Runnable backGroundRunnable = new Runnable() {
                     public void run() {
