@@ -74,11 +74,10 @@ public class MainActivity extends AppCompatActivity {
     public void Switcher_main_to_poke(View v) {
         List allDB = getAllDBItems();
         String pokid = v.getResources().getResourceName(v.getId());
-        System.out.println(pokid);
         int pid = 0;
         for(int i = 0; i < 151; ++i) {
             String pokidbuf = "card"+i;
-            if (pokid.contains(pokidbuf)){
+            if (pokid.endsWith(pokidbuf)){
                 pid = i;
                 break;
             }
@@ -89,12 +88,8 @@ public class MainActivity extends AppCompatActivity {
             int resID = getResources().getIdentifier(textviewID, "id", getPackageName());
             TextView pokenam = (TextView) findViewById(resID);
 
-            System.out.println(pokenam.getText());
-            System.out.println(name);
             if (name.equals(pokenam.getText())) {
-                System.out.println("START TEST");
                 System.out.println(getAllDBItems().get(i));
-                System.out.println("END TEST");
                 String type1 = getAllDBItems().get(i).get(1);
                 String type2 = getAllDBItems().get(i).get(2);
                 String hp = getAllDBItems().get(i).get(3);
