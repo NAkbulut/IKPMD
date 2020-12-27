@@ -5,35 +5,13 @@ import android.app.FragmentManager;
 import android.content.ContentValues;
 import android.content.Context;
 import android.database.Cursor;
-import android.database.sqlite.SQLiteDatabase;
-import android.graphics.Bitmap;
-import android.graphics.BitmapFactory;
-import android.graphics.drawable.Drawable;
-import android.media.Image;
 import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
 import android.os.Bundle;
 import android.os.StrictMode;
 import android.util.Log;
 import android.view.View;
-import android.widget.GridView;
-import android.widget.ImageView;
 import android.widget.TextView;
-
-import com.bumptech.glide.Glide;
-import com.example.ikpmd_periode2.grids.MainGridAdapter;
-import com.example.ikpmd_periode2.grids.MainGridData;
-import com.example.ikpmd_periode2.ui.dashboard.DashboardFragment;
-import com.example.ikpmd_periode2.ui.home.HomeFragment;
-import com.example.ikpmd_periode2.database.DatabaseHelper;
-import com.example.ikpmd_periode2.database.DatabaseInfo;
-import com.example.ikpmd_periode2.ui.LoadingDBFragment;
-import com.google.android.material.bottomnavigation.BottomNavigationView;
-import com.google.firebase.database.DataSnapshot;
-import com.google.firebase.database.DatabaseError;
-import com.google.firebase.database.DatabaseReference;
-import com.google.firebase.database.FirebaseDatabase;
-import com.google.firebase.database.ValueEventListener;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
@@ -45,8 +23,18 @@ import androidx.navigation.fragment.NavHostFragment;
 import androidx.navigation.ui.AppBarConfiguration;
 import androidx.navigation.ui.NavigationUI;
 
+import com.example.ikpmd_periode2.database.DatabaseHelper;
+import com.example.ikpmd_periode2.database.DatabaseInfo;
+import com.example.ikpmd_periode2.ui.LoadingDBFragment;
+import com.example.ikpmd_periode2.ui.dashboard.DashboardFragment;
+import com.example.ikpmd_periode2.ui.home.HomeFragment;
+import com.google.android.material.bottomnavigation.BottomNavigationView;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
 
-import java.net.URL;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.concurrent.TimeUnit;
@@ -612,6 +600,7 @@ public class MainActivity extends AppCompatActivity {
 
         try {
             TimeUnit.SECONDS.sleep(30);
+            //setGridFillables();
         } catch (InterruptedException interruptedException) {
             interruptedException.printStackTrace();
         }
@@ -631,6 +620,8 @@ public class MainActivity extends AppCompatActivity {
         } catch (Exception e) {
             e.printStackTrace();
         }
+
+
 
 
 
@@ -758,7 +749,8 @@ public class MainActivity extends AppCompatActivity {
                 null);
         c.moveToFirst();
         List<List<String>> List_of_all_pokes = new ArrayList<>();
-        for(int i = 0; i < dbHelper2.getProfilesCount(DatabaseInfo.PokemonTable.POKEMONTABLE); ++i){
+        for(int i = 0; i < 151; ++i){
+            c.moveToPosition(i);
             String name = (String) c.getString(c.getColumnIndex("Name"));
             String type1 = (String) c.getString(c.getColumnIndex("Type1"));
             String type2 = (String) c.getString(c.getColumnIndex("Type2"));
@@ -784,8 +776,8 @@ public class MainActivity extends AppCompatActivity {
             pk_list.add(Height);
             List_of_all_pokes.add(pk_list);
             //System.out.println(pk_list);
-            c.moveToPosition(i);
         }
+        System.out.println(List_of_all_pokes);
         return List_of_all_pokes;
         //System.out.println(getAllDBItems(dbHelper2));
         //dbHelper2.getProfilesCount(DatabaseInfo.PokemonTable.POKEMONTABLE);
@@ -801,9 +793,9 @@ public class MainActivity extends AppCompatActivity {
         System.out.println("yeetest");
         for(int i = 0; i < 151; ++i){
             String name = getAllDBItems().get(i).get(0);
-            int e = i+1;
+            int e = i + 1;
             String textviewID = "pokename" + e;
-            int resID = getResources().getIdentifier(textviewID, "id", getPackageName());
+            int resID = this.getResources().getIdentifier(textviewID, "id", getPackageName());
             TextView pokenam = (TextView) findViewById(resID);
             pokenam.setText(name);
             pokenam.getText();
@@ -825,7 +817,7 @@ public class MainActivity extends AppCompatActivity {
         MainActivity dbhelper = this;
         DatabaseHelper dbHelper2 = DatabaseHelper.getHelper(dbhelper);
 
-        if(dbHelper2.getProfilesCount(DatabaseInfo.PokemonTable.POKEMONTABLE) == 151){
+        if (dbHelper2.getProfilesCount(DatabaseInfo.PokemonTable.POKEMONTABLE) == 151) {
             setGridFillables();
             try {
                 FragmentTransaction ft = getSupportFragmentManager().beginTransaction();
@@ -837,7 +829,7 @@ public class MainActivity extends AppCompatActivity {
             } catch (Exception e) {
                 e.printStackTrace();
             }
-        }else {
+        } else {
             if (d.isAdded()) {
                 Runnable backGroundRunnable = new Runnable() {
                     public void run() {
@@ -854,24 +846,6 @@ public class MainActivity extends AppCompatActivity {
             }
 
         }
-
-
-
-
-
-            /*
-            if (sampleThread.isAlive() == true){
-                for(int i=1; i< 151; i++){
-                    int resID = getResources().getIdentifier("pokename"+i,"id", getPackageName());
-                    TextView textView = (TextView) findViewById(resID);
-                    //System.out.println();
-                    System.out.println("midget");
-                    textView.setText(getAllDBItems().get(i).get(0));
-                }
-            }
-
-            */
-
     }
 
 
