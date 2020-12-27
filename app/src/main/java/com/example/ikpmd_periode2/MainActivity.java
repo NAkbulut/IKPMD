@@ -1,5 +1,6 @@
 package com.example.ikpmd_periode2;
 
+import android.annotation.SuppressLint;
 import android.app.FragmentManager;
 import android.content.ContentValues;
 import android.content.Context;
@@ -68,15 +69,29 @@ public class MainActivity extends AppCompatActivity {
     ////////////////////////SELFWRITEN
 
     //Switches view to pokedetails if clicked on a pokemonmodel in the mainactivity
+
+
     public void Switcher_main_to_poke(View v) {
         List allDB = getAllDBItems();
+        String pokid = v.getResources().getResourceName(v.getId());
+        System.out.println(pokid);
+        int pid = 0;
+        for(int i = 0; i < 151; ++i) {
+            String pokidbuf = "card"+i;
+            if (pokid.contains(pokidbuf)){
+                pid = i;
+                break;
+            }
+        }
         for(int i = 0; i < 151; ++i) {
             String name = getAllDBItems().get(i).get(0);
-            int e = i + 1;
-            String textviewID = "pokename" + e;
+            String textviewID = "pokename" + pid;
             int resID = getResources().getIdentifier(textviewID, "id", getPackageName());
             TextView pokenam = (TextView) findViewById(resID);
-            if (name == pokenam.getText()) {
+
+            System.out.println(pokenam.getText());
+            System.out.println(name);
+            if (name.equals(pokenam.getText())) {
                 System.out.println("START TEST");
                 System.out.println(getAllDBItems().get(i));
                 System.out.println("END TEST");
@@ -728,7 +743,6 @@ public class MainActivity extends AppCompatActivity {
     public List<List<String>> getAllDBItems(){
         MainActivity dbhelper = this;
         DatabaseHelper dbHelper2 = DatabaseHelper.getHelper(dbhelper);
-        System.out.println("yeetest");
 
         Cursor c = dbHelper2.query(DatabaseInfo.PokemonTable.POKEMONTABLE, new String[]{
                         DatabaseInfo.PokemonTable_Columns.Name,
@@ -777,8 +791,6 @@ public class MainActivity extends AppCompatActivity {
             //System.out.println(pk_list);
             c.moveToPosition(i);
         }
-        System.out.println(List_of_all_pokes.size());
-        System.out.println("size of list");
         return List_of_all_pokes;
         //System.out.println(getAllDBItems(dbHelper2));
         //dbHelper2.getProfilesCount(DatabaseInfo.PokemonTable.POKEMONTABLE);
@@ -799,7 +811,6 @@ public class MainActivity extends AppCompatActivity {
             int resID = getResources().getIdentifier(textviewID, "id", getPackageName());
             TextView pokenam = (TextView) findViewById(resID);
             pokenam.setText(name);
-            System.out.println("yeetest4");
             pokenam.getText();
             //String type1 = getAllDBItems().get(i).get(1);
             //String type2 = getAllDBItems().get(i).get(2);
