@@ -10,11 +10,13 @@ import android.net.NetworkInfo;
 import android.os.Bundle;
 import android.os.StrictMode;
 import android.util.Log;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.drawerlayout.widget.DrawerLayout;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentTransaction;
 import androidx.navigation.NavController;
@@ -37,6 +39,8 @@ import com.google.firebase.database.ValueEventListener;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.concurrent.Executors;
+import java.util.concurrent.ScheduledExecutorService;
 import java.util.concurrent.TimeUnit;
 
 import me.sargunvohra.lib.pokekotlin.client.PokeApi;
@@ -94,6 +98,7 @@ public class MainActivity extends AppCompatActivity {
         try {
             FragmentTransaction ft = getSupportFragmentManager().beginTransaction();
             ft.replace(R.id.nav_host_fragment, a);
+            ft.setTransition(FragmentTransaction.TRANSIT_FRAGMENT_FADE);
             ft.addToBackStack(null);
             ft.commit();
         } catch (Exception e) {
@@ -598,12 +603,7 @@ public class MainActivity extends AppCompatActivity {
         Thread APICALL4 = new Thread(APICALL4_run);
         APICALL4.start();
 
-        try {
-            TimeUnit.SECONDS.sleep(30);
-            //setGridFillables();
-        } catch (InterruptedException interruptedException) {
-            interruptedException.printStackTrace();
-        }
+
 
 
         //checks how many rows in db table
@@ -614,12 +614,13 @@ public class MainActivity extends AppCompatActivity {
         try {
             FragmentTransaction ft = getSupportFragmentManager().beginTransaction();
             ft.replace(R.id.nav_host_fragment, e);
+            ft.setTransition(FragmentTransaction.TRANSIT_FRAGMENT_FADE);
             ft.addToBackStack(null);
             ft.commit();
-
         } catch (Exception e) {
             e.printStackTrace();
         }
+
 
 
 
@@ -711,6 +712,7 @@ public class MainActivity extends AppCompatActivity {
         try {
             FragmentTransaction ft = getSupportFragmentManager().beginTransaction();
             ft.replace(R.id.nav_host_fragment, d);
+            ft.setTransition(FragmentTransaction.TRANSIT_FRAGMENT_FADE);
             ft.addToBackStack(null);
             ft.commit();
 
@@ -785,7 +787,6 @@ public class MainActivity extends AppCompatActivity {
 
 
     public void setGridFillables(){
-
         System.out.println("mind");
 
         MainActivity dbhelper = this;
@@ -822,7 +823,8 @@ public class MainActivity extends AppCompatActivity {
             try {
                 FragmentTransaction ft = getSupportFragmentManager().beginTransaction();
                 ft.replace(R.id.nav_host_fragment, e);
-                ft.addToBackStack(null);
+                ft.setTransition(FragmentTransaction.TRANSIT_FRAGMENT_FADE);
+                ft.addToBackStack(e.getClass().getName());
                 ft.commit();
 
 
@@ -835,6 +837,19 @@ public class MainActivity extends AppCompatActivity {
                     public void run() {
                         try {
                             valuesToDB();
+
+                            runOnUiThread(new Runnable() {
+                                @Override
+                                public void run() {
+                                    try {
+                                        setGridFillables();
+                                    } catch (Exception e) {
+                                        e.printStackTrace();
+                                    }
+                                }
+                            });
+
+
                         } catch (Exception e) {
                             e.printStackTrace();
                         }
@@ -842,9 +857,11 @@ public class MainActivity extends AppCompatActivity {
                 };
                 Thread sampleThread = new Thread(backGroundRunnable);
                 sampleThread.start();
-                //setGridFillables();
             }
+        }
 
+        if(e.isAdded()){
+            setGridFillables();
         }
     }
 
@@ -855,9 +872,10 @@ public class MainActivity extends AppCompatActivity {
         try {
             FragmentTransaction ft = getSupportFragmentManager().beginTransaction();
             ft.replace(R.id.nav_host_fragment, e);
-            ft.addToBackStack(null);
+            ft.setTransition(FragmentTransaction.TRANSIT_FRAGMENT_FADE);
+            ft.addToBackStack(e.getClass().getName());
             ft.commit();
-
+            setGridFillables();
         } catch (Exception e) {
             setContentView(R.layout.fragment_loading_d_b);
             messWithFirebase();
