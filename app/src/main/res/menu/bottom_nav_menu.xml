@@ -12,4 +12,10 @@
         android:title="@string/title_dashboard"
         />
 
+    <item
+        android:id="@+id/navigation_graph"
+        android:icon="@drawable/ic_baseline_insights_24"
+        android:title="@string/title_graph"
+        />
+
 </menu>

@@ -19,4 +19,11 @@
         android:layout_gravity="center"
         tools:layout="@layout/fragment_favorites" />
 
+    <fragment
+        android:id="@+id/navigation_graph"
+        android:name="com.example.ikpmd_periode2.ui.graphs.GraphFragment"
+        android:label="@string/title_graph"
+        android:layout_gravity="center"
+        tools:layout="@layout/fragment_graph" />
+
 </navigation>

@@ -5,6 +5,8 @@ import android.app.FragmentManager;
 import android.content.ContentValues;
 import android.content.Context;
 import android.database.Cursor;
+import android.graphics.Color;
+import android.graphics.drawable.Drawable;
 import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
 import android.os.Bundle;
@@ -12,10 +14,12 @@ import android.os.StrictMode;
 import android.util.Log;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.cardview.widget.CardView;
 import androidx.drawerlayout.widget.DrawerLayout;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentTransaction;
@@ -37,7 +41,13 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
+import java.io.FileOutputStream;
+import java.io.IOException;
+import java.io.InputStream;
+import java.io.OutputStream;
+import java.net.URL;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
 import java.util.concurrent.Executors;
 import java.util.concurrent.ScheduledExecutorService;
@@ -48,6 +58,7 @@ import me.sargunvohra.lib.pokekotlin.client.PokeApiClient;
 import me.sargunvohra.lib.pokekotlin.model.Pokemon;
 import me.sargunvohra.lib.pokekotlin.model.PokemonStat;
 import me.sargunvohra.lib.pokekotlin.model.PokemonType;
+
 
 
 public class MainActivity extends AppCompatActivity {
@@ -603,7 +614,11 @@ public class MainActivity extends AppCompatActivity {
         Thread APICALL4 = new Thread(APICALL4_run);
         APICALL4.start();
 
-
+        try {
+            Thread.sleep(30000);
+        } catch (InterruptedException interruptedException) {
+            interruptedException.printStackTrace();
+        }
 
 
         //checks how many rows in db table
@@ -699,7 +714,7 @@ public class MainActivity extends AppCompatActivity {
         // Passing each menu ID as a set of Ids because each
         // menu should be considered as top level destinations.
         AppBarConfiguration appBarConfiguration = new AppBarConfiguration.Builder(
-                R.id.navigation_home, R.id.navigation_dashboard)
+                R.id.navigation_home, R.id.navigation_dashboard, R.id.navigation_graph)
                 .build();
         NavController navController = Navigation.findNavController(this, R.id.nav_host_fragment);
         NavigationUI.setupActionBarWithNavController(this, navController, appBarConfiguration);
@@ -793,6 +808,8 @@ public class MainActivity extends AppCompatActivity {
         DatabaseHelper dbHelper2 = DatabaseHelper.getHelper(dbhelper);
         System.out.println("yeetest");
         for(int i = 0; i < 151; ++i){
+
+            //set name
             String name = getAllDBItems().get(i).get(0);
             int e = i + 1;
             String textviewID = "pokename" + e;
@@ -800,7 +817,223 @@ public class MainActivity extends AppCompatActivity {
             TextView pokenam = (TextView) findViewById(resID);
             pokenam.setText(name);
             pokenam.getText();
-            //String type1 = getAllDBItems().get(i).get(1);
+
+            //set color
+            String type1 = getAllDBItems().get(i).get(1);
+            int q = i + 1;
+            String cardviewID = "pokecard" + q;
+            int resID_card = this.getResources().getIdentifier(cardviewID, "id", getPackageName());
+            CardView pokecard = (CardView) findViewById(resID_card);
+            if(type1.equals("rock")){
+                pokecard.setCardBackgroundColor(getResources().getColor(R.color.rock));
+            }else if(type1.equals("ground")){
+                pokecard.setCardBackgroundColor(getResources().getColor(R.color.egg_yellow));
+            }else if(type1.equals("normal")){
+                pokecard.setCardBackgroundColor(getResources().getColor(R.color.normal));
+            }else if(type1.equals("fighting")){
+                pokecard.setCardBackgroundColor(getResources().getColor(R.color.fighting));
+            }else if(type1.equals("flying")){
+                pokecard.setCardBackgroundColor(getResources().getColor(R.color.flying));
+            }else if(type1.equals("poison")){
+                pokecard.setCardBackgroundColor(getResources().getColor(R.color.poison));
+            }else if(type1.equals("bug")){
+                pokecard.setCardBackgroundColor(getResources().getColor(R.color.bug));
+            }else if(type1.equals("ghost")){
+                pokecard.setCardBackgroundColor(getResources().getColor(R.color.ghost));
+            }else if(type1.equals("steel")){
+                pokecard.setCardBackgroundColor(getResources().getColor(R.color.steel));
+            }else if(type1.equals("???")){
+                pokecard.setCardBackgroundColor(getResources().getColor(R.color.special));
+            }else if(type1.equals("fire")){
+                pokecard.setCardBackgroundColor(getResources().getColor(R.color.fire));
+            }else if(type1.equals("water")){
+                pokecard.setCardBackgroundColor(getResources().getColor(R.color.water));
+            }else if(type1.equals("grass")){
+                pokecard.setCardBackgroundColor(getResources().getColor(R.color.grass));
+            }else if(type1.equals("electric")){
+                pokecard.setCardBackgroundColor(getResources().getColor(R.color.electric));
+            }else if(type1.equals("psychic")){
+                pokecard.setCardBackgroundColor(getResources().getColor(R.color.psychic));
+            }else if(type1.equals("ice")){
+                pokecard.setCardBackgroundColor(getResources().getColor(R.color.ice));
+            }else if(type1.equals("dragon")){
+                pokecard.setCardBackgroundColor(getResources().getColor(R.color.dragon));
+            }else if(type1.equals("dark")){
+                pokecard.setCardBackgroundColor(getResources().getColor(R.color.dark));
+            }else if(type1.equals("fairy")){
+                pokecard.setCardBackgroundColor(getResources().getColor(R.color.fairy));
+            }
+
+            //change text color
+            pokenam.setTextColor(getResources().getColor(R.color.white));
+            pokenam.setShadowLayer(5.8f, 1.5f, 1.3f, getResources().getColor(R.color.kloteding));
+
+            //set images
+            HashMap<String, Integer> PokeIDs = new HashMap<String, Integer>();
+            PokeIDs.put("bulbasaur", 1);
+            PokeIDs.put("ivysaur", 2);
+            PokeIDs.put("venusaur", 3);
+            PokeIDs.put("charmander", 4);
+            PokeIDs.put("charmeleon", 5);
+            PokeIDs.put("charizard", 6);
+            PokeIDs.put("squirtle", 7);
+            PokeIDs.put("wartortle", 8);
+            PokeIDs.put("blastoise", 9);
+            PokeIDs.put("caterpie", 10);
+            PokeIDs.put("metapod", 11);
+            PokeIDs.put("butterfree", 12);
+            PokeIDs.put("weedle", 13);
+            PokeIDs.put("kakuna", 14);
+            PokeIDs.put("beedrill", 15);
+            PokeIDs.put("pidgey", 16);
+            PokeIDs.put("pidgeotto", 17);
+            PokeIDs.put("pidgeot", 18);
+            PokeIDs.put("rattata", 19);
+            PokeIDs.put("raticate", 20);
+            PokeIDs.put("spearow", 21);
+            PokeIDs.put("fearow", 22);
+            PokeIDs.put("ekans", 23);
+            PokeIDs.put("arbok", 24);
+            PokeIDs.put("pikachu", 25);
+            PokeIDs.put("raichu", 26);
+            PokeIDs.put("sandshrew", 27);
+            PokeIDs.put("sandslash", 28);
+            PokeIDs.put("nidoran-f", 29);
+            PokeIDs.put("nidorina", 30);
+            PokeIDs.put("nidoqueen", 31);
+            PokeIDs.put("nidoran-m", 32);
+            PokeIDs.put("nidorino", 33);
+            PokeIDs.put("nidoking", 34);
+            PokeIDs.put("clefairy", 35);
+            PokeIDs.put("clefable", 36);
+            PokeIDs.put("vulpix", 37);
+            PokeIDs.put("ninetales", 38);
+            PokeIDs.put("jigglypuff", 39);
+            PokeIDs.put("wigglytuff", 40);
+            PokeIDs.put("zubat", 41);
+            PokeIDs.put("golbat", 42);
+            PokeIDs.put("oddish", 43);
+            PokeIDs.put("gloom", 44);
+            PokeIDs.put("vileplume", 45);
+            PokeIDs.put("paras", 46);
+            PokeIDs.put("parasect", 47);
+            PokeIDs.put("venonat", 48);
+            PokeIDs.put("venomoth", 49);
+            PokeIDs.put("diglett", 50);
+            PokeIDs.put("dugtrio", 51);
+            PokeIDs.put("meowth", 52);
+            PokeIDs.put("persian", 53);
+            PokeIDs.put("psyduck", 54);
+            PokeIDs.put("golduck", 55);
+            PokeIDs.put("mankey", 56);
+            PokeIDs.put("primeape", 57);
+            PokeIDs.put("growlithe", 58);
+            PokeIDs.put("arcanine", 59);
+            PokeIDs.put("poliwag", 60);
+            PokeIDs.put("poliwhirl", 61);
+            PokeIDs.put("poliwrath", 62);
+            PokeIDs.put("abra", 63);
+            PokeIDs.put("kadabra", 64);
+            PokeIDs.put("alakazam", 65);
+            PokeIDs.put("machop", 66);
+            PokeIDs.put("machoke", 67);
+            PokeIDs.put("machamp", 68);
+            PokeIDs.put("bellsprout", 69);
+            PokeIDs.put("weepinbell", 70);
+            PokeIDs.put("victreebel", 71);
+            PokeIDs.put("tentacool", 72);
+            PokeIDs.put("tentacruel", 73);
+            PokeIDs.put("geodude", 74);
+            PokeIDs.put("graveler", 75);
+            PokeIDs.put("golem", 76);
+            PokeIDs.put("ponyta", 77);
+            PokeIDs.put("rapidash", 78);
+            PokeIDs.put("slowpoke", 79);
+            PokeIDs.put("slowbro", 80);
+            PokeIDs.put("magnemite", 81);
+            PokeIDs.put("magneton", 82);
+            PokeIDs.put("farfetch'd", 83);
+            PokeIDs.put("doduo", 84);
+            PokeIDs.put("dodrio", 85);
+            PokeIDs.put("seel", 86);
+            PokeIDs.put("dewgong", 87);
+            PokeIDs.put("grimer", 88);
+            PokeIDs.put("muk", 89);
+            PokeIDs.put("shellder", 90);
+            PokeIDs.put("cloyster", 91);
+            PokeIDs.put("gastly", 92);
+            PokeIDs.put("haunter", 93);
+            PokeIDs.put("gengar", 94);
+            PokeIDs.put("onix", 95);
+            PokeIDs.put("drowzee", 96);
+            PokeIDs.put("hypno", 97);
+            PokeIDs.put("krabby", 98);
+            PokeIDs.put("kingler", 99);
+            PokeIDs.put("voltorb", 100);
+            PokeIDs.put("electrode", 101);
+            PokeIDs.put("exeggcute", 102);
+            PokeIDs.put("exeggutor", 103);
+            PokeIDs.put("cubone", 104);
+            PokeIDs.put("marowak", 105);
+            PokeIDs.put("hitmonlee", 106);
+            PokeIDs.put("hitmonchan", 107);
+            PokeIDs.put("lickitung", 108);
+            PokeIDs.put("koffing", 109);
+            PokeIDs.put("weezing", 110);
+            PokeIDs.put("rhyhorn", 111);
+            PokeIDs.put("rhydon", 112);
+            PokeIDs.put("chansey", 113);
+            PokeIDs.put("tangela", 114);
+            PokeIDs.put("kangaskhan", 115);
+            PokeIDs.put("horsea", 116);
+            PokeIDs.put("seadra", 117);
+            PokeIDs.put("goldeen", 118);
+            PokeIDs.put("seaking", 119);
+            PokeIDs.put("staryu", 120);
+            PokeIDs.put("starmie", 121);
+            PokeIDs.put("mr. mime", 122);
+            PokeIDs.put("scyther", 123);
+            PokeIDs.put("jynx", 124);
+            PokeIDs.put("electabuzz", 125);
+            PokeIDs.put("magmar", 126);
+            PokeIDs.put("pinsir", 127);
+            PokeIDs.put("tauros", 128);
+            PokeIDs.put("magikarp", 129);
+            PokeIDs.put("gyarados", 130);
+            PokeIDs.put("lapras", 131);
+            PokeIDs.put("ditto", 132);
+            PokeIDs.put("eevee", 133);
+            PokeIDs.put("vaporeon", 134);
+            PokeIDs.put("jolteon", 135);
+            PokeIDs.put("flareon", 136);
+            PokeIDs.put("porygon", 137);
+            PokeIDs.put("omanyte", 138);
+            PokeIDs.put("omastar", 139);
+            PokeIDs.put("kabuto", 140);
+            PokeIDs.put("kabutops", 141);
+            PokeIDs.put("aerodactyl", 142);
+            PokeIDs.put("snorlax", 143);
+            PokeIDs.put("articuno", 144);
+            PokeIDs.put("zapdos", 145);
+            PokeIDs.put("moltres", 146);
+            PokeIDs.put("dratini", 147);
+            PokeIDs.put("dragonair", 148);
+            PokeIDs.put("dragonite", 149);
+            PokeIDs.put("mewtwo", 150);
+            PokeIDs.put("mew", 151);
+            System.out.println("Printing ID");
+
+            /*
+            String imgID = "pokeimg" + e;
+            int resID_img = this.getResources().getIdentifier(imgID, "id", getPackageName());
+            ImageView pokeimg = (ImageView) findViewById(resID_img);
+            int PokeID = PokeIDs.get(pokenam.getText());
+            String imgname = "@drawable/pokename_" + PokeID;
+            pokeimg.setImageDrawable(Drawable.createFromPath(imgname));
+            */
+
+
+
             //String type2 = getAllDBItems().get(i).get(2);
         }
         // globally
@@ -842,6 +1075,7 @@ public class MainActivity extends AppCompatActivity {
                                 @Override
                                 public void run() {
                                     try {
+                                        //Thread.sleep(30000);
                                         setGridFillables();
                                     } catch (Exception e) {
                                         e.printStackTrace();
