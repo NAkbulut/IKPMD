@@ -75,37 +75,7 @@ public class MainActivity extends AppCompatActivity {
 
 
     public void Switcher_main_to_poke(View v) {
-        List allDB = getAllDBItems();
-        String pokid = v.getResources().getResourceName(v.getId());
-        int pid = 0;
-        for(int i = 0; i < 151; ++i) {
-            String pokidbuf = "card"+i;
-            if (pokid.endsWith(pokidbuf)){
-                pid = i;
-                break;
-            }
-        }
-        for(int i = 0; i < 151; ++i) {
-            String name = getAllDBItems().get(i).get(0);
-            String textviewID = "pokename" + pid;
-            int resID = getResources().getIdentifier(textviewID, "id", getPackageName());
-            TextView pokenam = (TextView) findViewById(resID);
-
-            if (name.equals(pokenam.getText())) {
-                System.out.println(getAllDBItems().get(i));
-                String type1 = getAllDBItems().get(i).get(1);
-                String type2 = getAllDBItems().get(i).get(2);
-                String hp = getAllDBItems().get(i).get(3);
-                String atk = getAllDBItems().get(i).get(4);
-                String spatk = getAllDBItems().get(i).get(5);
-                String def = getAllDBItems().get(i).get(6);
-                String spdef = getAllDBItems().get(i).get(7);
-                String spd = getAllDBItems().get(i).get(8);
-                String weight = getAllDBItems().get(i).get(9);
-                String height = getAllDBItems().get(i).get(10);
-                break;
-            }
-        }
+        setPokeDetailsFillables(v);
         try {
             FragmentTransaction ft = getSupportFragmentManager().beginTransaction();
             ft.replace(R.id.nav_host_fragment, a);
@@ -702,47 +672,6 @@ public class MainActivity extends AppCompatActivity {
     //onCreate is wat moet er gebeuren bij buildtime
 
 
-
-
-
-    @Override
-    protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
-        BottomNavigationView navView = findViewById(R.id.nav_view);
-
-        // Passing each menu ID as a set of Ids because each
-        // menu should be considered as top level destinations.
-        AppBarConfiguration appBarConfiguration = new AppBarConfiguration.Builder(
-                R.id.navigation_home, R.id.navigation_dashboard, R.id.navigation_graph)
-                .build();
-        NavController navController = Navigation.findNavController(this, R.id.nav_host_fragment);
-        NavigationUI.setupActionBarWithNavController(this, navController, appBarConfiguration);
-        NavigationUI.setupWithNavController(navView, navController);
-
-        StrictMode.ThreadPolicy policy = new StrictMode.ThreadPolicy.Builder().permitAll().build();
-        StrictMode.setThreadPolicy(policy);
-
-        //makes sure app starts with loading DB screen
-        try {
-            FragmentTransaction ft = getSupportFragmentManager().beginTransaction();
-            ft.replace(R.id.nav_host_fragment, d);
-            ft.setTransition(FragmentTransaction.TRANSIT_FRAGMENT_FADE);
-            ft.addToBackStack(null);
-            ft.commit();
-
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
-
-
-
-
-            //MainGridAdapter.notifyDataSetChanged();
-    }
-
-
-
     public List<List<String>> getAllDBItems(){
         MainActivity dbhelper = this;
         DatabaseHelper dbHelper2 = DatabaseHelper.getHelper(dbhelper);
@@ -794,7 +723,7 @@ public class MainActivity extends AppCompatActivity {
             List_of_all_pokes.add(pk_list);
             //System.out.println(pk_list);
         }
-        System.out.println(List_of_all_pokes);
+        //System.out.println(List_of_all_pokes);
         return List_of_all_pokes;
         //System.out.println(getAllDBItems(dbHelper2));
         //dbHelper2.getProfilesCount(DatabaseInfo.PokemonTable.POKEMONTABLE);
@@ -1043,6 +972,105 @@ public class MainActivity extends AppCompatActivity {
 
     }
 
+    public void setPokeDetailsFillables(View v){
+        //List allDB = getAllDBItems();
+
+        String pokid = v.getResources().getResourceName(v.getId());
+        int pid = 0;
+        for(int i = 0; i < 152; ++i) {
+            System.out.println("Crashes here");
+            String pokidbuf = "card"+i;
+            if (pokid.endsWith(pokidbuf)){
+                pid = i;
+                ++i;
+                break;
+            }
+        }
+        for(int i = 0; i < 151; ++i) {
+            String name = getAllDBItems().get(i).get(0);
+            String textviewID = "pokename" + pid;
+            int resID = getResources().getIdentifier(textviewID, "id", getPackageName());
+            TextView pokenam = (TextView) findViewById(resID);
+
+            if (name.contentEquals(pokenam.getText())) {
+
+                System.out.println("Break the law");
+                System.out.println(getAllDBItems().get(i));
+                System.out.println(pokenam.getText());
+                String type1 = getAllDBItems().get(i).get(1);
+                String type2 = getAllDBItems().get(i).get(2);
+                String hp = getAllDBItems().get(i).get(3);
+                String atk = getAllDBItems().get(i).get(4);
+                String spatk = getAllDBItems().get(i).get(5);
+                String def = getAllDBItems().get(i).get(6);
+                String spdef = getAllDBItems().get(i).get(7);
+                String spd = getAllDBItems().get(i).get(8);
+                String weight = getAllDBItems().get(i).get(9);
+                String height = getAllDBItems().get(i).get(10);
+                break;
+            }
+        }
+
+
+    }
+
+    // IF THE ANDROID BACK BUTTON IS CLICKED DO THIS PLEASE
+    @Override
+    public void onBackPressed() {
+        try {
+            FragmentTransaction ft = getSupportFragmentManager().beginTransaction();
+            ft.replace(R.id.nav_host_fragment, e);
+            ft.setTransition(FragmentTransaction.TRANSIT_FRAGMENT_FADE);
+            ft.addToBackStack(e.getClass().getName());
+            ft.commit();
+            //setGridFillables();
+        } catch (Exception e) {
+            setContentView(R.layout.fragment_loading_d_b);
+            messWithFirebase();
+        }
+
+
+    }
+
+
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_main);
+        BottomNavigationView navView = findViewById(R.id.nav_view);
+
+        // Passing each menu ID as a set of Ids because each
+        // menu should be considered as top level destinations.
+        AppBarConfiguration appBarConfiguration = new AppBarConfiguration.Builder(
+                R.id.navigation_home, R.id.navigation_dashboard, R.id.navigation_graph)
+                .build();
+        NavController navController = Navigation.findNavController(this, R.id.nav_host_fragment);
+        NavigationUI.setupActionBarWithNavController(this, navController, appBarConfiguration);
+        NavigationUI.setupWithNavController(navView, navController);
+
+        StrictMode.ThreadPolicy policy = new StrictMode.ThreadPolicy.Builder().permitAll().build();
+        StrictMode.setThreadPolicy(policy);
+
+        //makes sure app starts with loading DB screen
+        try {
+            FragmentTransaction ft = getSupportFragmentManager().beginTransaction();
+            ft.replace(R.id.nav_host_fragment, d);
+            ft.setTransition(FragmentTransaction.TRANSIT_FRAGMENT_FADE);
+            ft.addToBackStack(null);
+            ft.commit();
+
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+
+
+
+
+            //MainGridAdapter.notifyDataSetChanged();
+    }
+
+
+
 
     // doe dit als de app is gestart, moet als background task omdat je anders geen fragment ziet
     @Override
@@ -1100,23 +1128,7 @@ public class MainActivity extends AppCompatActivity {
     }
 
 
-    // IF THE ANDROID BACK BUTTON IS CLICKED DO THIS PLEASE
-    @Override
-    public void onBackPressed() {
-        try {
-            FragmentTransaction ft = getSupportFragmentManager().beginTransaction();
-            ft.replace(R.id.nav_host_fragment, e);
-            ft.setTransition(FragmentTransaction.TRANSIT_FRAGMENT_FADE);
-            ft.addToBackStack(e.getClass().getName());
-            ft.commit();
-            setGridFillables();
-        } catch (Exception e) {
-            setContentView(R.layout.fragment_loading_d_b);
-            messWithFirebase();
-        }
 
-
-    }
 
 
     //onStart is wat moet er gebeuren als de app wordt gestart
