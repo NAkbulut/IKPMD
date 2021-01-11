@@ -105,9 +105,9 @@ public class MainActivity extends AppCompatActivity {
                         ContentValues values = new ContentValues();
 
                         String pokename = poketemp.getName();
-                        System.out.println(pokename);
+                        //System.out.println(pokename);
                         values.put(DatabaseInfo.PokemonTable_Columns.Name, pokename);
-                        System.out.println("NAME LOADED");
+                        //System.out.println("NAME LOADED");
 
                         List<PokemonType> types = poketemp.getTypes();
                         for (PokemonType temp : types) {
@@ -122,15 +122,15 @@ public class MainActivity extends AppCompatActivity {
 
                             }
                         }
-                        System.out.println("TYPES LOADED");
+                        //System.out.println("TYPES LOADED");
 
                         String pokeheight = Integer.toString(poketemp.getHeight());
                         values.put(DatabaseInfo.PokemonTable_Columns.Height, pokeheight);
-                        System.out.println("HEIGHT LOADED");
+                        //System.out.println("HEIGHT LOADED");
 
                         String pokeweight = Integer.toString(poketemp.getWeight());
                         values.put(DatabaseInfo.PokemonTable_Columns.Weight, pokeweight);
-                        System.out.println("WEIGHT LOADED");
+                        //System.out.println("WEIGHT LOADED");
 
                         List<PokemonStat> stats = poketemp.getStats();
                         for (PokemonStat temp : stats) {
@@ -154,15 +154,15 @@ public class MainActivity extends AppCompatActivity {
                             }
                             l = l + 1;
                         }
-                        System.out.println("STATS LOADED");
+                        //System.out.println("STATS LOADED");
 
-                        System.out.println("INSERTING DATA");
+                        //System.out.println("INSERTING DATA");
                         dbHelper.insert(DatabaseInfo.PokemonTable.POKEMONTABLE, null, values);
-                        System.out.println("DATA INSERTED");
+                        //System.out.println("DATA INSERTED");
 
 
                     }
-                    System.out.println("All data has been inserted 1");
+                    //System.out.println("All data has been inserted 1");
                 } catch (Exception e) {
                     e.printStackTrace();
                 }
@@ -188,9 +188,9 @@ public class MainActivity extends AppCompatActivity {
                         ContentValues values = new ContentValues();
 
                         String pokename = poketemp.getName();
-                        System.out.println(pokename);
+                        //System.out.println(pokename);
                         values.put(DatabaseInfo.PokemonTable_Columns.Name, pokename);
-                        System.out.println("NAME LOADED");
+                        //System.out.println("NAME LOADED");
 
                         List<PokemonType> types = poketemp.getTypes();
                         for (PokemonType temp : types) {
@@ -205,15 +205,15 @@ public class MainActivity extends AppCompatActivity {
 
                             }
                         }
-                        System.out.println("TYPES LOADED");
+                        //System.out.println("TYPES LOADED");
 
                         String pokeheight = Integer.toString(poketemp.getHeight());
                         values.put(DatabaseInfo.PokemonTable_Columns.Height, pokeheight);
-                        System.out.println("HEIGHT LOADED");
+                        //System.out.println("HEIGHT LOADED");
 
                         String pokeweight = Integer.toString(poketemp.getWeight());
                         values.put(DatabaseInfo.PokemonTable_Columns.Weight, pokeweight);
-                        System.out.println("WEIGHT LOADED");
+                        //System.out.println("WEIGHT LOADED");
 
                         List<PokemonStat> stats = poketemp.getStats();
                         for (PokemonStat temp : stats) {
@@ -237,15 +237,15 @@ public class MainActivity extends AppCompatActivity {
                             }
                             l = l + 1;
                         }
-                        System.out.println("STATS LOADED");
+                       // System.out.println("STATS LOADED");
 
-                        System.out.println("INSERTING DATA");
+                       // System.out.println("INSERTING DATA");
                         dbHelper.insert(DatabaseInfo.PokemonTable.POKEMONTABLE, null, values);
-                        System.out.println("DATA INSERTED");
+                       // System.out.println("DATA INSERTED");
 
 
                     }
-                    System.out.println("All data has been inserted 1");
+                   // System.out.println("All data has been inserted 1");
                 } catch (Exception e) {
                     e.printStackTrace();
                 }
@@ -271,9 +271,9 @@ public class MainActivity extends AppCompatActivity {
                         ContentValues values = new ContentValues();
 
                         String pokename = poketemp.getName();
-                        System.out.println(pokename);
+                      //  System.out.println(pokename);
                         values.put(DatabaseInfo.PokemonTable_Columns.Name, pokename);
-                        System.out.println("NAME LOADED");
+                       // System.out.println("NAME LOADED");
 
                         List<PokemonType> types = poketemp.getTypes();
                         for (PokemonType temp : types) {
@@ -288,15 +288,15 @@ public class MainActivity extends AppCompatActivity {
 
                             }
                         }
-                        System.out.println("TYPES LOADED");
+                       // System.out.println("TYPES LOADED");
 
                         String pokeheight = Integer.toString(poketemp.getHeight());
                         values.put(DatabaseInfo.PokemonTable_Columns.Height, pokeheight);
-                        System.out.println("HEIGHT LOADED");
+                       // System.out.println("HEIGHT LOADED");
 
                         String pokeweight = Integer.toString(poketemp.getWeight());
                         values.put(DatabaseInfo.PokemonTable_Columns.Weight, pokeweight);
-                        System.out.println("WEIGHT LOADED");
+                       // System.out.println("WEIGHT LOADED");
 
                         List<PokemonStat> stats = poketemp.getStats();
                         for (PokemonStat temp : stats) {
@@ -320,15 +320,15 @@ public class MainActivity extends AppCompatActivity {
                             }
                             l = l + 1;
                         }
-                        System.out.println("STATS LOADED");
+                      //  System.out.println("STATS LOADED");
 
-                        System.out.println("INSERTING DATA");
+                      //  System.out.println("INSERTING DATA");
                         dbHelper.insert(DatabaseInfo.PokemonTable.POKEMONTABLE, null, values);
-                        System.out.println("DATA INSERTED");
+                      //  System.out.println("DATA INSERTED");
 
 
                     }
-                    System.out.println("All data has been inserted 1");
+                  //  System.out.println("All data has been inserted 1");
                 } catch (Exception e) {
                     e.printStackTrace();
                 }
@@ -355,9 +355,9 @@ public class MainActivity extends AppCompatActivity {
                         ContentValues values = new ContentValues();
 
                         String pokename = poketemp.getName();
-                        System.out.println(pokename);
+                      //  System.out.println(pokename);
                         values.put(DatabaseInfo.PokemonTable_Columns.Name, pokename);
-                        System.out.println("NAME LOADED");
+                      //  System.out.println("NAME LOADED");
 
                         List<PokemonType> types = poketemp.getTypes();
                         for (PokemonType temp : types) {
@@ -372,15 +372,15 @@ public class MainActivity extends AppCompatActivity {
 
                             }
                         }
-                        System.out.println("TYPES LOADED");
+                      //  System.out.println("TYPES LOADED");
 
                         String pokeheight = Integer.toString(poketemp.getHeight());
                         values.put(DatabaseInfo.PokemonTable_Columns.Height, pokeheight);
-                        System.out.println("HEIGHT LOADED");
+                     //   System.out.println("HEIGHT LOADED");
 
                         String pokeweight = Integer.toString(poketemp.getWeight());
                         values.put(DatabaseInfo.PokemonTable_Columns.Weight, pokeweight);
-                        System.out.println("WEIGHT LOADED");
+                     //   System.out.println("WEIGHT LOADED");
 
                         List<PokemonStat> stats = poketemp.getStats();
                         for (PokemonStat temp : stats) {
@@ -404,15 +404,15 @@ public class MainActivity extends AppCompatActivity {
                             }
                             l = l + 1;
                         }
-                        System.out.println("STATS LOADED");
+                     //   System.out.println("STATS LOADED");
 
-                        System.out.println("INSERTING DATA");
+                      //  System.out.println("INSERTING DATA");
                         dbHelper.insert(DatabaseInfo.PokemonTable.POKEMONTABLE, null, values);
-                        System.out.println("DATA INSERTED");
+                     //   System.out.println("DATA INSERTED");
 
 
                     }
-                    System.out.println("All data has been inserted 1");
+                   // System.out.println("All data has been inserted 1");
                 } catch (Exception e) {
                     e.printStackTrace();
                 }
@@ -438,9 +438,9 @@ public class MainActivity extends AppCompatActivity {
                         ContentValues values = new ContentValues();
 
                         String pokename = poketemp.getName();
-                        System.out.println(pokename);
+                       // System.out.println(pokename);
                         values.put(DatabaseInfo.PokemonTable_Columns.Name, pokename);
-                        System.out.println("NAME LOADED");
+                      //  System.out.println("NAME LOADED");
 
                         List<PokemonType> types = poketemp.getTypes();
                         for (PokemonType temp : types) {
@@ -455,15 +455,15 @@ public class MainActivity extends AppCompatActivity {
 
                             }
                         }
-                        System.out.println("TYPES LOADED");
+                      //  System.out.println("TYPES LOADED");
 
                         String pokeheight = Integer.toString(poketemp.getHeight());
                         values.put(DatabaseInfo.PokemonTable_Columns.Height, pokeheight);
-                        System.out.println("HEIGHT LOADED");
+                      //  System.out.println("HEIGHT LOADED");
 
                         String pokeweight = Integer.toString(poketemp.getWeight());
                         values.put(DatabaseInfo.PokemonTable_Columns.Weight, pokeweight);
-                        System.out.println("WEIGHT LOADED");
+                     //   System.out.println("WEIGHT LOADED");
 
                         List<PokemonStat> stats = poketemp.getStats();
                         for (PokemonStat temp : stats) {
@@ -487,13 +487,13 @@ public class MainActivity extends AppCompatActivity {
                             }
                             l = l + 1;
                         }
-                        System.out.println("STATS LOADED");
+                     //   System.out.println("STATS LOADED");
 
-                        System.out.println("INSERTING DATA");
+                    //    System.out.println("INSERTING DATA");
                         dbHelper.insert(DatabaseInfo.PokemonTable.POKEMONTABLE, null, values);
-                        System.out.println("DATA INSERTED");
+                    //    System.out.println("DATA INSERTED");
                     }
-                    System.out.println("All data has been inserted 2");
+                   // System.out.println("All data has been inserted 2");
                 } catch (Exception e) {
                     e.printStackTrace();
                 }
@@ -518,9 +518,9 @@ public class MainActivity extends AppCompatActivity {
                         ContentValues values = new ContentValues();
 
                         String pokename = poketemp.getName();
-                        System.out.println(pokename);
+                       // System.out.println(pokename);
                         values.put(DatabaseInfo.PokemonTable_Columns.Name, pokename);
-                        System.out.println("NAME LOADED");
+                      //  System.out.println("NAME LOADED");
 
                         List<PokemonType> types = poketemp.getTypes();
                         for (PokemonType temp : types) {
@@ -535,15 +535,15 @@ public class MainActivity extends AppCompatActivity {
 
                             }
                         }
-                        System.out.println("TYPES LOADED");
+                      //  System.out.println("TYPES LOADED");
 
                         String pokeheight = Integer.toString(poketemp.getHeight());
                         values.put(DatabaseInfo.PokemonTable_Columns.Height, pokeheight);
-                        System.out.println("HEIGHT LOADED");
+                      //  System.out.println("HEIGHT LOADED");
 
                         String pokeweight = Integer.toString(poketemp.getWeight());
                         values.put(DatabaseInfo.PokemonTable_Columns.Weight, pokeweight);
-                        System.out.println("WEIGHT LOADED");
+                     //   System.out.println("WEIGHT LOADED");
 
                         List<PokemonStat> stats = poketemp.getStats();
                         for (PokemonStat temp : stats) {
@@ -567,13 +567,13 @@ public class MainActivity extends AppCompatActivity {
                             }
                             l = l + 1;
                         }
-                        System.out.println("STATS LOADED");
+                       // System.out.println("STATS LOADED");
 
-                        System.out.println("INSERTING DATA");
+                       // System.out.println("INSERTING DATA");
                         dbHelper.insert(DatabaseInfo.PokemonTable.POKEMONTABLE, null, values);
-                        System.out.println("DATA INSERTED");
+                      //  System.out.println("DATA INSERTED");
                     }
-                    System.out.println("All data has been inserted 2");
+                   // System.out.println("All data has been inserted 2");
                     isdone4 = true;
                 } catch (Exception e) {
                     e.printStackTrace();
@@ -731,11 +731,11 @@ public class MainActivity extends AppCompatActivity {
 
 
     public void setGridFillables(){
-        System.out.println("mind");
+       // System.out.println("mind");
 
         MainActivity dbhelper = this;
         DatabaseHelper dbHelper2 = DatabaseHelper.getHelper(dbhelper);
-        System.out.println("yeetest");
+       // System.out.println("yeetest");
         for(int i = 0; i < 151; ++i){
 
             //set name
@@ -950,16 +950,27 @@ public class MainActivity extends AppCompatActivity {
             PokeIDs.put("dragonite", 149);
             PokeIDs.put("mewtwo", 150);
             PokeIDs.put("mew", 151);
-            System.out.println("Printing ID");
 
-            /*
+            final int[] pictureArray = {R.drawable.pokemon_1, R.drawable.pokemon_2, R.drawable.pokemon_3, R.drawable.pokemon_4, R.drawable.pokemon_5, R.drawable.pokemon_6, R.drawable.pokemon_7, R.drawable.pokemon_8, R.drawable.pokemon_9, R.drawable.pokemon_10, R.drawable.pokemon_11, R.drawable.pokemon_12, R.drawable.pokemon_13, R.drawable.pokemon_14, R.drawable.pokemon_15, R.drawable.pokemon_16, R.drawable.pokemon_17, R.drawable.pokemon_18, R.drawable.pokemon_19, R.drawable.pokemon_20, R.drawable.pokemon_21, R.drawable.pokemon_22, R.drawable.pokemon_23, R.drawable.pokemon_24, R.drawable.pokemon_25, R.drawable.pokemon_26, R.drawable.pokemon_27, R.drawable.pokemon_28, R.drawable.pokemon_29, R.drawable.pokemon_30, R.drawable.pokemon_31, R.drawable.pokemon_32, R.drawable.pokemon_33, R.drawable.pokemon_34, R.drawable.pokemon_35, R.drawable.pokemon_36, R.drawable.pokemon_37, R.drawable.pokemon_38, R.drawable.pokemon_39, R.drawable.pokemon_40, R.drawable.pokemon_41, R.drawable.pokemon_42, R.drawable.pokemon_43, R.drawable.pokemon_44, R.drawable.pokemon_45, R.drawable.pokemon_46, R.drawable.pokemon_47, R.drawable.pokemon_48, R.drawable.pokemon_49, R.drawable.pokemon_50, R.drawable.pokemon_51, R.drawable.pokemon_52, R.drawable.pokemon_53, R.drawable.pokemon_54, R.drawable.pokemon_55, R.drawable.pokemon_56, R.drawable.pokemon_57, R.drawable.pokemon_58, R.drawable.pokemon_59, R.drawable.pokemon_60, R.drawable.pokemon_61, R.drawable.pokemon_62, R.drawable.pokemon_63, R.drawable.pokemon_64, R.drawable.pokemon_65, R.drawable.pokemon_66, R.drawable.pokemon_67, R.drawable.pokemon_68, R.drawable.pokemon_69, R.drawable.pokemon_70, R.drawable.pokemon_71, R.drawable.pokemon_72, R.drawable.pokemon_73, R.drawable.pokemon_74, R.drawable.pokemon_75, R.drawable.pokemon_76, R.drawable.pokemon_77, R.drawable.pokemon_78, R.drawable.pokemon_79, R.drawable.pokemon_80, R.drawable.pokemon_81, R.drawable.pokemon_82, R.drawable.pokemon_83, R.drawable.pokemon_84, R.drawable.pokemon_85, R.drawable.pokemon_86, R.drawable.pokemon_87, R.drawable.pokemon_88, R.drawable.pokemon_89, R.drawable.pokemon_90, R.drawable.pokemon_91, R.drawable.pokemon_92, R.drawable.pokemon_93, R.drawable.pokemon_94, R.drawable.pokemon_95, R.drawable.pokemon_96, R.drawable.pokemon_97, R.drawable.pokemon_98, R.drawable.pokemon_99, R.drawable.pokemon_100, R.drawable.pokemon_101, R.drawable.pokemon_102, R.drawable.pokemon_103, R.drawable.pokemon_104, R.drawable.pokemon_105, R.drawable.pokemon_106, R.drawable.pokemon_107, R.drawable.pokemon_108, R.drawable.pokemon_109, R.drawable.pokemon_110, R.drawable.pokemon_111, R.drawable.pokemon_112, R.drawable.pokemon_113, R.drawable.pokemon_114, R.drawable.pokemon_115, R.drawable.pokemon_116, R.drawable.pokemon_117, R.drawable.pokemon_118, R.drawable.pokemon_119, R.drawable.pokemon_120, R.drawable.pokemon_121, R.drawable.pokemon_122, R.drawable.pokemon_123, R.drawable.pokemon_124, R.drawable.pokemon_125, R.drawable.pokemon_126, R.drawable.pokemon_127, R.drawable.pokemon_128, R.drawable.pokemon_129, R.drawable.pokemon_130, R.drawable.pokemon_131, R.drawable.pokemon_132, R.drawable.pokemon_133, R.drawable.pokemon_134, R.drawable.pokemon_135, R.drawable.pokemon_136, R.drawable.pokemon_137, R.drawable.pokemon_138, R.drawable.pokemon_139, R.drawable.pokemon_140, R.drawable.pokemon_141, R.drawable.pokemon_142, R.drawable.pokemon_143, R.drawable.pokemon_144, R.drawable.pokemon_145, R.drawable.pokemon_146, R.drawable.pokemon_147, R.drawable.pokemon_148, R.drawable.pokemon_149, R.drawable.pokemon_150, R.drawable.pokemon_151};
+
             String imgID = "pokeimg" + e;
             int resID_img = this.getResources().getIdentifier(imgID, "id", getPackageName());
             ImageView pokeimg = (ImageView) findViewById(resID_img);
-            int PokeID = PokeIDs.get(pokenam.getText());
-            String imgname = "@drawable/pokename_" + PokeID;
-            pokeimg.setImageDrawable(Drawable.createFromPath(imgname));
-            */
+
+            try {
+                pokeimg.setImageResource(pictureArray[PokeIDs.get(pokenam.getText())-1]);
+            }catch (Exception t){
+                continue;
+            }
+
+            //fuck mew, de laatste cardview in de grid doet altijd "SPECIAL" dus ik heb het uit frustratie maar gehardcode.
+            String imgID_final = "pokeimg151";
+            int resID_img_final = this.getResources().getIdentifier(imgID_final, "id", getPackageName());
+            ImageView pokeimg_final = (ImageView) findViewById(resID_img_final);
+            pokeimg_final.setImageResource(pictureArray[150]);
+
+
+
 
 
 
@@ -967,7 +978,9 @@ public class MainActivity extends AppCompatActivity {
         }
         // globally
 
-
+        FragmentTransaction ft = getSupportFragmentManager().beginTransaction();
+        ft.addToBackStack(a.getClass().getName());
+        ft.commit();
         //in your OnCreate() method
 
     }
@@ -978,7 +991,6 @@ public class MainActivity extends AppCompatActivity {
         String pokid = v.getResources().getResourceName(v.getId());
         int pid = 0;
         for(int i = 0; i < 152; ++i) {
-            System.out.println("Crashes here");
             String pokidbuf = "card"+i;
             if (pokid.endsWith(pokidbuf)){
                 pid = i;
@@ -993,10 +1005,6 @@ public class MainActivity extends AppCompatActivity {
             TextView pokenam = (TextView) findViewById(resID);
 
             if (name.contentEquals(pokenam.getText())) {
-
-                System.out.println("Break the law");
-                System.out.println(getAllDBItems().get(i));
-                System.out.println(pokenam.getText());
                 String type1 = getAllDBItems().get(i).get(1);
                 String type2 = getAllDBItems().get(i).get(2);
                 String hp = getAllDBItems().get(i).get(3);
