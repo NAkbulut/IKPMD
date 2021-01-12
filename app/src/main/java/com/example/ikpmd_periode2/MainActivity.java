@@ -79,7 +79,6 @@ public class MainActivity extends AppCompatActivity {
             String textviewID = "pokename" + pid;
             int resID = getResources().getIdentifier(textviewID, "id", getPackageName());
             TextView pokenam = (TextView) findViewById(resID);
-
             if (name.equals(pokenam.getText())) {
                 System.out.println(getAllDBItems().get(i));
                 String type1 = getAllDBItems().get(i).get(1);
