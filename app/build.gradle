@@ -32,6 +32,7 @@ android {
 repositories {
     mavenCentral()
     maven { url 'https://dl.bintray.com/sargunv/maven' }
+    maven { url 'https://jitpack.io' }
     google()
     jcenter()
 }
@@ -56,4 +57,5 @@ dependencies {
     androidTestImplementation 'androidx.test.espresso:espresso-core:3.2.0'
     implementation 'com.github.bumptech.glide:glide:4.11.0'
     annotationProcessor 'com.github.bumptech.glide:compiler:4.11.0'
+    implementation 'com.github.iamBedant:OutlineTextView:1.0.5'
 }

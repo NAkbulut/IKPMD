@@ -10,13 +10,41 @@
         android:name="com.example.ikpmd_periode2.ui.home.HomeFragment"
         android:label="@string/title_home"
         android:gravity="center"
-        tools:layout="@layout/fragment_pokedex" />
+        tools:layout="@layout/fragment_pokedex" >
+        <action
+            android:id="@+id/action_navigation_home_to_navigation_dashboard"
+            app:destination="@id/navigation_dashboard" />
+        <action
+            android:id="@+id/action_navigation_home_to_navigation_graph"
+            app:destination="@id/navigation_graph" />
+    </fragment>
 
     <fragment
         android:id="@+id/navigation_dashboard"
         android:name="com.example.ikpmd_periode2.ui.dashboard.DashboardFragment"
         android:label="@string/title_dashboard"
         android:layout_gravity="center"
-        tools:layout="@layout/fragment_favorites" />
+        tools:layout="@layout/fragment_favorites" >
+        <action
+            android:id="@+id/action_navigation_dashboard_to_navigation_graph"
+            app:destination="@id/navigation_graph" />
+        <action
+            android:id="@+id/action_navigation_dashboard_to_navigation_home"
+            app:destination="@id/navigation_home" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/navigation_graph"
+        android:name="com.example.ikpmd_periode2.ui.graphs.GraphFragment"
+        android:label="@string/title_graph"
+        android:layout_gravity="center"
+        tools:layout="@layout/fragment_graph" >
+        <action
+            android:id="@+id/action_navigation_graph_to_navigation_dashboard"
+            app:destination="@id/navigation_dashboard" />
+        <action
+            android:id="@+id/action_navigation_graph_to_navigation_home"
+            app:destination="@id/navigation_home" />
+    </fragment>
 
 </navigation>
