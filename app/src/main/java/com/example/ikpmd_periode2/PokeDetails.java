@@ -4,13 +4,17 @@ import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.TextView;
 
 import androidx.fragment.app.Fragment;
 
 import com.github.ivbaranov.mfb.MaterialFavoriteButton;
 import com.google.android.material.snackbar.Snackbar;
 
+import java.util.List;
+
 public class PokeDetails extends Fragment {
+
 
 
     @Override
@@ -26,7 +30,11 @@ public class PokeDetails extends Fragment {
     public void onStart() {
         super.onStart();
         Favo_Button();
+
     }
+
+
+
 
 
     public void Favo_Button(){

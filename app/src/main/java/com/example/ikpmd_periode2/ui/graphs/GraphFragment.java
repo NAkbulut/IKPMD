@@ -12,6 +12,10 @@ import com.example.ikpmd_periode2.R;
 
 
 public class GraphFragment extends Fragment {
+
+    public GraphFragment(){
+        //yeet
+    }
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {

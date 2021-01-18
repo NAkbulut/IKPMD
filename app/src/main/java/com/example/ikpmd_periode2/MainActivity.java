@@ -1,26 +1,26 @@
 package com.example.ikpmd_periode2;
 
-import android.annotation.SuppressLint;
 import android.app.FragmentManager;
+import android.content.ClipData;
 import android.content.ContentValues;
 import android.content.Context;
 import android.database.Cursor;
-import android.graphics.Color;
-import android.graphics.drawable.Drawable;
 import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
 import android.os.Bundle;
 import android.os.StrictMode;
 import android.util.Log;
+import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.GridLayout;
+import android.widget.GridView;
 import android.widget.ImageView;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.cardview.widget.CardView;
-import androidx.drawerlayout.widget.DrawerLayout;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentTransaction;
 import androidx.navigation.NavController;
@@ -33,6 +33,7 @@ import com.example.ikpmd_periode2.database.DatabaseHelper;
 import com.example.ikpmd_periode2.database.DatabaseInfo;
 import com.example.ikpmd_periode2.ui.LoadingDBFragment;
 import com.example.ikpmd_periode2.ui.dashboard.DashboardFragment;
+import com.example.ikpmd_periode2.ui.graphs.GraphFragment;
 import com.example.ikpmd_periode2.ui.home.HomeFragment;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.firebase.database.DataSnapshot;
@@ -41,17 +42,9 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
-import java.io.FileOutputStream;
-import java.io.IOException;
-import java.io.InputStream;
-import java.io.OutputStream;
-import java.net.URL;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
-import java.util.concurrent.Executors;
-import java.util.concurrent.ScheduledExecutorService;
-import java.util.concurrent.TimeUnit;
 
 import me.sargunvohra.lib.pokekotlin.client.PokeApi;
 import me.sargunvohra.lib.pokekotlin.client.PokeApiClient;
@@ -61,12 +54,15 @@ import me.sargunvohra.lib.pokekotlin.model.PokemonType;
 
 
 
+
 public class MainActivity extends AppCompatActivity {
     Fragment a = new PokeDetails();
     Fragment b = new DashboardFragment();
     Fragment c = new HomeFragment();
     Fragment d = new LoadingDBFragment();
     Fragment e = new NavHostFragment();
+    Fragment f = new GraphFragment();
+    androidx.fragment.app.FragmentManager fm = getSupportFragmentManager();
 
 
     ////////////////////////SELFWRITEN
@@ -75,16 +71,79 @@ public class MainActivity extends AppCompatActivity {
 
 
     public void Switcher_main_to_poke(View v) {
-        setPokeDetailsFillables(v);
+
+        /*System.out.println("aka " + v.getResources().getResourceName(v.getId()));
+
+        String word = v.getResources().getResourceName(v.getId());
+        String substr = word.substring(word.length() - 3);
+        System.out.println("aka2 " + substr);
+
+        String id =  substr.replaceAll("[A-Za-z]","");
+        System.out.println("aka3 " + id);
+
+         */
+
         try {
             FragmentTransaction ft = getSupportFragmentManager().beginTransaction();
             ft.replace(R.id.nav_host_fragment, a);
             ft.setTransition(FragmentTransaction.TRANSIT_FRAGMENT_FADE);
             ft.addToBackStack(null);
             ft.commit();
+
         } catch (Exception e) {
             e.printStackTrace();
         }
+
+
+        /*
+        String pokid = getResources().getResourceName(v.getId());
+
+        int pid = 0;
+        for(int i = 0; i < 152; ++i) {
+            String pokidbuf = "card"+i;
+            if (pokid.endsWith(pokidbuf)){
+                pid = i;
+                ++i;
+                break;
+            }
+        }
+
+        for(int i = 0; i < 151; ++i) {
+            String name = getAllDBItems().get(i).get(0);
+            String textviewID = "pokename" + pid;
+            int resID = getResources().getIdentifier(textviewID, "id", getPackageName());
+            TextView pokenam = (TextView) findViewById(resID);
+
+            if (name.contentEquals(pokenam.getText())) {
+                try{
+                    String textviewID2 = "textName";
+                    int resID2 = getResources().getIdentifier(textviewID2, "id", getPackageName());
+                    TextView textView_pokename = (TextView) findViewById(resID2);
+                    System.out.println("Skeet " +textView_pokename.getText());
+                }catch(Exception u){
+                    System.out.println();
+                }
+
+                //textView_pokename.setText(name);
+                String type1 = getAllDBItems().get(i).get(1);
+                String type2 = getAllDBItems().get(i).get(2);
+                String hp = getAllDBItems().get(i).get(3);
+                String atk = getAllDBItems().get(i).get(4);
+                String spatk = getAllDBItems().get(i).get(5);
+                String def = getAllDBItems().get(i).get(6);
+                String spdef = getAllDBItems().get(i).get(7);
+                String spd = getAllDBItems().get(i).get(8);
+                String weight = getAllDBItems().get(i).get(9);
+                String height = getAllDBItems().get(i).get(10);
+                break;
+            }
+        }
+
+         */
+
+
+        //setPokeDetailsFillables(v);
+
     }
 
 
@@ -602,9 +661,14 @@ public class MainActivity extends AppCompatActivity {
             ft.setTransition(FragmentTransaction.TRANSIT_FRAGMENT_FADE);
             ft.addToBackStack(null);
             ft.commit();
+
+
         } catch (Exception e) {
             e.printStackTrace();
         }
+
+
+
 
 
 
@@ -728,6 +792,46 @@ public class MainActivity extends AppCompatActivity {
         //System.out.println(getAllDBItems(dbHelper2));
         //dbHelper2.getProfilesCount(DatabaseInfo.PokemonTable.POKEMONTABLE);
     }
+
+
+    public void setPokeDetailsFillables(View root, List<List<String>> gotallDBItems){
+        //List allDB = getAllDBItems();
+        String pokid = root.getResources().getResourceName(root.getId());
+        int pid = 0;
+        for(int i = 0; i < 152; ++i) {
+            String pokidbuf = "card"+i;
+            if (pokid.endsWith(pokidbuf)){
+                pid = i;
+                ++i;
+                break;
+            }
+        }
+        for(int i = 0; i < 151; ++i) {
+            String name = getAllDBItems().get(i).get(0);
+            String textviewID = "pokename" + pid;
+            int resID = getResources().getIdentifier(textviewID, "id", getPackageName());
+            TextView pokenam = (TextView) findViewById(resID);
+
+            if (name.contentEquals(pokenam.getText())) {
+                String type1 = getAllDBItems().get(i).get(1);
+                String type2 = getAllDBItems().get(i).get(2);
+                String hp = getAllDBItems().get(i).get(3);
+                String atk = getAllDBItems().get(i).get(4);
+                String spatk = getAllDBItems().get(i).get(5);
+                String def = getAllDBItems().get(i).get(6);
+                String spdef = getAllDBItems().get(i).get(7);
+                String spd = getAllDBItems().get(i).get(8);
+                String weight = getAllDBItems().get(i).get(9);
+                String height = getAllDBItems().get(i).get(10);
+                break;
+            }
+        }
+
+
+
+
+    }
+
 
 
     public void setGridFillables(){
@@ -979,48 +1083,12 @@ public class MainActivity extends AppCompatActivity {
         // globally
 
         FragmentTransaction ft = getSupportFragmentManager().beginTransaction();
-        ft.addToBackStack(a.getClass().getName());
+        ft.addToBackStack(null);
         ft.commit();
         //in your OnCreate() method
 
     }
 
-    public void setPokeDetailsFillables(View v){
-        //List allDB = getAllDBItems();
-
-        String pokid = v.getResources().getResourceName(v.getId());
-        int pid = 0;
-        for(int i = 0; i < 152; ++i) {
-            String pokidbuf = "card"+i;
-            if (pokid.endsWith(pokidbuf)){
-                pid = i;
-                ++i;
-                break;
-            }
-        }
-        for(int i = 0; i < 151; ++i) {
-            String name = getAllDBItems().get(i).get(0);
-            String textviewID = "pokename" + pid;
-            int resID = getResources().getIdentifier(textviewID, "id", getPackageName());
-            TextView pokenam = (TextView) findViewById(resID);
-
-            if (name.contentEquals(pokenam.getText())) {
-                String type1 = getAllDBItems().get(i).get(1);
-                String type2 = getAllDBItems().get(i).get(2);
-                String hp = getAllDBItems().get(i).get(3);
-                String atk = getAllDBItems().get(i).get(4);
-                String spatk = getAllDBItems().get(i).get(5);
-                String def = getAllDBItems().get(i).get(6);
-                String spdef = getAllDBItems().get(i).get(7);
-                String spd = getAllDBItems().get(i).get(8);
-                String weight = getAllDBItems().get(i).get(9);
-                String height = getAllDBItems().get(i).get(10);
-                break;
-            }
-        }
-
-
-    }
 
     // IF THE ANDROID BACK BUTTON IS CLICKED DO THIS PLEASE
     @Override
@@ -1029,9 +1097,11 @@ public class MainActivity extends AppCompatActivity {
             FragmentTransaction ft = getSupportFragmentManager().beginTransaction();
             ft.replace(R.id.nav_host_fragment, e);
             ft.setTransition(FragmentTransaction.TRANSIT_FRAGMENT_FADE);
-            ft.addToBackStack(e.getClass().getName());
+            ft.addToBackStack(null);
             ft.commit();
-            //setGridFillables();
+            GridLayout mainGrid = (GridLayout) findViewById(R.id.mainGrid);
+            mainGrid.setClickable(true);
+            mainGrid.setVisibility(View.VISIBLE);
         } catch (Exception e) {
             setContentView(R.layout.fragment_loading_d_b);
             messWithFirebase();
@@ -1041,11 +1111,14 @@ public class MainActivity extends AppCompatActivity {
     }
 
 
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
         BottomNavigationView navView = findViewById(R.id.nav_view);
+
 
         // Passing each menu ID as a set of Ids because each
         // menu should be considered as top level destinations.
@@ -1071,7 +1144,9 @@ public class MainActivity extends AppCompatActivity {
             e.printStackTrace();
         }
 
-
+        //fm.beginTransaction().add(R.id.nav_host_fragment, f, "3").hide(f).commit();
+        //fm.beginTransaction().add(R.id.nav_host_fragment, b, "2").hide(b).commit();
+        //fm.beginTransaction().add(R.id.nav_host_fragment, e, "1").commit();
 
 
             //MainGridAdapter.notifyDataSetChanged();
@@ -1080,26 +1155,38 @@ public class MainActivity extends AppCompatActivity {
 
 
 
+
+
+
+
+
+
+
+
+
+
+
     // doe dit als de app is gestart, moet als background task omdat je anders geen fragment ziet
     @Override
     protected void onStart() {
         super.onStart();
-        MainActivity dbhelper = this;
-        DatabaseHelper dbHelper2 = DatabaseHelper.getHelper(dbhelper);
+        //MainActivity dbhelper = this;
+        DatabaseHelper dbHelper2 = DatabaseHelper.getHelper(this);
 
         if (dbHelper2.getProfilesCount(DatabaseInfo.PokemonTable.POKEMONTABLE) == 151) {
-            setGridFillables();
+
             try {
                 FragmentTransaction ft = getSupportFragmentManager().beginTransaction();
                 ft.replace(R.id.nav_host_fragment, e);
                 ft.setTransition(FragmentTransaction.TRANSIT_FRAGMENT_FADE);
-                ft.addToBackStack(e.getClass().getName());
+                ft.addToBackStack(null);
                 ft.commit();
 
 
             } catch (Exception e) {
                 e.printStackTrace();
             }
+            setGridFillables();
         } else {
             if (d.isAdded()) {
                 Runnable backGroundRunnable = new Runnable() {
@@ -1133,9 +1220,42 @@ public class MainActivity extends AppCompatActivity {
         if(e.isAdded()){
             setGridFillables();
         }
+
+
+        BottomNavigationView botnav = (BottomNavigationView) findViewById(R.id.nav_view);
+        GridLayout mainGrid = (GridLayout) findViewById(R.id.mainGrid);
+        botnav.setOnNavigationItemSelectedListener(new BottomNavigationView.OnNavigationItemSelectedListener() {
+            @Override
+            public boolean onNavigationItemSelected(@NonNull MenuItem item) {
+                switch (item.getItemId()) {
+                    case R.id.navigation_home:
+                        System.out.println("Yes a mattie");
+                        fm.beginTransaction().replace(R.id.nav_host_fragment, e, "1").show(e).commit();
+                        mainGrid.setClickable(true);
+                        mainGrid.setVisibility(View.VISIBLE);
+
+                        return true;
+                    case R.id.navigation_dashboard:
+                        System.out.println("Yes a mattie");
+                        fm.beginTransaction().replace(R.id.nav_host_fragment, b, "2").show(b).commit();
+                        mainGrid.setClickable(false);
+                        mainGrid.setVisibility(View.INVISIBLE);
+
+                        return true;
+                    case R.id.navigation_graph:
+                        System.out.println("Yes a mattie");
+                        fm.beginTransaction().replace(R.id.nav_host_fragment, f, "3").show(f).commit();
+                        mainGrid.setClickable(false);
+                        mainGrid.setVisibility(View.INVISIBLE);
+
+
+                        return true;
+                }
+                return false;
+            }
+        });
+
     }
-
-
 
 
 

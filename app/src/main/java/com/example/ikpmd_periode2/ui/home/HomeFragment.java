@@ -24,9 +24,11 @@ import com.example.ikpmd_periode2.ui.dashboard.DashboardFragment;
 public class HomeFragment extends Fragment {
 
     private HomeViewModel homeViewModel;
-    MainActivity mainActivity;
 
 
+    public HomeFragment(){
+        //yeet
+    }
 
     @Override
     public View onCreateView(LayoutInflater inflater,
@@ -34,6 +36,8 @@ public class HomeFragment extends Fragment {
         homeViewModel =
                 new ViewModelProvider(this).get(HomeViewModel.class);
         View root = inflater.inflate(R.layout.fragment_pokedex, container, false);
+
+
         return root;
     }
 
