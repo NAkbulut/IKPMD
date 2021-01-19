@@ -42,6 +42,8 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
+import org.w3c.dom.Text;
+
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
@@ -71,18 +73,46 @@ public class MainActivity extends AppCompatActivity {
 
 
     public void Switcher_main_to_poke(View v) {
-
-        /*System.out.println("aka " + v.getResources().getResourceName(v.getId()));
-
+        //Get pokecard number
+        System.out.println("aka " + v.getResources().getResourceName(v.getId()));
         String word = v.getResources().getResourceName(v.getId());
         String substr = word.substring(word.length() - 3);
         System.out.println("aka2 " + substr);
-
         String id =  substr.replaceAll("[A-Za-z]","");
         System.out.println("aka3 " + id);
 
-         */
+        //Get involved textview
+        String textviewID = "pokename" + id;
+        int resID = getResources().getIdentifier(textviewID, "id", getPackageName());
+        TextView pokenam = (TextView) findViewById(resID);
+        System.out.println("Bring it back " + pokenam.getText());
+        String cardname = (String) pokenam.getText();
 
+
+        //Loop through DB Items and find involved information
+        String allpkmnstats = "";
+        for (int i = 0; i < 151; ++i){
+            String name = getAllDBItems().get(i).get(0);
+            if(name.equals(cardname)){
+                System.out.println("This is in DB: " + name);
+                System.out.println("This is in pokecard: " + cardname);
+
+                String type1 = getAllDBItems().get(i).get(1);
+                String type2 = getAllDBItems().get(i).get(2);
+                String hp = getAllDBItems().get(i).get(3);
+                String atk = getAllDBItems().get(i).get(4);
+                String spatk = getAllDBItems().get(i).get(5);
+                String def = getAllDBItems().get(i).get(6);
+                String spdef = getAllDBItems().get(i).get(7);
+                String spd = getAllDBItems().get(i).get(8);
+                String weight = getAllDBItems().get(i).get(9);
+                String height = getAllDBItems().get(i).get(10);
+                allpkmnstats = name + ", "+ type1 + ", "+ type2 + ", "+ hp +", "+ atk +", "+ spatk +", "+ def +", "+ spdef +", "+ spd +", "+ weight +", "+ height;
+            }
+        }
+
+
+        System.out.println("shadowing grows"+allpkmnstats);
         try {
             FragmentTransaction ft = getSupportFragmentManager().beginTransaction();
             ft.replace(R.id.nav_host_fragment, a);
@@ -94,55 +124,13 @@ public class MainActivity extends AppCompatActivity {
             e.printStackTrace();
         }
 
-
-        /*
-        String pokid = getResources().getResourceName(v.getId());
-
-        int pid = 0;
-        for(int i = 0; i < 152; ++i) {
-            String pokidbuf = "card"+i;
-            if (pokid.endsWith(pokidbuf)){
-                pid = i;
-                ++i;
-                break;
-            }
-        }
-
-        for(int i = 0; i < 151; ++i) {
-            String name = getAllDBItems().get(i).get(0);
-            String textviewID = "pokename" + pid;
-            int resID = getResources().getIdentifier(textviewID, "id", getPackageName());
-            TextView pokenam = (TextView) findViewById(resID);
-
-            if (name.contentEquals(pokenam.getText())) {
-                try{
-                    String textviewID2 = "textName";
-                    int resID2 = getResources().getIdentifier(textviewID2, "id", getPackageName());
-                    TextView textView_pokename = (TextView) findViewById(resID2);
-                    System.out.println("Skeet " +textView_pokename.getText());
-                }catch(Exception u){
-                    System.out.println();
-                }
-
-                //textView_pokename.setText(name);
-                String type1 = getAllDBItems().get(i).get(1);
-                String type2 = getAllDBItems().get(i).get(2);
-                String hp = getAllDBItems().get(i).get(3);
-                String atk = getAllDBItems().get(i).get(4);
-                String spatk = getAllDBItems().get(i).get(5);
-                String def = getAllDBItems().get(i).get(6);
-                String spdef = getAllDBItems().get(i).get(7);
-                String spd = getAllDBItems().get(i).get(8);
-                String weight = getAllDBItems().get(i).get(9);
-                String height = getAllDBItems().get(i).get(10);
-                break;
-            }
-        }
-
-         */
+        PokeDetails.PokeStats = allpkmnstats;
 
 
-        //setPokeDetailsFillables(v);
+
+
+
+        //setPokeDetailsFillables();
 
     }
 
@@ -794,42 +782,9 @@ public class MainActivity extends AppCompatActivity {
     }
 
 
-    public void setPokeDetailsFillables(View root, List<List<String>> gotallDBItems){
-        //List allDB = getAllDBItems();
-        String pokid = root.getResources().getResourceName(root.getId());
-        int pid = 0;
-        for(int i = 0; i < 152; ++i) {
-            String pokidbuf = "card"+i;
-            if (pokid.endsWith(pokidbuf)){
-                pid = i;
-                ++i;
-                break;
-            }
-        }
-        for(int i = 0; i < 151; ++i) {
-            String name = getAllDBItems().get(i).get(0);
-            String textviewID = "pokename" + pid;
-            int resID = getResources().getIdentifier(textviewID, "id", getPackageName());
-            TextView pokenam = (TextView) findViewById(resID);
-
-            if (name.contentEquals(pokenam.getText())) {
-                String type1 = getAllDBItems().get(i).get(1);
-                String type2 = getAllDBItems().get(i).get(2);
-                String hp = getAllDBItems().get(i).get(3);
-                String atk = getAllDBItems().get(i).get(4);
-                String spatk = getAllDBItems().get(i).get(5);
-                String def = getAllDBItems().get(i).get(6);
-                String spdef = getAllDBItems().get(i).get(7);
-                String spd = getAllDBItems().get(i).get(8);
-                String weight = getAllDBItems().get(i).get(9);
-                String height = getAllDBItems().get(i).get(10);
-                break;
-            }
-        }
-
-
-
-
+    public void setPokeDetailsFillables(){
+        TextView pokedetails_name = (TextView) findViewById(R.id.textName);
+        System.out.println("Will this work " +pokedetails_name.getText());
     }
 
 
@@ -1144,12 +1099,6 @@ public class MainActivity extends AppCompatActivity {
             e.printStackTrace();
         }
 
-        //fm.beginTransaction().add(R.id.nav_host_fragment, f, "3").hide(f).commit();
-        //fm.beginTransaction().add(R.id.nav_host_fragment, b, "2").hide(b).commit();
-        //fm.beginTransaction().add(R.id.nav_host_fragment, e, "1").commit();
-
-
-            //MainGridAdapter.notifyDataSetChanged();
     }
 
 

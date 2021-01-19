@@ -3,43 +3,37 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:translationY="-50px"
     tools:context=".ui.graphs.GraphFragment">
 
     <!-- TODO: Update blank fragment layout -->
 
-    <TextView
-        android:id="@+id/textView"
-        android:layout_width="400dp"
-        android:layout_height="70dp"
-        android:layout_marginLeft="80dp"
-        android:layout_marginTop="20dp"
-        android:text="Favorites; Frequent Types"
-        android:textColor="@color/white"
-        android:textSize="24dp"
-        android:textStyle="bold" />
-
-    <TextView
-        android:id="@+id/textView2"
-        android:layout_width="400dp"
-        android:layout_height="70dp"
-        android:layout_marginLeft="80dp"
-        android:layout_marginTop="300dp"
-        android:text="Favorites; Average Stats"
-        android:textColor="@color/white"
-        android:textSize="24dp"
-        android:textStyle="bold" />
 
     <FrameLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_marginBottom="210dp">
 
+        <TextView
+            android:id="@+id/textView2"
+            android:layout_width="400dp"
+            android:layout_height="70dp"
+            android:layout_marginLeft="80dp"
+            android:layout_marginTop="300dp"
+            android:text="Favorites; Average Stats"
+            android:textColor="@color/white"
+            android:textSize="24dp"
+            android:textStyle="bold"
+            android:translationY="-600px" />
+
         <com.jjoe64.graphview.GraphView
             android:id="@+id/graph"
             android:layout_width="350dp"
             android:layout_height="200dp"
             android:layout_gravity="center"
-            android:paddingBottom="90dp"/>
+            android:paddingBottom="90dp"
+            android:translationY="-50px" />
+
     </FrameLayout>
 
     <FrameLayout
@@ -47,11 +41,24 @@
         android:layout_height="match_parent"
         android:layout_marginTop="330dp">
 
+        <TextView
+            android:id="@+id/textView"
+            android:layout_width="400dp"
+            android:layout_height="70dp"
+            android:layout_marginLeft="80dp"
+            android:layout_marginTop="20dp"
+            android:text="Favorites; Frequent Types"
+            android:textColor="@color/white"
+            android:textSize="24dp"
+            android:textStyle="bold" />
+
         <com.jjoe64.graphview.GraphView
             android:id="@+id/graph2"
             android:layout_width="350dp"
             android:layout_height="200dp"
-            android:layout_gravity="center"/>
+            android:layout_gravity="center"
+            android:translationY="-50px" />
+
     </FrameLayout>
 
 </FrameLayout>
