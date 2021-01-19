@@ -22,9 +22,6 @@ import com.jjoe64.graphview.series.LineGraphSeries;
 
 public class GraphFragment extends Fragment {
 
-    public GraphFragment(){
-        //yeet
-    }
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {

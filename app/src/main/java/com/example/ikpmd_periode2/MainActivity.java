@@ -782,10 +782,6 @@ public class MainActivity extends AppCompatActivity {
     }
 
 
-    public void setPokeDetailsFillables(){
-        TextView pokedetails_name = (TextView) findViewById(R.id.textName);
-        System.out.println("Will this work " +pokedetails_name.getText());
-    }
 
 
 
@@ -940,7 +936,7 @@ public class MainActivity extends AppCompatActivity {
             PokeIDs.put("slowbro", 80);
             PokeIDs.put("magnemite", 81);
             PokeIDs.put("magneton", 82);
-            PokeIDs.put("farfetch'd", 83);
+            PokeIDs.put("farfetchd", 83);
             PokeIDs.put("doduo", 84);
             PokeIDs.put("dodrio", 85);
             PokeIDs.put("seel", 86);
@@ -979,7 +975,7 @@ public class MainActivity extends AppCompatActivity {
             PokeIDs.put("seaking", 119);
             PokeIDs.put("staryu", 120);
             PokeIDs.put("starmie", 121);
-            PokeIDs.put("mr. mime", 122);
+            PokeIDs.put("mr-mime", 122);
             PokeIDs.put("scyther", 123);
             PokeIDs.put("jynx", 124);
             PokeIDs.put("electabuzz", 125);
