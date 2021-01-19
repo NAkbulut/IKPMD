@@ -29,7 +29,12 @@ public class PokeDetails extends Fragment {
                              ViewGroup container, Bundle savedInstanceState) {
         View root = inflater.inflate(R.layout.fragment_poke_details, container, false);
 
-        setPokeDetailsFillables(root);
+        try{
+            setPokeDetailsFillables(root);
+        }catch(Exception e){
+            System.out.println();
+        }
+
 
 
         return root;

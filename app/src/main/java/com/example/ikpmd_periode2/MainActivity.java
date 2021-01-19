@@ -135,6 +135,20 @@ public class MainActivity extends AppCompatActivity {
     }
 
 
+    public void Switcher_main_to_poke_fav(View v){
+        try {
+            FragmentTransaction ft = getSupportFragmentManager().beginTransaction();
+            ft.replace(R.id.nav_host_fragment, a);
+            ft.setTransition(FragmentTransaction.TRANSIT_FRAGMENT_FADE);
+            ft.addToBackStack(null);
+            ft.commit();
+
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+
+
     public void valuesToDB() {
         MainActivity dbhelper = this;
 
