@@ -56,7 +56,6 @@ import me.sargunvohra.lib.pokekotlin.model.PokemonType;
 
 
 
-
 public class MainActivity extends AppCompatActivity {
     Fragment a = new PokeDetails();
     Fragment b = new DashboardFragment();
