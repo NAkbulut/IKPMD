@@ -134,6 +134,20 @@ public class MainActivity extends AppCompatActivity {
     }
 
 
+    public void Switcher_main_to_poke_fav(View v){
+        try {
+            FragmentTransaction ft = getSupportFragmentManager().beginTransaction();
+            ft.replace(R.id.nav_host_fragment, a);
+            ft.setTransition(FragmentTransaction.TRANSIT_FRAGMENT_FADE);
+            ft.addToBackStack(null);
+            ft.commit();
+
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+
+
     public void valuesToDB() {
         MainActivity dbhelper = this;
 
@@ -781,10 +795,6 @@ public class MainActivity extends AppCompatActivity {
     }
 
 
-    public void setPokeDetailsFillables(){
-        TextView pokedetails_name = (TextView) findViewById(R.id.textName);
-        System.out.println("Will this work " +pokedetails_name.getText());
-    }
 
 
 
@@ -939,7 +949,7 @@ public class MainActivity extends AppCompatActivity {
             PokeIDs.put("slowbro", 80);
             PokeIDs.put("magnemite", 81);
             PokeIDs.put("magneton", 82);
-            PokeIDs.put("farfetch'd", 83);
+            PokeIDs.put("farfetchd", 83);
             PokeIDs.put("doduo", 84);
             PokeIDs.put("dodrio", 85);
             PokeIDs.put("seel", 86);
@@ -978,7 +988,7 @@ public class MainActivity extends AppCompatActivity {
             PokeIDs.put("seaking", 119);
             PokeIDs.put("staryu", 120);
             PokeIDs.put("starmie", 121);
-            PokeIDs.put("mr. mime", 122);
+            PokeIDs.put("mr-mime", 122);
             PokeIDs.put("scyther", 123);
             PokeIDs.put("jynx", 124);
             PokeIDs.put("electabuzz", 125);
