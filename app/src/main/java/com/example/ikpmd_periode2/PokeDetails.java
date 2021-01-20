@@ -1,6 +1,7 @@
 package com.example.ikpmd_periode2;
 
 import android.content.res.ColorStateList;
+import android.graphics.drawable.Drawable;
 import android.os.Build;
 import android.os.Bundle;
 import android.view.LayoutInflater;
@@ -398,6 +399,44 @@ public class PokeDetails extends Fragment {
                 new MaterialFavoriteButton.OnFavoriteChangeListener() {
                     @Override
                     public void onFavoriteChanged(MaterialFavoriteButton buttonView, boolean favorite) {
+                        TextView pokename = getView().findViewById(R.id.textName);
+                        TextView pokeheight = getView().findViewById(R.id.textHeightValue);
+                        TextView pokeweight = getView().findViewById(R.id.textWeightValue);
+                        TextView poketype1 = getView().findViewById(R.id.textType);
+                        TextView poketype2 = getView().findViewById(R.id.textType2);
+                        ProgressBar pokehp = getView().findViewById(R.id.progressHP);
+                        ProgressBar pokeatk = getView().findViewById(R.id.progressATK);
+                        ProgressBar pokespatk = getView().findViewById(R.id.progressSPATK);
+                        ProgressBar pokedef = getView().findViewById(R.id.progressDEF);
+                        ProgressBar pokespdef = getView().findViewById(R.id.progressSPDEF);
+                        ProgressBar pokespd = getView().findViewById(R.id.progressSPD);
+                        ImageView pokeimg = getView().findViewById(R.id.imageView);
+
+                        String name = (String) pokename.getText();
+                        String height = (String) pokeheight.getText();
+                        String weight = (String) pokeweight.getText();
+                        String type1 = (String) poketype1.getText();
+                        String type2 = (String) poketype2.getText();
+                        int hp = (int) pokehp.getProgress();
+                        int atk = (int) pokeatk.getProgress();
+                        int spatk = (int) pokespatk.getProgress();
+                        int def = (int) pokedef.getProgress();
+                        int spdef = (int) pokespdef.getProgress();
+                        int spd = (int) pokespd.getProgress();
+                        Drawable img = (Drawable) pokeimg.getDrawable();
+
+                        System.out.println(name);
+                        System.out.println(height);
+                        System.out.println(weight);
+                        System.out.println(type1);
+                        System.out.println(type2);
+                        System.out.println(hp);
+                        System.out.println(atk);
+                        System.out.println(spatk);
+                        System.out.println(def);
+                        System.out.println(spdef);
+                        System.out.println(spd);
+
                         if(favorite){
                             Snackbar.make(buttonView, "Added to favorites", Snackbar.LENGTH_SHORT).show();
 
