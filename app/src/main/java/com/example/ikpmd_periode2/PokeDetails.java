@@ -7,6 +7,7 @@ import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.GridLayout;
 import android.widget.ImageView;
 import android.widget.ProgressBar;
 import android.widget.TextView;
@@ -14,16 +15,24 @@ import android.widget.TextView;
 import androidx.annotation.RequiresApi;
 import androidx.fragment.app.Fragment;
 
+import com.example.ikpmd_periode2.ui.dashboard.DashboardFragment;
 import com.github.ivbaranov.mfb.MaterialFavoriteButton;
 import com.google.android.material.snackbar.Snackbar;
 
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 
 public class PokeDetails extends Fragment {
+    public static String PokeStats = "";
+    public static List AllFavs = new ArrayList();
+    public static HashMap<String, Integer> PokeIDs = new HashMap<String, Integer>();
+    public static final int[] pictureArray = {R.drawable.pokemon_1, R.drawable.pokemon_2, R.drawable.pokemon_3, R.drawable.pokemon_4, R.drawable.pokemon_5, R.drawable.pokemon_6, R.drawable.pokemon_7, R.drawable.pokemon_8, R.drawable.pokemon_9, R.drawable.pokemon_10, R.drawable.pokemon_11, R.drawable.pokemon_12, R.drawable.pokemon_13, R.drawable.pokemon_14, R.drawable.pokemon_15, R.drawable.pokemon_16, R.drawable.pokemon_17, R.drawable.pokemon_18, R.drawable.pokemon_19, R.drawable.pokemon_20, R.drawable.pokemon_21, R.drawable.pokemon_22, R.drawable.pokemon_23, R.drawable.pokemon_24, R.drawable.pokemon_25, R.drawable.pokemon_26, R.drawable.pokemon_27, R.drawable.pokemon_28, R.drawable.pokemon_29, R.drawable.pokemon_30, R.drawable.pokemon_31, R.drawable.pokemon_32, R.drawable.pokemon_33, R.drawable.pokemon_34, R.drawable.pokemon_35, R.drawable.pokemon_36, R.drawable.pokemon_37, R.drawable.pokemon_38, R.drawable.pokemon_39, R.drawable.pokemon_40, R.drawable.pokemon_41, R.drawable.pokemon_42, R.drawable.pokemon_43, R.drawable.pokemon_44, R.drawable.pokemon_45, R.drawable.pokemon_46, R.drawable.pokemon_47, R.drawable.pokemon_48, R.drawable.pokemon_49, R.drawable.pokemon_50, R.drawable.pokemon_51, R.drawable.pokemon_52, R.drawable.pokemon_53, R.drawable.pokemon_54, R.drawable.pokemon_55, R.drawable.pokemon_56, R.drawable.pokemon_57, R.drawable.pokemon_58, R.drawable.pokemon_59, R.drawable.pokemon_60, R.drawable.pokemon_61, R.drawable.pokemon_62, R.drawable.pokemon_63, R.drawable.pokemon_64, R.drawable.pokemon_65, R.drawable.pokemon_66, R.drawable.pokemon_67, R.drawable.pokemon_68, R.drawable.pokemon_69, R.drawable.pokemon_70, R.drawable.pokemon_71, R.drawable.pokemon_72, R.drawable.pokemon_73, R.drawable.pokemon_74, R.drawable.pokemon_75, R.drawable.pokemon_76, R.drawable.pokemon_77, R.drawable.pokemon_78, R.drawable.pokemon_79, R.drawable.pokemon_80, R.drawable.pokemon_81, R.drawable.pokemon_82, R.drawable.pokemon_83, R.drawable.pokemon_84, R.drawable.pokemon_85, R.drawable.pokemon_86, R.drawable.pokemon_87, R.drawable.pokemon_88, R.drawable.pokemon_89, R.drawable.pokemon_90, R.drawable.pokemon_91, R.drawable.pokemon_92, R.drawable.pokemon_93, R.drawable.pokemon_94, R.drawable.pokemon_95, R.drawable.pokemon_96, R.drawable.pokemon_97, R.drawable.pokemon_98, R.drawable.pokemon_99, R.drawable.pokemon_100, R.drawable.pokemon_101, R.drawable.pokemon_102, R.drawable.pokemon_103, R.drawable.pokemon_104, R.drawable.pokemon_105, R.drawable.pokemon_106, R.drawable.pokemon_107, R.drawable.pokemon_108, R.drawable.pokemon_109, R.drawable.pokemon_110, R.drawable.pokemon_111, R.drawable.pokemon_112, R.drawable.pokemon_113, R.drawable.pokemon_114, R.drawable.pokemon_115, R.drawable.pokemon_116, R.drawable.pokemon_117, R.drawable.pokemon_118, R.drawable.pokemon_119, R.drawable.pokemon_120, R.drawable.pokemon_121, R.drawable.pokemon_122, R.drawable.pokemon_123, R.drawable.pokemon_124, R.drawable.pokemon_125, R.drawable.pokemon_126, R.drawable.pokemon_127, R.drawable.pokemon_128, R.drawable.pokemon_129, R.drawable.pokemon_130, R.drawable.pokemon_131, R.drawable.pokemon_132, R.drawable.pokemon_133, R.drawable.pokemon_134, R.drawable.pokemon_135, R.drawable.pokemon_136, R.drawable.pokemon_137, R.drawable.pokemon_138, R.drawable.pokemon_139, R.drawable.pokemon_140, R.drawable.pokemon_141, R.drawable.pokemon_142, R.drawable.pokemon_143, R.drawable.pokemon_144, R.drawable.pokemon_145, R.drawable.pokemon_146, R.drawable.pokemon_147, R.drawable.pokemon_148, R.drawable.pokemon_149, R.drawable.pokemon_150, R.drawable.pokemon_151};
 
 
-    static String PokeStats = "";
+
+
+
     @RequiresApi(api = Build.VERSION_CODES.N)
     @Override
     public View onCreateView(LayoutInflater inflater,
@@ -35,70 +44,71 @@ public class PokeDetails extends Fragment {
         }catch(Exception e){
             System.out.println();
         }
-
-
-
         return root;
     }
 
     @Override
     public void onStart() {
         super.onStart();
+
+
         Favo_Button();
+
+
 
     }
 
     @RequiresApi(api = Build.VERSION_CODES.N)
     public void setPokeDetailsFillables(View root){
         //setname
-        TextView pokedetails_name = (TextView) root.findViewById(R.id.textName);
+        TextView pokedetails_name = root.findViewById(R.id.textName);
         String[] splittedString = PokeStats.split(", ");
         pokedetails_name.setText(splittedString[0]);
 
         //Set HP
-        ProgressBar pokedetails_hp = (ProgressBar) root.findViewById(R.id.progressHP);
-        System.out.println("Yeeee " +Integer.parseInt(splittedString[3]));
+        ProgressBar pokedetails_hp = root.findViewById(R.id.progressHP);
+        //System.out.println("Yeeee " +Integer.parseInt(splittedString[3]));
         pokedetails_hp.setProgress(Integer.parseInt(splittedString[3]),true);
 
         //Set ATK
-        ProgressBar pokedetails_atk = (ProgressBar) root.findViewById(R.id.progressATK);
-        System.out.println("Yeeee " +Integer.parseInt(splittedString[4]));
+        ProgressBar pokedetails_atk = root.findViewById(R.id.progressATK);
+       // System.out.println("Yeeee " +Integer.parseInt(splittedString[4]));
         pokedetails_atk.setProgress(Integer.parseInt(splittedString[4]),true);
 
         //Set SP_ATK
-        ProgressBar pokedetails_sp_atk = (ProgressBar) root.findViewById(R.id.progressSPATK);
-        System.out.println("Yeeee " +Integer.parseInt(splittedString[5]));
+        ProgressBar pokedetails_sp_atk = root.findViewById(R.id.progressSPATK);
+       // System.out.println("Yeeee " +Integer.parseInt(splittedString[5]));
         pokedetails_sp_atk.setProgress(Integer.parseInt(splittedString[5]),true);
 
         //Set DEF
-        ProgressBar pokedetails_def = (ProgressBar) root.findViewById(R.id.progressDEF);
-        System.out.println("Yeeee " +Integer.parseInt(splittedString[6]));
+        ProgressBar pokedetails_def = root.findViewById(R.id.progressDEF);
+       // System.out.println("Yeeee " +Integer.parseInt(splittedString[6]));
         pokedetails_def.setProgress(Integer.parseInt(splittedString[6]),true);
 
         //Set SPDEF
-        ProgressBar pokedetails_sp_def = (ProgressBar) root.findViewById(R.id.progressSPDEF);
-        System.out.println("Yeeee " +Integer.parseInt(splittedString[7]));
+        ProgressBar pokedetails_sp_def = root.findViewById(R.id.progressSPDEF);
+       // System.out.println("Yeeee " +Integer.parseInt(splittedString[7]));
         pokedetails_sp_def.setProgress(Integer.parseInt(splittedString[7]),true);
 
         //Set SPD
-        ProgressBar pokedetails_spd = (ProgressBar) root.findViewById(R.id.progressSPD);
-        System.out.println("Yeeee " +Integer.parseInt(splittedString[8]));
+        ProgressBar pokedetails_spd = root.findViewById(R.id.progressSPD);
+       // System.out.println("Yeeee " +Integer.parseInt(splittedString[8]));
         pokedetails_spd.setProgress(Integer.parseInt(splittedString[8]),true);
 
         //Set weight
-        TextView pokedetails_weight = (TextView) root.findViewById(R.id.textWeightValue);
-        System.out.println("Yeeee " +Integer.parseInt(splittedString[9]));
+        TextView pokedetails_weight = root.findViewById(R.id.textWeightValue);
+      //  System.out.println("Yeeee " +Integer.parseInt(splittedString[9]));
         Float realweight = Float.valueOf(splittedString[9])/10;
         pokedetails_weight.setText(realweight + " KG");
 
         //Set weight
-        TextView pokedetails_height = (TextView) root.findViewById(R.id.textHeightValue);
-        System.out.println("Yeeee " +Integer.parseInt(splittedString[10]));
+        TextView pokedetails_height = root.findViewById(R.id.textHeightValue);
+      //  System.out.println("Yeeee " +Integer.parseInt(splittedString[10]));
         Float realheight = Float.valueOf(splittedString[10])/10;
         pokedetails_height.setText(realheight + " M");
 
         //set images
-        HashMap<String, Integer> PokeIDs = new HashMap<String, Integer>();
+
         PokeIDs.put("bulbasaur", 1);
         PokeIDs.put("ivysaur", 2);
         PokeIDs.put("venusaur", 3);
@@ -251,15 +261,14 @@ public class PokeDetails extends Fragment {
         PokeIDs.put("mewtwo", 150);
         PokeIDs.put("mew", 151);
 
-        final int[] pictureArray = {R.drawable.pokemon_1, R.drawable.pokemon_2, R.drawable.pokemon_3, R.drawable.pokemon_4, R.drawable.pokemon_5, R.drawable.pokemon_6, R.drawable.pokemon_7, R.drawable.pokemon_8, R.drawable.pokemon_9, R.drawable.pokemon_10, R.drawable.pokemon_11, R.drawable.pokemon_12, R.drawable.pokemon_13, R.drawable.pokemon_14, R.drawable.pokemon_15, R.drawable.pokemon_16, R.drawable.pokemon_17, R.drawable.pokemon_18, R.drawable.pokemon_19, R.drawable.pokemon_20, R.drawable.pokemon_21, R.drawable.pokemon_22, R.drawable.pokemon_23, R.drawable.pokemon_24, R.drawable.pokemon_25, R.drawable.pokemon_26, R.drawable.pokemon_27, R.drawable.pokemon_28, R.drawable.pokemon_29, R.drawable.pokemon_30, R.drawable.pokemon_31, R.drawable.pokemon_32, R.drawable.pokemon_33, R.drawable.pokemon_34, R.drawable.pokemon_35, R.drawable.pokemon_36, R.drawable.pokemon_37, R.drawable.pokemon_38, R.drawable.pokemon_39, R.drawable.pokemon_40, R.drawable.pokemon_41, R.drawable.pokemon_42, R.drawable.pokemon_43, R.drawable.pokemon_44, R.drawable.pokemon_45, R.drawable.pokemon_46, R.drawable.pokemon_47, R.drawable.pokemon_48, R.drawable.pokemon_49, R.drawable.pokemon_50, R.drawable.pokemon_51, R.drawable.pokemon_52, R.drawable.pokemon_53, R.drawable.pokemon_54, R.drawable.pokemon_55, R.drawable.pokemon_56, R.drawable.pokemon_57, R.drawable.pokemon_58, R.drawable.pokemon_59, R.drawable.pokemon_60, R.drawable.pokemon_61, R.drawable.pokemon_62, R.drawable.pokemon_63, R.drawable.pokemon_64, R.drawable.pokemon_65, R.drawable.pokemon_66, R.drawable.pokemon_67, R.drawable.pokemon_68, R.drawable.pokemon_69, R.drawable.pokemon_70, R.drawable.pokemon_71, R.drawable.pokemon_72, R.drawable.pokemon_73, R.drawable.pokemon_74, R.drawable.pokemon_75, R.drawable.pokemon_76, R.drawable.pokemon_77, R.drawable.pokemon_78, R.drawable.pokemon_79, R.drawable.pokemon_80, R.drawable.pokemon_81, R.drawable.pokemon_82, R.drawable.pokemon_83, R.drawable.pokemon_84, R.drawable.pokemon_85, R.drawable.pokemon_86, R.drawable.pokemon_87, R.drawable.pokemon_88, R.drawable.pokemon_89, R.drawable.pokemon_90, R.drawable.pokemon_91, R.drawable.pokemon_92, R.drawable.pokemon_93, R.drawable.pokemon_94, R.drawable.pokemon_95, R.drawable.pokemon_96, R.drawable.pokemon_97, R.drawable.pokemon_98, R.drawable.pokemon_99, R.drawable.pokemon_100, R.drawable.pokemon_101, R.drawable.pokemon_102, R.drawable.pokemon_103, R.drawable.pokemon_104, R.drawable.pokemon_105, R.drawable.pokemon_106, R.drawable.pokemon_107, R.drawable.pokemon_108, R.drawable.pokemon_109, R.drawable.pokemon_110, R.drawable.pokemon_111, R.drawable.pokemon_112, R.drawable.pokemon_113, R.drawable.pokemon_114, R.drawable.pokemon_115, R.drawable.pokemon_116, R.drawable.pokemon_117, R.drawable.pokemon_118, R.drawable.pokemon_119, R.drawable.pokemon_120, R.drawable.pokemon_121, R.drawable.pokemon_122, R.drawable.pokemon_123, R.drawable.pokemon_124, R.drawable.pokemon_125, R.drawable.pokemon_126, R.drawable.pokemon_127, R.drawable.pokemon_128, R.drawable.pokemon_129, R.drawable.pokemon_130, R.drawable.pokemon_131, R.drawable.pokemon_132, R.drawable.pokemon_133, R.drawable.pokemon_134, R.drawable.pokemon_135, R.drawable.pokemon_136, R.drawable.pokemon_137, R.drawable.pokemon_138, R.drawable.pokemon_139, R.drawable.pokemon_140, R.drawable.pokemon_141, R.drawable.pokemon_142, R.drawable.pokemon_143, R.drawable.pokemon_144, R.drawable.pokemon_145, R.drawable.pokemon_146, R.drawable.pokemon_147, R.drawable.pokemon_148, R.drawable.pokemon_149, R.drawable.pokemon_150, R.drawable.pokemon_151};
-        ImageView imageView = (ImageView) root.findViewById(R.id.imageView);
+       ImageView imageView = root.findViewById(R.id.imageView);
         imageView.setImageResource(pictureArray[PokeIDs.get(pokedetails_name.getText())-1]);
 
 
 
 
         //Set types
-        TextView pokedetails_type1 = (TextView) root.findViewById(R.id.textType);
+        TextView pokedetails_type1 = root.findViewById(R.id.textType);
         pokedetails_type1.setText(splittedString[1]);
         String type1 = (String) pokedetails_type1.getText();
 
@@ -329,7 +338,7 @@ public class PokeDetails extends Fragment {
             pokedetails_type1.setTextColor(getResources().getColor(R.color.black));
         }
 
-        TextView pokedetails_type2 = (TextView) root.findViewById(R.id.textType2);
+        TextView pokedetails_type2 = root.findViewById(R.id.textType2);
         pokedetails_type2.setText(splittedString[2]);
         String type2 = (String) pokedetails_type2.getText();
         if(splittedString[2].equals("null")){
@@ -393,58 +402,45 @@ public class PokeDetails extends Fragment {
 
 
     public void Favo_Button(){
-        MaterialFavoriteButton favorite = (MaterialFavoriteButton) getView().findViewById(R.id.Favorite_Button);
-
+        MaterialFavoriteButton favorite = getView().findViewById(R.id.Favorite_Button);
+        List<String> pokemon = new ArrayList<String>();
         favorite.setOnFavoriteChangeListener(
                 new MaterialFavoriteButton.OnFavoriteChangeListener() {
                     @Override
                     public void onFavoriteChanged(MaterialFavoriteButton buttonView, boolean favorite) {
-                        TextView pokename = getView().findViewById(R.id.textName);
-                        TextView pokeheight = getView().findViewById(R.id.textHeightValue);
-                        TextView pokeweight = getView().findViewById(R.id.textWeightValue);
-                        TextView poketype1 = getView().findViewById(R.id.textType);
-                        TextView poketype2 = getView().findViewById(R.id.textType2);
-                        ProgressBar pokehp = getView().findViewById(R.id.progressHP);
-                        ProgressBar pokeatk = getView().findViewById(R.id.progressATK);
-                        ProgressBar pokespatk = getView().findViewById(R.id.progressSPATK);
-                        ProgressBar pokedef = getView().findViewById(R.id.progressDEF);
-                        ProgressBar pokespdef = getView().findViewById(R.id.progressSPDEF);
-                        ProgressBar pokespd = getView().findViewById(R.id.progressSPD);
-                        ImageView pokeimg = getView().findViewById(R.id.imageView);
-
-                        String name = (String) pokename.getText();
-                        String height = (String) pokeheight.getText();
-                        String weight = (String) pokeweight.getText();
-                        String type1 = (String) poketype1.getText();
-                        String type2 = (String) poketype2.getText();
-                        int hp = (int) pokehp.getProgress();
-                        int atk = (int) pokeatk.getProgress();
-                        int spatk = (int) pokespatk.getProgress();
-                        int def = (int) pokedef.getProgress();
-                        int spdef = (int) pokespdef.getProgress();
-                        int spd = (int) pokespd.getProgress();
-                        Drawable img = (Drawable) pokeimg.getDrawable();
-
-                        System.out.println(name);
-                        System.out.println(height);
-                        System.out.println(weight);
-                        System.out.println(type1);
-                        System.out.println(type2);
-                        System.out.println(hp);
-                        System.out.println(atk);
-                        System.out.println(spatk);
-                        System.out.println(def);
-                        System.out.println(spdef);
-                        System.out.println(spd);
-
                         if(favorite){
-                            Snackbar.make(buttonView, "Added to favorites", Snackbar.LENGTH_SHORT).show();
+                            String[] splittedString = PokeStats.split(", ");
+                            String name =  splittedString[0];
+                            String hp = splittedString[3];
+                            String atk = splittedString[4];
+                            String spatk = splittedString[5];
+                            String def = splittedString[6];
+                            String spdef = splittedString[7];
 
+                            System.out.println(name);
+                            System.out.println(hp);
+                            System.out.println(atk);
+                            System.out.println(spatk);
+                            System.out.println(def);
+                            System.out.println(spdef);
+
+
+
+                            //Snackbar.make(buttonView, "Added to favorites", Snackbar.LENGTH_SHORT).show();
+                            DashboardFragment.FavCounter++;
+                            pokemon.add(name  +", "+ hp +", "+ atk + ", " + spatk + ", " + def + ", " + spdef);
+                            AllFavs.add(pokemon);
+                            System.out.println(DashboardFragment.FavCounter);
                         }else{
-                            Snackbar.make(buttonView, "Removed from favorites", Snackbar.LENGTH_SHORT).show();
+                            //Snackbar.make(buttonView, "Removed from favorites", Snackbar.LENGTH_SHORT).show();
+                            DashboardFragment.FavCounter--;
+                            AllFavs.remove(pokemon);
+                            System.out.println(DashboardFragment.FavCounter);
 
                         }
                     }
+
                 });
-    }
+
+        }
 }

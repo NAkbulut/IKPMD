@@ -1180,8 +1180,10 @@ public class MainActivity extends AppCompatActivity {
         }
 
 
+
+
         BottomNavigationView botnav = (BottomNavigationView) findViewById(R.id.nav_view);
-        GridLayout mainGrid = (GridLayout) findViewById(R.id.mainGrid);
+        GridLayout mainGrid = (GridLayout) findViewById(R.id.mainGrid2);
         botnav.setOnNavigationItemSelectedListener(new BottomNavigationView.OnNavigationItemSelectedListener() {
             @Override
             public boolean onNavigationItemSelected(@NonNull MenuItem item) {

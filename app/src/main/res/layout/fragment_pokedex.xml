@@ -15,7 +15,7 @@
 
 
         <GridLayout
-            android:id="@+id/mainGrid"
+            android:id="@+id/mainGrid2"
             android:layout_width="match_parent"
             android:layout_height="10000dp"
             android:layout_weight="10"
