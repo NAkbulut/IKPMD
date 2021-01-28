@@ -2,22 +2,17 @@ package com.example.ikpmd_periode2.ui.graphs;
 
 import android.graphics.Color;
 import android.os.Bundle;
-
-import androidx.fragment.app.Fragment;
-
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
+import androidx.fragment.app.Fragment;
+
 import com.example.ikpmd_periode2.R;
 import com.jjoe64.graphview.GraphView;
-import com.jjoe64.graphview.GridLabelRenderer;
-import com.jjoe64.graphview.ValueDependentColor;
 import com.jjoe64.graphview.helper.StaticLabelsFormatter;
 import com.jjoe64.graphview.series.BarGraphSeries;
 import com.jjoe64.graphview.series.DataPoint;
-import com.jjoe64.graphview.series.DataPointInterface;
-import com.jjoe64.graphview.series.LineGraphSeries;
 
 
 public class GraphFragment extends Fragment {
@@ -26,8 +21,8 @@ public class GraphFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_graph, container, false);
-        GraphView graph2 = (GraphView) view.findViewById(R.id.graph2);
-        GraphView graph = (GraphView) view.findViewById(R.id.graph);
+        GraphView graph2 = view.findViewById(R.id.graph2);
+        GraphView graph = view.findViewById(R.id.graph);
         BarGraphSeries<DataPoint> series2 = new BarGraphSeries<DataPoint>(new DataPoint[] {
                 new DataPoint(0, 10),
                 new DataPoint(1, 5),

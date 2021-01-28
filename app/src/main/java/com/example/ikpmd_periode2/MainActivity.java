@@ -1,7 +1,6 @@
 package com.example.ikpmd_periode2;
 
 import android.app.FragmentManager;
-import android.content.ClipData;
 import android.content.ContentValues;
 import android.content.Context;
 import android.database.Cursor;
@@ -10,11 +9,9 @@ import android.net.NetworkInfo;
 import android.os.Bundle;
 import android.os.StrictMode;
 import android.util.Log;
-import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.GridLayout;
-import android.widget.GridView;
 import android.widget.ImageView;
 import android.widget.TextView;
 
@@ -41,8 +38,6 @@ import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
-
-import org.w3c.dom.Text;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -84,7 +79,7 @@ public class MainActivity extends AppCompatActivity {
         //Get involved textview
         String textviewID = "pokename" + id;
         int resID = getResources().getIdentifier(textviewID, "id", getPackageName());
-        TextView pokenam = (TextView) findViewById(resID);
+        TextView pokenam = findViewById(resID);
         System.out.println("Bring it back " + pokenam.getText());
         String cardname = (String) pokenam.getText();
 
@@ -148,7 +143,7 @@ public class MainActivity extends AppCompatActivity {
         //Get involved textview
         String textviewID = "favname" + id;
         int resID = getResources().getIdentifier(textviewID, "id", getPackageName());
-        TextView pokenam = (TextView) findViewById(resID);
+        TextView pokenam = findViewById(resID);
         System.out.println("Bring it back " + pokenam.getText());
         String cardname = (String) pokenam.getText();
 
@@ -776,7 +771,6 @@ public class MainActivity extends AppCompatActivity {
         });
     }
 
-    ;
     //onCreate is wat moet er gebeuren bij buildtime
 
 
@@ -805,17 +799,17 @@ public class MainActivity extends AppCompatActivity {
         List<List<String>> List_of_all_pokes = new ArrayList<>();
         for(int i = 0; i < 151; ++i){
             c.moveToPosition(i);
-            String name = (String) c.getString(c.getColumnIndex("Name"));
-            String type1 = (String) c.getString(c.getColumnIndex("Type1"));
-            String type2 = (String) c.getString(c.getColumnIndex("Type2"));
-            String HP = (String) c.getString(c.getColumnIndex("HP"));
-            String ATK = (String) c.getString(c.getColumnIndex("ATK"));
-            String SP_ATK = (String) c.getString(c.getColumnIndex("SP_ATK"));
-            String DEF = (String) c.getString(c.getColumnIndex("DEF"));
-            String SP_DEF = (String) c.getString(c.getColumnIndex("SP_DEF"));
-            String SPD = (String) c.getString(c.getColumnIndex("SPD"));
-            String Weight = (String) c.getString(c.getColumnIndex("Weight"));
-            String Height = (String) c.getString(c.getColumnIndex("Height"));
+            String name = c.getString(c.getColumnIndex("Name"));
+            String type1 = c.getString(c.getColumnIndex("Type1"));
+            String type2 = c.getString(c.getColumnIndex("Type2"));
+            String HP = c.getString(c.getColumnIndex("HP"));
+            String ATK = c.getString(c.getColumnIndex("ATK"));
+            String SP_ATK = c.getString(c.getColumnIndex("SP_ATK"));
+            String DEF = c.getString(c.getColumnIndex("DEF"));
+            String SP_DEF = c.getString(c.getColumnIndex("SP_DEF"));
+            String SPD = c.getString(c.getColumnIndex("SPD"));
+            String Weight = c.getString(c.getColumnIndex("Weight"));
+            String Height = c.getString(c.getColumnIndex("Height"));
             List<String> pk_list = new ArrayList<>();
             pk_list.add(name);
             pk_list.add(type1);
@@ -854,7 +848,7 @@ public class MainActivity extends AppCompatActivity {
             int e = i + 1;
             String textviewID = "pokename" + e;
             int resID = this.getResources().getIdentifier(textviewID, "id", getPackageName());
-            TextView pokenam = (TextView) findViewById(resID);
+            TextView pokenam = findViewById(resID);
             pokenam.setText(name);
             pokenam.getText();
 
@@ -863,7 +857,7 @@ public class MainActivity extends AppCompatActivity {
             int q = i + 1;
             String cardviewID = "pokecard" + q;
             int resID_card = this.getResources().getIdentifier(cardviewID, "id", getPackageName());
-            CardView pokecard = (CardView) findViewById(resID_card);
+            CardView pokecard = findViewById(resID_card);
             if(type1.equals("rock")){
                 pokecard.setCardBackgroundColor(getResources().getColor(R.color.rock));
             }else if(type1.equals("ground")){
@@ -1066,7 +1060,7 @@ public class MainActivity extends AppCompatActivity {
 
             String imgID = "pokeimg" + e;
             int resID_img = this.getResources().getIdentifier(imgID, "id", getPackageName());
-            ImageView pokeimg = (ImageView) findViewById(resID_img);
+            ImageView pokeimg = findViewById(resID_img);
 
             try {
                 pokeimg.setImageResource(pictureArray[PokeIDs.get(pokenam.getText())-1]);
@@ -1077,7 +1071,7 @@ public class MainActivity extends AppCompatActivity {
             //fuck mew, de laatste cardview in de grid doet altijd "SPECIAL" dus ik heb het uit frustratie maar gehardcode.
             String imgID_final = "pokeimg151";
             int resID_img_final = this.getResources().getIdentifier(imgID_final, "id", getPackageName());
-            ImageView pokeimg_final = (ImageView) findViewById(resID_img_final);
+            ImageView pokeimg_final = findViewById(resID_img_final);
             pokeimg_final.setImageResource(pictureArray[150]);
 
 
@@ -1106,7 +1100,7 @@ public class MainActivity extends AppCompatActivity {
             ft.setTransition(FragmentTransaction.TRANSIT_FRAGMENT_FADE);
             ft.addToBackStack(null);
             ft.commit();
-            GridLayout mainGrid = (GridLayout) findViewById(R.id.mainGrid);
+            GridLayout mainGrid = findViewById(R.id.mainGrid);
             mainGrid.setClickable(true);
             mainGrid.setVisibility(View.VISIBLE);
         } catch (Exception e) {
@@ -1225,8 +1219,8 @@ public class MainActivity extends AppCompatActivity {
 
 
 
-        BottomNavigationView botnav = (BottomNavigationView) findViewById(R.id.nav_view);
-        GridLayout mainGrid = (GridLayout) findViewById(R.id.mainGrid2);
+        BottomNavigationView botnav = findViewById(R.id.nav_view);
+        GridLayout mainGrid = findViewById(R.id.mainGrid2);
         botnav.setOnNavigationItemSelectedListener(new BottomNavigationView.OnNavigationItemSelectedListener() {
             @Override
             public boolean onNavigationItemSelected(@NonNull MenuItem item) {

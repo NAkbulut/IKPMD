@@ -1,7 +1,6 @@
 package com.example.ikpmd_periode2.ui.dashboard;
 
 import android.content.res.ColorStateList;
-import android.media.Image;
 import android.os.Bundle;
 import android.util.TypedValue;
 import android.view.LayoutInflater;
@@ -17,11 +16,9 @@ import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
 import androidx.lifecycle.ViewModelProvider;
 
-import com.example.ikpmd_periode2.MainActivity;
 import com.example.ikpmd_periode2.PokeDetails;
 import com.example.ikpmd_periode2.R;
 
-import java.util.Arrays;
 import java.util.List;
 
 import static android.graphics.Color.parseColor;
@@ -47,14 +44,14 @@ public class DashboardFragment extends Fragment {
     @Override
     public void onStart() {
         super.onStart();
-        LinearLayout yeet = (LinearLayout) getView().findViewById(R.id.yeet);
+        LinearLayout yeet = getView().findViewById(R.id.yeet);
         setFavFillables();
 
 
     }
 
     public void setFavFillables(){
-        GridLayout layout = (GridLayout) getView().findViewById(R.id.mainGrid);
+        GridLayout layout = getView().findViewById(R.id.mainGrid);
         int count = layout.getChildCount();
         View v = null;
         for(Object entry : allFavs){
@@ -74,7 +71,7 @@ public class DashboardFragment extends Fragment {
                 //set name
                 String textviewID = "favname" + e;
                 int resID = getResources().getIdentifier(textviewID, "id", getActivity().getPackageName());
-                TextView pokenam = (TextView) v.findViewById(resID);
+                TextView pokenam = v.findViewById(resID);
                 String name= SplittedString[0];
                 pokenam.setText(name);
                 pokenam.setTextSize(TypedValue.COMPLEX_UNIT_SP, Float.parseFloat("20"));
@@ -82,7 +79,7 @@ public class DashboardFragment extends Fragment {
                 //set HP
                 String HP = "hp" + e;
                 int hpID = getResources().getIdentifier(HP, "id", getActivity().getPackageName());
-                ProgressBar pokehp = (ProgressBar) v.findViewById(hpID);
+                ProgressBar pokehp = v.findViewById(hpID);
                 String hp = SplittedString[1];
                 System.out.println("HP: " + name + hp);
                 pokehp.setMax(250);
@@ -92,7 +89,7 @@ public class DashboardFragment extends Fragment {
                 //set ATK
                 String ATK = "atk" + e;
                 int atkID = getResources().getIdentifier(ATK, "id", getActivity().getPackageName());
-                ProgressBar pokeatk = (ProgressBar) v.findViewById(atkID);
+                ProgressBar pokeatk = v.findViewById(atkID);
                 String atk = SplittedString[2];
                 System.out.println("ATK: " + name + atk);
                 pokeatk.setMax(134);
@@ -102,7 +99,7 @@ public class DashboardFragment extends Fragment {
                 //set spatk
                 String SPATK = "spatk" + e;
                 int spatkID = getResources().getIdentifier(SPATK, "id", getActivity().getPackageName());
-                ProgressBar pokespatk = (ProgressBar) v.findViewById(spatkID);
+                ProgressBar pokespatk = v.findViewById(spatkID);
                 String spatk = SplittedString[3];
                 System.out.println("SPATK: " + name + spatk);
                 pokespatk.setMax(194);
@@ -113,7 +110,7 @@ public class DashboardFragment extends Fragment {
                 //set def
                 String DEF = "def" + e;
                 int defID = getResources().getIdentifier(DEF, "id", getActivity().getPackageName());
-                ProgressBar pokedef = (ProgressBar) v.findViewById(defID);
+                ProgressBar pokedef = v.findViewById(defID);
                 String def = SplittedString[4];
                 System.out.println("DEF: " + name + def);
                 pokedef.setMax(180);
@@ -125,7 +122,7 @@ public class DashboardFragment extends Fragment {
                 //set spdef
                 String SPDEF = "spdef" + e;
                 int spdefID = getResources().getIdentifier(SPDEF, "id", getActivity().getPackageName());
-                ProgressBar pokespdef = (ProgressBar) v.findViewById(spdefID);
+                ProgressBar pokespdef = v.findViewById(spdefID);
                 String spdef = SplittedString[5];
                 System.out.println("SPDEF: " + name + spdef);
                 pokespdef.setMax(255);
@@ -135,7 +132,7 @@ public class DashboardFragment extends Fragment {
                 //set image
                 String IMG = "favimg" + e;
                 int imgID = getResources().getIdentifier(IMG, "id", getActivity().getPackageName());
-                ImageView pokeimg = (ImageView) v.findViewById(imgID);
+                ImageView pokeimg = v.findViewById(imgID);
 
                 //System.out.println("Fatboy Slim " + );
                 pokeimg.setImageResource(PokeDetails.pictureArray[PokeDetails.PokeIDs.get(pokenam.getText())-1]);
