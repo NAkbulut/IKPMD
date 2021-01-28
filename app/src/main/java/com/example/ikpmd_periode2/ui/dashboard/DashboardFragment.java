@@ -9,6 +9,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.GridLayout;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.ProgressBar;
 import android.widget.TextView;
 
@@ -46,7 +47,9 @@ public class DashboardFragment extends Fragment {
     @Override
     public void onStart() {
         super.onStart();
+        LinearLayout yeet = (LinearLayout) getView().findViewById(R.id.yeet);
         setFavFillables();
+
 
     }
 

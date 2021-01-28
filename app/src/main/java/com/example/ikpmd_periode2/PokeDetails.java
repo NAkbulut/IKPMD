@@ -2,6 +2,8 @@ package com.example.ikpmd_periode2;
 
 import android.content.res.ColorStateList;
 import android.graphics.drawable.Drawable;
+import android.media.MediaPlayer;
+import android.net.Uri;
 import android.os.Build;
 import android.os.Bundle;
 import android.view.LayoutInflater;
@@ -18,6 +20,8 @@ import androidx.fragment.app.Fragment;
 import com.example.ikpmd_periode2.ui.dashboard.DashboardFragment;
 import com.github.ivbaranov.mfb.MaterialFavoriteButton;
 import com.google.android.material.snackbar.Snackbar;
+import android.media.AudioManager;
+import android.media.SoundPool;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -50,8 +54,7 @@ public class PokeDetails extends Fragment {
     @Override
     public void onStart() {
         super.onStart();
-
-
+        playSound();
         Favo_Button();
 
 
@@ -396,6 +399,182 @@ public class PokeDetails extends Fragment {
         }
 
 
+
+
+
+
+
+    }
+
+    public void playSound(){
+
+        PokeIDs.put("bulbasaur", 1);
+        PokeIDs.put("ivysaur", 2);
+        PokeIDs.put("venusaur", 3);
+        PokeIDs.put("charmander", 4);
+        PokeIDs.put("charmeleon", 5);
+        PokeIDs.put("charizard", 6);
+        PokeIDs.put("squirtle", 7);
+        PokeIDs.put("wartortle", 8);
+        PokeIDs.put("blastoise", 9);
+        PokeIDs.put("caterpie", 10);
+        PokeIDs.put("metapod", 11);
+        PokeIDs.put("butterfree", 12);
+        PokeIDs.put("weedle", 13);
+        PokeIDs.put("kakuna", 14);
+        PokeIDs.put("beedrill", 15);
+        PokeIDs.put("pidgey", 16);
+        PokeIDs.put("pidgeotto", 17);
+        PokeIDs.put("pidgeot", 18);
+        PokeIDs.put("rattata", 19);
+        PokeIDs.put("raticate", 20);
+        PokeIDs.put("spearow", 21);
+        PokeIDs.put("fearow", 22);
+        PokeIDs.put("ekans", 23);
+        PokeIDs.put("arbok", 24);
+        PokeIDs.put("pikachu", 25);
+        PokeIDs.put("raichu", 26);
+        PokeIDs.put("sandshrew", 27);
+        PokeIDs.put("sandslash", 28);
+        PokeIDs.put("nidoran-f", 29);
+        PokeIDs.put("nidorina", 30);
+        PokeIDs.put("nidoqueen", 31);
+        PokeIDs.put("nidoran-m", 32);
+        PokeIDs.put("nidorino", 33);
+        PokeIDs.put("nidoking", 34);
+        PokeIDs.put("clefairy", 35);
+        PokeIDs.put("clefable", 36);
+        PokeIDs.put("vulpix", 37);
+        PokeIDs.put("ninetales", 38);
+        PokeIDs.put("jigglypuff", 39);
+        PokeIDs.put("wigglytuff", 40);
+        PokeIDs.put("zubat", 41);
+        PokeIDs.put("golbat", 42);
+        PokeIDs.put("oddish", 43);
+        PokeIDs.put("gloom", 44);
+        PokeIDs.put("vileplume", 45);
+        PokeIDs.put("paras", 46);
+        PokeIDs.put("parasect", 47);
+        PokeIDs.put("venonat", 48);
+        PokeIDs.put("venomoth", 49);
+        PokeIDs.put("diglett", 50);
+        PokeIDs.put("dugtrio", 51);
+        PokeIDs.put("meowth", 52);
+        PokeIDs.put("persian", 53);
+        PokeIDs.put("psyduck", 54);
+        PokeIDs.put("golduck", 55);
+        PokeIDs.put("mankey", 56);
+        PokeIDs.put("primeape", 57);
+        PokeIDs.put("growlithe", 58);
+        PokeIDs.put("arcanine", 59);
+        PokeIDs.put("poliwag", 60);
+        PokeIDs.put("poliwhirl", 61);
+        PokeIDs.put("poliwrath", 62);
+        PokeIDs.put("abra", 63);
+        PokeIDs.put("kadabra", 64);
+        PokeIDs.put("alakazam", 65);
+        PokeIDs.put("machop", 66);
+        PokeIDs.put("machoke", 67);
+        PokeIDs.put("machamp", 68);
+        PokeIDs.put("bellsprout", 69);
+        PokeIDs.put("weepinbell", 70);
+        PokeIDs.put("victreebel", 71);
+        PokeIDs.put("tentacool", 72);
+        PokeIDs.put("tentacruel", 73);
+        PokeIDs.put("geodude", 74);
+        PokeIDs.put("graveler", 75);
+        PokeIDs.put("golem", 76);
+        PokeIDs.put("ponyta", 77);
+        PokeIDs.put("rapidash", 78);
+        PokeIDs.put("slowpoke", 79);
+        PokeIDs.put("slowbro", 80);
+        PokeIDs.put("magnemite", 81);
+        PokeIDs.put("magneton", 82);
+        PokeIDs.put("farfetchd", 83);
+        PokeIDs.put("doduo", 84);
+        PokeIDs.put("dodrio", 85);
+        PokeIDs.put("seel", 86);
+        PokeIDs.put("dewgong", 87);
+        PokeIDs.put("grimer", 88);
+        PokeIDs.put("muk", 89);
+        PokeIDs.put("shellder", 90);
+        PokeIDs.put("cloyster", 91);
+        PokeIDs.put("gastly", 92);
+        PokeIDs.put("haunter", 93);
+        PokeIDs.put("gengar", 94);
+        PokeIDs.put("onix", 95);
+        PokeIDs.put("drowzee", 96);
+        PokeIDs.put("hypno", 97);
+        PokeIDs.put("krabby", 98);
+        PokeIDs.put("kingler", 99);
+        PokeIDs.put("voltorb", 100);
+        PokeIDs.put("electrode", 101);
+        PokeIDs.put("exeggcute", 102);
+        PokeIDs.put("exeggutor", 103);
+        PokeIDs.put("cubone", 104);
+        PokeIDs.put("marowak", 105);
+        PokeIDs.put("hitmonlee", 106);
+        PokeIDs.put("hitmonchan", 107);
+        PokeIDs.put("lickitung", 108);
+        PokeIDs.put("koffing", 109);
+        PokeIDs.put("weezing", 110);
+        PokeIDs.put("rhyhorn", 111);
+        PokeIDs.put("rhydon", 112);
+        PokeIDs.put("chansey", 113);
+        PokeIDs.put("tangela", 114);
+        PokeIDs.put("kangaskhan", 115);
+        PokeIDs.put("horsea", 116);
+        PokeIDs.put("seadra", 117);
+        PokeIDs.put("goldeen", 118);
+        PokeIDs.put("seaking", 119);
+        PokeIDs.put("staryu", 120);
+        PokeIDs.put("starmie", 121);
+        PokeIDs.put("mr-mime", 122);
+        PokeIDs.put("scyther", 123);
+        PokeIDs.put("jynx", 124);
+        PokeIDs.put("electabuzz", 125);
+        PokeIDs.put("magmar", 126);
+        PokeIDs.put("pinsir", 127);
+        PokeIDs.put("tauros", 128);
+        PokeIDs.put("magikarp", 129);
+        PokeIDs.put("gyarados", 130);
+        PokeIDs.put("lapras", 131);
+        PokeIDs.put("ditto", 132);
+        PokeIDs.put("eevee", 133);
+        PokeIDs.put("vaporeon", 134);
+        PokeIDs.put("jolteon", 135);
+        PokeIDs.put("flareon", 136);
+        PokeIDs.put("porygon", 137);
+        PokeIDs.put("omanyte", 138);
+        PokeIDs.put("omastar", 139);
+        PokeIDs.put("kabuto", 140);
+        PokeIDs.put("kabutops", 141);
+        PokeIDs.put("aerodactyl", 142);
+        PokeIDs.put("snorlax", 143);
+        PokeIDs.put("articuno", 144);
+        PokeIDs.put("zapdos", 145);
+        PokeIDs.put("moltres", 146);
+        PokeIDs.put("dratini", 147);
+        PokeIDs.put("dragonair", 148);
+        PokeIDs.put("dragonite", 149);
+        PokeIDs.put("mewtwo", 150);
+        PokeIDs.put("mew", 151);
+
+
+        //// AYOOOOO DJ, SPIN THAT SHIT
+        TextView pokedetails_name = getView().findViewById(R.id.textName);
+        Integer sound_filename = PokeIDs.get(pokedetails_name.getText());
+        //R.raw.s_100
+        String textviewID = "s_" + sound_filename;
+        System.out.println("Time is now " + textviewID);
+        String path = "R.raw." +  textviewID;
+        System.out.println("Test this pls: " + Uri.parse(path));
+        int id = getContext().getResources().getIdentifier(textviewID, "raw", getContext().getPackageName());
+
+
+        MediaPlayer mPlayer = MediaPlayer.create(getContext(), id);
+        mPlayer.setVolume(0.1f, 0.1f);
+        mPlayer.start();
 
     }
 
