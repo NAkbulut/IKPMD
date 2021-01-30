@@ -149,7 +149,7 @@ Door deze fragments bovenaan te defineren kan je gemakkelijk de try catch statem
 
 # Schermen
 ## Loading DB
-
+![](loadingdb.mp4)
 ### XML
 
 ### JAVA
