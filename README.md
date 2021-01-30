@@ -60,7 +60,7 @@ De app die in dit verslag beschreven is is een pokedex van alle eerste generatie
 - Favorite button: https://github.com/IvBaranov/MaterialFavoriteButton
 - Grids: https://stackoverflow.com/questions/27908680/how-lists-specifically-recyclerview-with-cardviews-in-android-work#
 - Fragment navigation issue: https://github.com/android/architecture-components-samples/issues/530
-- Graphs:
+- Graphs: https://github.com/jjoe64/GraphView
 - Pokemon sounds: https://veekun.com/dex/downloads#other-files
 - Images: https://pokeres.bastionbot.org/images/pokemon/1.png
 
