@@ -38,7 +38,7 @@ IKPMD periode 2 - Eerste gelegenheid
   * [Lokale Database](#lokale-database)
   * [Firebase](#firebase)  
 - [Assets](#assets)
-  * [Muziek](#muziek)
+  * [Geluiden](#geluiden)
   * [Afbeeldingen](#afbeeldingen)  
   * [Kleuren](#kleuren)
   * [Libraries](#libraries)  
@@ -47,7 +47,7 @@ IKPMD periode 2 - Eerste gelegenheid
 ----------
 
 # Inleiding
-De app die in dit verslag beschreven is is een pokedex van alle eerste generatie Pokemen. Deze app is gebouwd voor API 30 en is getest op een Google Pixel 3A. In GIT hebben wij alles in de master branche gedaan, dus het was een shitshow. Maar het heeft enigzins gewerkt. Als er vragen of opmerkingen zijn schiet een issue is of contact s1113405@student.hsleiden.nl.
+De app die in dit verslag beschreven is is een pokedex van alle eerste generatie Pokemen. Deze app is gebouwd voor API 30 en is getest op een Google Pixel 3A. In GIT hebben wij alles in de master branche gedaan, dus het was een shitshow. Maar het heeft enigzins gewerkt. Als er vragen of opmerkingen zijn schiet een issue in of contact s1113405@student.hsleiden.nl.
 
 Features:
 - Het zien van alle first gen pokemen
@@ -667,11 +667,200 @@ Daarnaast zijn er nog een aantal functies uitgeschreven om bijvoorbeeld zelf sam
 ----------
 
 # Assets
-## Muziek
+## Geluiden
+Iedere pokemon ken een zogenaamde pokemon cry. Pikachu: "Pika Pika!!!". Al deze cries voor first gen pokemen zijn van een website gehaald die in de bronnen is terug te vinden. Die files kwamen in OGG formaat, dus ik heb ze met een online converter omgezet naar MP3 (I know, ik kon het scripten maar de converter liet mij per 25 files converten. Dus was sneller op deze manier). Vervolgens heb ik ervoor gezorgd dat de sounds in res.raw terecht zijn gekomen, in pokedetails onstart animatie+sound afspeelt:
+```
+        //// AYOOOOO DJ, SPIN THAT SHIT
+        TextView pokedetails_name = getView().findViewById(R.id.textName);
+        Integer sound_filename = PokeIDs.get(pokedetails_name.getText());
+        String textviewID = "s_" + sound_filename;
+        int id = getContext().getResources().getIdentifier(textviewID, "raw", getContext().getPackageName());
+
+        MediaPlayer mPlayer = MediaPlayer.create(getContext(), id);
+        mPlayer.setVolume(0.1f, 0.1f);
+        mPlayer.start();
+
+
+        //// AND SHAKE THAT BOOTYYYY
+        Animation shake;
+        shake = AnimationUtils.loadAnimation(getContext(), R.anim.shake);
+        ImageView image;
+        image = (ImageView) getView().findViewById(R.id.imageView);
+        image.startAnimation(shake);
+```
 
 ## Afbeeldingen
+Gedownload vanaf een website die staat in de bronnen. Verwerkt in res.Drawables en op een naar mijn mening vreselijke manier verwerkt (maar goed, hoe meer tijd ik hiervoor krijg des te mooier het eruit gaat zien):
+```
+        //set images
+        PokeIDs.put("bulbasaur", 1);
+        PokeIDs.put("ivysaur", 2);
+        PokeIDs.put("venusaur", 3);
+        PokeIDs.put("charmander", 4);
+        PokeIDs.put("charmeleon", 5);
+        PokeIDs.put("charizard", 6);
+        PokeIDs.put("squirtle", 7);
+        PokeIDs.put("wartortle", 8);
+        PokeIDs.put("blastoise", 9);
+        PokeIDs.put("caterpie", 10);
+        PokeIDs.put("metapod", 11);
+        PokeIDs.put("butterfree", 12);
+        PokeIDs.put("weedle", 13);
+        PokeIDs.put("kakuna", 14);
+        PokeIDs.put("beedrill", 15);
+        PokeIDs.put("pidgey", 16);
+        PokeIDs.put("pidgeotto", 17);
+        PokeIDs.put("pidgeot", 18);
+        PokeIDs.put("rattata", 19);
+        PokeIDs.put("raticate", 20);
+        PokeIDs.put("spearow", 21);
+        PokeIDs.put("fearow", 22);
+        PokeIDs.put("ekans", 23);
+        PokeIDs.put("arbok", 24);
+        PokeIDs.put("pikachu", 25);
+        PokeIDs.put("raichu", 26);
+        PokeIDs.put("sandshrew", 27);
+        PokeIDs.put("sandslash", 28);
+        PokeIDs.put("nidoran-f", 29);
+        PokeIDs.put("nidorina", 30);
+        PokeIDs.put("nidoqueen", 31);
+        PokeIDs.put("nidoran-m", 32);
+        PokeIDs.put("nidorino", 33);
+        PokeIDs.put("nidoking", 34);
+        PokeIDs.put("clefairy", 35);
+        PokeIDs.put("clefable", 36);
+        PokeIDs.put("vulpix", 37);
+        PokeIDs.put("ninetales", 38);
+        PokeIDs.put("jigglypuff", 39);
+        PokeIDs.put("wigglytuff", 40);
+        PokeIDs.put("zubat", 41);
+        PokeIDs.put("golbat", 42);
+        PokeIDs.put("oddish", 43);
+        PokeIDs.put("gloom", 44);
+        PokeIDs.put("vileplume", 45);
+        PokeIDs.put("paras", 46);
+        PokeIDs.put("parasect", 47);
+        PokeIDs.put("venonat", 48);
+        PokeIDs.put("venomoth", 49);
+        PokeIDs.put("diglett", 50);
+        PokeIDs.put("dugtrio", 51);
+        PokeIDs.put("meowth", 52);
+        PokeIDs.put("persian", 53);
+        PokeIDs.put("psyduck", 54);
+        PokeIDs.put("golduck", 55);
+        PokeIDs.put("mankey", 56);
+        PokeIDs.put("primeape", 57);
+        PokeIDs.put("growlithe", 58);
+        PokeIDs.put("arcanine", 59);
+        PokeIDs.put("poliwag", 60);
+        PokeIDs.put("poliwhirl", 61);
+        PokeIDs.put("poliwrath", 62);
+        PokeIDs.put("abra", 63);
+        PokeIDs.put("kadabra", 64);
+        PokeIDs.put("alakazam", 65);
+        PokeIDs.put("machop", 66);
+        PokeIDs.put("machoke", 67);
+        PokeIDs.put("machamp", 68);
+        PokeIDs.put("bellsprout", 69);
+        PokeIDs.put("weepinbell", 70);
+        PokeIDs.put("victreebel", 71);
+        PokeIDs.put("tentacool", 72);
+        PokeIDs.put("tentacruel", 73);
+        PokeIDs.put("geodude", 74);
+        PokeIDs.put("graveler", 75);
+        PokeIDs.put("golem", 76);
+        PokeIDs.put("ponyta", 77);
+        PokeIDs.put("rapidash", 78);
+        PokeIDs.put("slowpoke", 79);
+        PokeIDs.put("slowbro", 80);
+        PokeIDs.put("magnemite", 81);
+        PokeIDs.put("magneton", 82);
+        PokeIDs.put("farfetchd", 83);
+        PokeIDs.put("doduo", 84);
+        PokeIDs.put("dodrio", 85);
+        PokeIDs.put("seel", 86);
+        PokeIDs.put("dewgong", 87);
+        PokeIDs.put("grimer", 88);
+        PokeIDs.put("muk", 89);
+        PokeIDs.put("shellder", 90);
+        PokeIDs.put("cloyster", 91);
+        PokeIDs.put("gastly", 92);
+        PokeIDs.put("haunter", 93);
+        PokeIDs.put("gengar", 94);
+        PokeIDs.put("onix", 95);
+        PokeIDs.put("drowzee", 96);
+        PokeIDs.put("hypno", 97);
+        PokeIDs.put("krabby", 98);
+        PokeIDs.put("kingler", 99);
+        PokeIDs.put("voltorb", 100);
+        PokeIDs.put("electrode", 101);
+        PokeIDs.put("exeggcute", 102);
+        PokeIDs.put("exeggutor", 103);
+        PokeIDs.put("cubone", 104);
+        PokeIDs.put("marowak", 105);
+        PokeIDs.put("hitmonlee", 106);
+        PokeIDs.put("hitmonchan", 107);
+        PokeIDs.put("lickitung", 108);
+        PokeIDs.put("koffing", 109);
+        PokeIDs.put("weezing", 110);
+        PokeIDs.put("rhyhorn", 111);
+        PokeIDs.put("rhydon", 112);
+        PokeIDs.put("chansey", 113);
+        PokeIDs.put("tangela", 114);
+        PokeIDs.put("kangaskhan", 115);
+        PokeIDs.put("horsea", 116);
+        PokeIDs.put("seadra", 117);
+        PokeIDs.put("goldeen", 118);
+        PokeIDs.put("seaking", 119);
+        PokeIDs.put("staryu", 120);
+        PokeIDs.put("starmie", 121);
+        PokeIDs.put("mr-mime", 122);
+        PokeIDs.put("scyther", 123);
+        PokeIDs.put("jynx", 124);
+        PokeIDs.put("electabuzz", 125);
+        PokeIDs.put("magmar", 126);
+        PokeIDs.put("pinsir", 127);
+        PokeIDs.put("tauros", 128);
+        PokeIDs.put("magikarp", 129);
+        PokeIDs.put("gyarados", 130);
+        PokeIDs.put("lapras", 131);
+        PokeIDs.put("ditto", 132);
+        PokeIDs.put("eevee", 133);
+        PokeIDs.put("vaporeon", 134);
+        PokeIDs.put("jolteon", 135);
+        PokeIDs.put("flareon", 136);
+        PokeIDs.put("porygon", 137);
+        PokeIDs.put("omanyte", 138);
+        PokeIDs.put("omastar", 139);
+        PokeIDs.put("kabuto", 140);
+        PokeIDs.put("kabutops", 141);
+        PokeIDs.put("aerodactyl", 142);
+        PokeIDs.put("snorlax", 143);
+        PokeIDs.put("articuno", 144);
+        PokeIDs.put("zapdos", 145);
+        PokeIDs.put("moltres", 146);
+        PokeIDs.put("dratini", 147);
+        PokeIDs.put("dragonair", 148);
+        PokeIDs.put("dragonite", 149);
+        PokeIDs.put("mewtwo", 150);
+        PokeIDs.put("mew", 151);
+
+        ImageView imageView = root.findViewById(R.id.imageView);
+        imageView.setImageResource(pictureArray[PokeIDs.get(pokedetails_name.getText())-1]);
+ ```       
 
 ## Kleuren
+De meeste kleuren die met de app te maken hebben staan in colors.xml binnen res.values. En anders worden ze op een manier gebruikt zoals in de snippet hieronder te zien is: 
+```
+                String SPATK = "spatk" + e;
+                int spatkID = getResources().getIdentifier(SPATK, "id", getActivity().getPackageName());
+                ProgressBar pokespatk = v.findViewById(spatkID);
+                String spatk = SplittedString[3];
+                //System.out.println("SPATK: " + name + spatk);
+                pokespatk.setMax(194);
+                pokespatk.setProgress(parseInt(spatk));
+                pokespatk.setProgressTintList(ColorStateList.valueOf(parseColor("#2196F3")));
+```
 
 ## Libraries
 
