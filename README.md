@@ -374,9 +374,196 @@ Deze fragment bevat een grid van alle favorite pokemon. Klik op de GIF hieronder
 
 [<img src="favorites.gif" width="225" height="475"/>](https://www.youtube.com/watch?v=pn1e-YQCuhU)
 ### XML
+Wat betreft de XMl layout van favorites is het vrijwel hetzelfde als de maingrid. Alleen zijn er:
+1. Minder cardviews per row (namelijk maar 1 ipv 2)
+2. Hebben de cardviews iets meer inhoud.
+Voornamelijk dat laatste heeft invloed op de layout. Er zijn progress wheels toegevoegd om de base stats van een pokemon te kunnen weergeven. Zie code snippet van de cardview:
+```
+            <androidx.cardview.widget.CardView
+                android:id="@+id/fav1"
+                android:layout_width="0dp"
+                android:layout_height="50dp"
+                android:layout_rowWeight="1"
+                android:layout_columnWeight="1"
+                android:layout_marginLeft="16dp"
+                android:layout_marginRight="16dp"
+                android:layout_marginBottom="20dp"
+                android:elevation="4dp"
+                android:onClick="Switcher_main_to_poke_fav"
+                android:visibility="invisible"
+                app:cardCornerRadius="10dp"
+                tools:ignore="OnClick">
+
+
+                <ProgressBar
+                    android:id="@+id/hp1"
+                    style="?android:attr/progressBarStyleHorizontal"
+                    android:layout_width="40dp"
+                    android:layout_height="match_parent"
+                    android:layout_gravity="right"
+                    android:background="@drawable/circle_shape"
+                    android:indeterminate="false"
+                    android:max="100"
+                    android:progress="65"
+                    android:progressDrawable="@drawable/circular_progress_bar"
+                    android:translationX="-30dp"
+                    android:translationY="10dp" />
+
+                <ProgressBar
+                    android:id="@+id/atk1"
+                    style="?android:attr/progressBarStyleHorizontal"
+                    android:layout_width="40dp"
+                    android:layout_height="match_parent"
+                    android:layout_gravity="right"
+                    android:background="@drawable/circle_shape"
+                    android:indeterminate="false"
+                    android:max="100"
+                    android:progress="65"
+                    android:progressDrawable="@drawable/circular_progress_bar"
+                    android:translationX="-80dp"
+                    android:translationY="10dp" />
+
+                <ProgressBar
+                    android:id="@+id/spatk1"
+                    style="?android:attr/progressBarStyleHorizontal"
+                    android:layout_width="40dp"
+                    android:layout_height="match_parent"
+                    android:layout_gravity="right"
+                    android:background="@drawable/circle_shape"
+                    android:indeterminate="false"
+                    android:max="100"
+                    android:progress="65"
+                    android:progressDrawable="@drawable/circular_progress_bar"
+                    android:translationX="-130dp"
+                    android:translationY="10dp" />
+
+                <ProgressBar
+                    android:id="@+id/def1"
+                    style="?android:attr/progressBarStyleHorizontal"
+                    android:layout_width="40dp"
+                    android:layout_height="match_parent"
+                    android:layout_gravity="right"
+                    android:background="@drawable/circle_shape"
+                    android:indeterminate="false"
+                    android:max="100"
+                    android:progress="65"
+                    android:progressDrawable="@drawable/circular_progress_bar"
+                    android:translationX="-180dp"
+                    android:translationY="10dp" />
+
+                <ProgressBar
+                    android:id="@+id/spdef1"
+                    style="?android:attr/progressBarStyleHorizontal"
+                    android:layout_width="40dp"
+                    android:layout_height="match_parent"
+                    android:layout_gravity="right"
+                    android:background="@drawable/circle_shape"
+                    android:indeterminate="false"
+                    android:max="100"
+                    android:progress="65"
+                    android:progressDrawable="@drawable/circular_progress_bar"
+                    android:translationX="-230dp"
+                    android:translationY="10dp" />
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_row="0"
+                    android:layout_column="11"
+                    android:layout_margin="16dp"
+                    android:orientation="vertical"
+                    android:weightSum="3">
+
+
+                    <TextView
+                        android:id="@+id/favname1"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center_vertical"
+                        android:paddingTop="0dp"
+                        android:text="@string/pkmn_name1"
+                        android:textAlignment="center"
+                        android:textColor="@android:color/black"
+                        android:textSize="15sp"
+                        android:textStyle="bold" />
+
+
+                    <ImageView
+                        android:id="@+id/favimg1"
+                        android:layout_width="50dp"
+                        android:layout_height="match_parent"
+                        android:layout_alignParentLeft="true"
+                        android:layout_gravity="center_vertical"
+                        android:paddingTop="0dp"
+                        android:src="@drawable/pkmn"
+                        android:translationY="-10dp" />
+
+
+                </LinearLayout>
+
+            </androidx.cardview.widget.CardView>
+```            
 
 ### JAVA
+De java code van deze fragment was best geinig omdat ik hier voor het eerst heb gespeeld met dynamic visibility of items. De functie die er het meeste toe doet is setFavFillables(). Deze functie maakt gebruik van gegevens die zijn meegegeven uit de pokedetailsfragment, zodat het weet welke pokemon gerendered moeten worden in de favorites. Dit doet de functie door door alle entries van een meegegeven list te loopen en deze bij onStart visible te maken in de grid (ik heb wat setters weg gelaten want anders wordt het nogal een lange snippet):
+```
+    public void setFavFillables(){
+        GridLayout layout = getView().findViewById(R.id.mainGrid);
+        int count = layout.getChildCount();
+        View v = null;
+        for(Object entry : allFavs){
+            for(int i=0; i<FavCounter; i++) {
+                v = layout.getChildAt(i);
+                int e = i+1;
 
+                String newEntry = allFavs.get(i).toString().replace("[","").replace("]","");
+                String[] SplittedString = newEntry.split(", ");
+
+                //set name
+                String textviewID = "favname" + e;
+                int resID = getResources().getIdentifier(textviewID, "id", getActivity().getPackageName());
+                TextView pokenam = v.findViewById(resID);
+                String name= SplittedString[0];
+                pokenam.setText(name);
+                pokenam.setTextSize(TypedValue.COMPLEX_UNIT_SP, Float.parseFloat("20"));
+
+                //set visibility
+                if(SplittedString[0] == (pokenam.getText())){
+                    v.setVisibility(View.VISIBLE);
+                }else{
+                    v.setVisibility(View.INVISIBLE);
+                }
+
+                //set HP
+                //set ATK
+               
+                //set spatk
+                String SPATK = "spatk" + e;
+                int spatkID = getResources().getIdentifier(SPATK, "id", getActivity().getPackageName());
+                ProgressBar pokespatk = v.findViewById(spatkID);
+                String spatk = SplittedString[3];
+                //System.out.println("SPATK: " + name + spatk);
+                pokespatk.setMax(194);
+                pokespatk.setProgress(parseInt(spatk));
+                pokespatk.setProgressTintList(ColorStateList.valueOf(parseColor("#2196F3")));
+
+
+                //set def
+                //set spdef
+               
+                //set image
+                String IMG = "favimg" + e;
+                int imgID = getResources().getIdentifier(IMG, "id", getActivity().getPackageName());
+                ImageView pokeimg = v.findViewById(imgID);
+
+                //System.out.println("Fatboy Slim " + );
+                pokeimg.setImageResource(PokeDetails.pictureArray[PokeDetails.PokeIDs.get(pokenam.getText())-1]);
+
+            }
+
+        }
+    }
+```    
 
 ----------
 
@@ -387,6 +574,8 @@ Deze fragment bevat een grid van alle favorite pokemon. Klik op de GIF hieronder
 ### XML
 
 ### JAVA
+
+
 
 
 ----------
