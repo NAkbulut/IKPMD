@@ -160,7 +160,7 @@ Deze fragment is een loading screen. Tijdens de zichtbaarheid van deze loading s
 ----------
 
 ## PokeDex
-Deze fragment bevat een grid avan alle first gen pokemon. Klik op de GIF hieronder voor een demo:
+Deze fragment bevat een grid van alle first gen pokemon. Klik op de GIF hieronder voor een demo:
 
 [<img src="pokedex.gif" width="225" height="475"/>](https://www.youtube.com/watch?v=XdETn0bsa0E)
 ### XML
@@ -170,7 +170,7 @@ Deze fragment bevat een grid avan alle first gen pokemon. Klik op de GIF hierond
 ----------
 
 ## Favorites
-Deze fragment bevat een grid avan alle favorite pokemon. Klik op de GIF hieronder voor een demo:
+Deze fragment bevat een grid van alle favorite pokemon. Klik op de GIF hieronder voor een demo:
 
 [<img src="favorites.gif" width="225" height="475"/>](https://www.youtube.com/watch?v=XdETn0bsa0E)
 ### XML
@@ -181,7 +181,7 @@ Deze fragment bevat een grid avan alle favorite pokemon. Klik op de GIF hieronde
 ----------
 
 ## Pokedetails
-Deze fragment bevat een grid avan alle favorite pokemon. Klik op de GIF hieronder voor een demo:
+Deze fragment bevat een grid van alle favorite pokemon. Klik op de GIF hieronder voor een demo:
 
 [<img src="pokedetails.gif" width="225" height="475"/>](https://www.youtube.com/watch?v=nC-LnVQLW-k)
 ### XML
