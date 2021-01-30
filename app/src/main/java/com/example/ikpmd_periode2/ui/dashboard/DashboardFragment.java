@@ -18,10 +18,13 @@ import androidx.lifecycle.ViewModelProvider;
 
 import com.example.ikpmd_periode2.PokeDetails;
 import com.example.ikpmd_periode2.R;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
 
 import java.util.List;
 
 import static android.graphics.Color.parseColor;
+import static java.lang.Integer.parseInt;
 
 public class DashboardFragment extends Fragment {
 
@@ -30,6 +33,12 @@ public class DashboardFragment extends Fragment {
     Fragment a = new PokeDetails();
     List allFavs = PokeDetails.AllFavs;
 
+    int totalHP;
+    int totalATK;
+    int totalSPATK;
+    int totalDEF;
+    int totalSPDEF;
+    int totalSPD;
 
 
     public View onCreateView(@NonNull LayoutInflater inflater,
@@ -83,7 +92,7 @@ public class DashboardFragment extends Fragment {
                 String hp = SplittedString[1];
                 System.out.println("HP: " + name + Integer.parseInt(hp));
                 pokehp.setMax(250);
-                pokehp.setProgress(Integer.parseInt(hp));
+                pokehp.setProgress(parseInt(hp));
 
 
                 //set ATK
@@ -93,7 +102,7 @@ public class DashboardFragment extends Fragment {
                 String atk = SplittedString[2];
                 //System.out.println("ATK: " + name + atk);
                 pokeatk.setMax(134);
-                pokeatk.setProgress(Integer.parseInt(atk));
+                pokeatk.setProgress(parseInt(atk));
                 pokeatk.setProgressTintList(ColorStateList.valueOf(parseColor("#FF9800")));
 
                 //set spatk
@@ -103,7 +112,7 @@ public class DashboardFragment extends Fragment {
                 String spatk = SplittedString[3];
                 //System.out.println("SPATK: " + name + spatk);
                 pokespatk.setMax(194);
-                pokespatk.setProgress(Integer.parseInt(spatk));
+                pokespatk.setProgress(parseInt(spatk));
                 pokespatk.setProgressTintList(ColorStateList.valueOf(parseColor("#2196F3")));
 
 
@@ -114,7 +123,7 @@ public class DashboardFragment extends Fragment {
                 String def = SplittedString[4];
                 //System.out.println("DEF: " + name + def);
                 pokedef.setMax(180);
-                pokedef.setProgress(Integer.parseInt(def));
+                pokedef.setProgress(parseInt(def));
                 pokedef.setProgressTintList(ColorStateList.valueOf(parseColor("#FFEB3B")));
 
 
@@ -126,7 +135,7 @@ public class DashboardFragment extends Fragment {
                 String spdef = SplittedString[5];
                 //System.out.println("SPDEF: " + name + spdef);
                 pokespdef.setMax(255);
-                pokespdef.setProgress(Integer.parseInt(spdef));
+                pokespdef.setProgress(parseInt(spdef));
                 pokespdef.setProgressTintList(ColorStateList.valueOf(parseColor("#4CAF50")));
 
                 //set image
@@ -137,6 +146,24 @@ public class DashboardFragment extends Fragment {
                 //System.out.println("Fatboy Slim " + );
                 pokeimg.setImageResource(PokeDetails.pictureArray[PokeDetails.PokeIDs.get(pokenam.getText())-1]);
 
+                totalHP = totalHP + parseInt(hp);
+                totalATK = totalATK + parseInt(atk);
+                totalSPATK = totalSPATK + parseInt(spatk);
+                totalDEF = totalDEF + parseInt(def);
+                totalSPDEF = totalSPDEF + parseInt(spdef);
+                //totalSPD = totalSPD + parseInt(spd);
+
+                System.out.println("Totaal HP: " + totalHP);
+                System.out.println("Totaal ATK: " + totalATK);
+                System.out.println("Totaal SPATK: " + totalSPATK);
+                System.out.println("Totaal DEF: " + totalDEF);
+                System.out.println("Totaal SPDEF: " + totalSPDEF);
+                //System.out.println("Totaal SPD: " + totalSPD);
+
+                FirebaseDatabase database = FirebaseDatabase.getInstance();
+                DatabaseReference myRef = database.getReference(name);
+
+                myRef.setValue(totalHP + ", " + totalATK + ", " + totalSPATK + ", " + totalDEF + ", " + totalSPDEF);
             }
 
         }
