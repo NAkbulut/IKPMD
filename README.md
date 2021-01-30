@@ -12,54 +12,43 @@ IKPMD periode 2 - Eerste gelegenheid
 
 # Inhoudsopgave
 
-**[INLEIDING](#Inleiding) 2**
+*** [Inleiding](#Inleiding) 2**
+*** [Bronnen](#Bronnen) 2**
+*** [Projectstructuur & Extra functies](#Projectstructuur & Extra functies) 2**
+*** [Fragments & Mainactivity](#Fragments & Mainactivity) 3**
 
-**[HYPOTHESE](#_75rf4vta81ax) 2**
-
-**[MATERIALEN](#_lquiyrwpy6ke) 2**
-
-**[PROCEDURE](#_kn5uvgo00ajj) 2**
-
-**[DATA](#_o8rmzovhszmh) 2**
-
-[VOEG HIER JE TEKST IN](#_riu7lqlxpqrr) 2
-
-[VOEG HIER JE TEKST IN](#_ai85dxyqa8ti) 2
-
-**[RESULTATEN](#_1iz5pbeqzw6g) 3**
-
-**[CONCLUSIE](#_chou9188p6co) 3**
-
-**[VERWIJZINGEN](#_upsdn5xevax7) 3**
 
 #
 
 # Inleiding
-
 De app die in dit verslag beschreven is is een pokedex van alle eerste generatie Pokemen. Deze app is gebouwd voor API 30 en is getest op een Google Pixel 3A.
 
 
-# Bronnen
 
+
+# Bronnen
 Voeg hier je tekst in Voeg hier je tekst in Voeg hier je tekst in Voeg hier je tekst in Voeg hier je tekst in Voeg hier je tekst in Voeg hier je tekst in Voeg hier je tekst in.
 
 
-# Projectstructuur & Extra functies
 
+
+# Projectstructuur & Extra functies
 ## Fragments & Mainactivity
 
 ## Fragment navigatie
 
 
 
-# Schermen
 
+
+# Schermen
 ## Loading DB
 
 ### XML
 
 ### JAVA
 
+-------
 
 ## PokeDex
 
@@ -67,12 +56,15 @@ Voeg hier je tekst in Voeg hier je tekst in Voeg hier je tekst in Voeg hier je t
 
 ### JAVA
 
+------
+
 ## Favorites
 
 ### XML
 
 ### JAVA
 
+------
 
 ## Pokedetails
 
@@ -80,6 +72,7 @@ Voeg hier je tekst in Voeg hier je tekst in Voeg hier je tekst in Voeg hier je t
 
 ### JAVA
 
+-------
 
 ## Graphs
 
@@ -91,7 +84,6 @@ Voeg hier je tekst in Voeg hier je tekst in Voeg hier je tekst in Voeg hier je t
 
 
 # Databases
-
 ## Lokale database
 
 ## Firebase
@@ -99,9 +91,13 @@ Voeg hier je tekst in Voeg hier je tekst in Voeg hier je tekst in Voeg hier je t
 
 # Assets
 ## Muziek
+
 ## Afbeeldingen
+
 ## Kleuren
+
 ## Libraries
+
 ## Maven
 
 
