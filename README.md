@@ -211,11 +211,22 @@ Op de achtergrond wordt tijdens deze fragment de functie valuesToDB gerunned als
         }
 ```        
 
+Verder is de enige java die ertoe doet de parent klasse (de standaard voor fragments) en welke XML-layout is gekozen:
+```
+public class LoadingDBFragment extends Fragment {
+
+
+    @Override
+    public View onCreateView(LayoutInflater inflater, ViewGroup container,
+                             Bundle savedInstanceState) {
+        // Inflate the layout for this fragment
+        return inflater.inflate(R.layout.fragment_loading_d_b, container, false);
+    }
 
 
 
-Het enige java stuk wat er in deze fragment toe doet is de parent klasse (de standaard voor fragments) en welke XML-layout is gekozen 
-
+}
+```
 ----------
 
 ## PokeDex
