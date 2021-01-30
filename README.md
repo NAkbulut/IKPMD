@@ -594,6 +594,71 @@ Deze fragment bevat een tweetal grafieken met daarin statestieken over je favori
 
 # Databases
 ## Lokale database
+De lokale database bestaat uit twee delen:
+- Database info
+Geeft de structuur weer van de database, welke tabellen, kolommmen en datatypes. Zoals in de code snippet hieronder te zien is:
+```
+public class DatabaseInfo {
+
+    public class PokemonTable {
+        public static final String POKEMONTABLE = "PokemonTable";   // NAAM VAN JE TABEL
+    }
+
+    public class PokemonTable_Columns {
+        public static final String Name = "Name";
+        public static final String type1 = "Type1";
+        public static final String type2 = "Type2";
+        public static final String HP = "HP";
+        public static final String ATK = "ATK";
+        public static final String SP_ATK = "SP_ATK";
+        public static final String DEF = "DEF";
+        public static final String SP_DEF = "SP_DEF";
+        public static final String SPD = "SPD";
+        public static final String Weight = "Weight";
+        public static final String Height = "Height";}
+
+}
+```
+
+-Database helper
+Dit gedeelte geeft hulpfunties om uberhaupt met de database te kunnen interacteren. Een voorbeeldfunctie die hierin verwerkt zit is bijvoorbeeld de oncreate functie. Deze zorgt ervoor dat de database wordt aangemaakt:
+ 
+``` 
+    @Override										// Maak je tabel met deze kolommen
+    public void onCreate(SQLiteDatabase db) {
+        db.execSQL("CREATE TABLE " + DatabaseInfo.PokemonTable.POKEMONTABLE
+                + " (" +
+                BaseColumns._ID + " INTEGER PRIMARY KEY AUTOINCREMENT, " +
+                DatabaseInfo.PokemonTable_Columns.Name + " TEXT," +
+                DatabaseInfo.PokemonTable_Columns.type1 + " TEXT," +
+                DatabaseInfo.PokemonTable_Columns.type2 + " TEXT," +
+                DatabaseInfo.PokemonTable_Columns.HP + " TEXT," +
+                DatabaseInfo.PokemonTable_Columns.ATK + " TEXT," +
+                DatabaseInfo.PokemonTable_Columns.SP_ATK + " TEXT," +
+                DatabaseInfo.PokemonTable_Columns.DEF + " TEXT," +
+                DatabaseInfo.PokemonTable_Columns.SP_DEF + " TEXT," +
+                DatabaseInfo.PokemonTable_Columns.SPD + " TEXT," +
+                DatabaseInfo.PokemonTable_Columns.Weight + " TEXT," +
+                DatabaseInfo.PokemonTable_Columns.Height + " TEXT);"
+        );
+    }
+```
+
+Daarnaast zijn er nog een aantal functies uitgeschreven om bijvoorbeeld zelf samengestelde queries uit te kunnen voeren op de database, of te kijken hoeveel rijen er in een tabel zitten:
+```
+    public Cursor query(String table, String[] columns, String selection, String[] selectArgs, String groupBy, String having, String orderBy){
+        return mSQLDB.query(table, columns, selection, selectArgs, groupBy, having, orderBy);
+    }
+
+    public long getProfilesCount(String TABLE_NAME) {
+        SQLiteDatabase db = this.getReadableDatabase();
+        long count = DatabaseUtils.queryNumEntries(db, TABLE_NAME);
+        //db.close();
+        System.out.println(count);
+        return count;
+    }
+
+```
 
 ## Firebase
 
