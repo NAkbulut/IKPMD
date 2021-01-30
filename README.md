@@ -86,17 +86,17 @@ Alle fragments communiceren via de mainactivity. Hieronder is een schematische w
 ## Fragment navigatie
 De volgende statements worden gebruikt om van de een naar de andere fragment te navigeren, do note dat deze snippets in de mainactivity staan en ook vanuit daar aangeroepen worden.
 - makes sure app starts with loading DB screen
-        
-        try {
-            FragmentTransaction ft = getSupportFragmentManager().beginTransaction();
-            ft.replace(R.id.nav_host_fragment, d);
-            ft.setTransition(FragmentTransaction.TRANSIT_FRAGMENT_FADE);
-            ft.addToBackStack(null);
-            ft.commit();
-
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
+```
+  try {
+       FragmentTransaction ft = getSupportFragmentManager().beginTransaction();
+       ft.replace(R.id.nav_host_fragment, d);
+       ft.setTransition(FragmentTransaction.TRANSIT_FRAGMENT_FADE);
+       ft.addToBackStack(null);
+       ft.commit();
+  } catch (Exception e) {
+       e.printStackTrace();
+  }
+```  
 De fragments zijn als variabelen gedefineerd bovenaan de mainactivity:
  ```
  Fragment a = new PokeDetails();
