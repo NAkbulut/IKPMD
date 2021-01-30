@@ -36,28 +36,73 @@ IKPMD periode 2 - Eerste gelegenheid
 
 # INLEIDING
 
-De app die in dit verslag beschreven is is een pokedex van alle eerste generatie pokemon.
+De app die in dit verslag beschreven is is een pokedex van alle eerste generatie Pokemen. Deze app is gebouwd voor API 30 en is getest op een Google Pixel 3A.
+
 
 # Bronnen
 
 Voeg hier je tekst in Voeg hier je tekst in Voeg hier je tekst in Voeg hier je tekst in Voeg hier je tekst in Voeg hier je tekst in Voeg hier je tekst in Voeg hier je tekst in.
 
-# ![](RackMultipart20210130-4-qp9hoj_html_b77bcefd34c018b0.gif)
+
+# Projectstructuur & Extra functies
+
+## Fragments & Mainactivity
+
+## Fragment navigatie
+
+
 
 # Schermen
 
-## XML
+## Loading DB
 
-## JAVA
+### XML
+
+### JAVA
+
+
+## PokeDex
+
+### XML
+
+### JAVA
+
+## Favorites
+
+### XML
+
+### JAVA
+
+
+## Pokedetails
+
+### XML
+
+### JAVA
+
+
+## Graphs
+
+### XML
+
+### JAVA
+
+
+
 
 # Databases
 
 ## Lokale database
 
-##
-
 ## Firebase
 
-# Extra functies
+
+# Assets
+## Muziek
+## Afbeeldingen
+## Kleuren
+## Libraries
+## Maven
+
 
 ####
