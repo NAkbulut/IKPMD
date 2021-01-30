@@ -193,6 +193,9 @@ Deze fragment bevat een grid van alle favorite pokemon. Klik op de GIF hieronder
 ----------
 
 ## Graphs
+Deze fragment bevat een tweetal grafieken met daarin statestieken over je favorites. Klik op de GIF hieronder voor een demo:
+
+[<img src="graphs.gif" width="225" height="475"/>](https://www.youtube.com/watch?v=q6owxm8XAwI)
 ### XML
 
 ### JAVA
