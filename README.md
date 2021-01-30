@@ -12,13 +12,11 @@ IKPMD periode 2 - Eerste gelegenheid
 
 # Inhoudsopgave
 
-**[Inleiding](#Inleiding)**
-**[Bronnen](#Bronnen)**
-**[Projectstructuur_&_Extra_functies](#Projectstructuur_&_Extra_functies)**
-**[Fragments & Mainactivity](#Fragments & Mainactivity)**
+[Inleiding](#Inleiding)\n
+[Bronnen](#Bronnen)\n
+[Projectstructuur_&_Extra_functies](#Projectstructuur_&_Extra_functies)\n
+[Fragments & Mainactivity](#Fragments & Mainactivity)\n
 
-
-#
 
 # Inleiding
 De app die in dit verslag beschreven is is een pokedex van alle eerste generatie Pokemen. Deze app is gebouwd voor API 30 en is getest op een Google Pixel 3A.
