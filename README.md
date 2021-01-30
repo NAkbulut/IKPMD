@@ -149,7 +149,7 @@ Door deze fragments bovenaan te defineren kan je gemakkelijk de try catch statem
 
 # Schermen
 ## Loading DB
-[![Watch the video](https://img.youtube.com/vi/T-D1KVIuvjA/maxresdefault.jpg)](https://youtu.be/T-D1KVIuvjA)
+[![Klik op deze knop](https://img.youtube.com/vi/9nxdhsyUO7g/maxresdefault.jpg)](https://www.youtube.com/watch?v=9nxdhsyUO7g)
 
 ### XML
 
