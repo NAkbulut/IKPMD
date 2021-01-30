@@ -74,7 +74,8 @@ Alle fragments communiceren via de mainactivity. Hieronder is een schematische w
 
 ## Fragment navigatie
 De volgende statements worden gebruikt om van de een naar de andere fragment te navigeren, do note dat deze snippets in de mainactivity staan en ook vanuit daar aangeroepen worden.
-
+- makes sure app starts with loading DB screen
+        
         try {
             FragmentTransaction ft = getSupportFragmentManager().beginTransaction();
             ft.replace(R.id.nav_host_fragment, d);
@@ -85,6 +86,47 @@ De volgende statements worden gebruikt om van de een naar de andere fragment te 
         } catch (Exception e) {
             e.printStackTrace();
         }
+De fragments zijn als variabelen gedefineerd bovenaan de mainactivity:
+ `` Fragment a = new PokeDetails();
+    Fragment b = new FavoritesFragment();
+    Fragment d = new LoadingDBFragment();
+    Fragment e = new NavHostFragment();
+    Fragment f = new GraphFragment();``
+Door deze fragments bovenaan te defineren kan je gemakkelijk de try catch statement afstellen op de juiste fragment. Echter bleek gedurende het project dat de navigationbar onderaan de mainactivity problemen opleverde. De states van de fragments werden niet onthouden waardoor functies zoals SetGridFillables niet goed werkten. Google wilde de problemen niet fixen, omdat ze vonden dat het een feature was, en niet een bug. De originele github issue is te vinden in de bronnen https://github.com/android/architecture-components-samples/issues/530. Om dit probleem te fixen is het volgende stuk code geimplementeerd in de Onstart():
+
+        BottomNavigationView botnav = findViewById(R.id.nav_view);
+        GridLayout mainGrid = findViewById(R.id.mainGrid2);
+        botnav.setOnNavigationItemSelectedListener(new BottomNavigationView.OnNavigationItemSelectedListener() {
+            @Override
+            public boolean onNavigationItemSelected(@NonNull MenuItem item) {
+                switch (item.getItemId()) {
+                    case R.id.navigation_home:
+                        //println("Yes a mattie");
+                        fm.beginTransaction().replace(R.id.nav_host_fragment, e, "1").show(e).commit();
+                        mainGrid.setClickable(true);
+                        mainGrid.setVisibility(View.VISIBLE);
+
+                        return true;
+                    case R.id.navigation_dashboard:
+                        //System.out.println("Yes a mattie");
+                        fm.beginTransaction().replace(R.id.nav_host_fragment, b, "2").show(b).commit();
+                        mainGrid.setClickable(false);
+                        mainGrid.setVisibility(View.INVISIBLE);
+
+                        return true;
+                    case R.id.navigation_graph:
+                        //System.out.println("Yes a mattie");
+                        fm.beginTransaction().replace(R.id.nav_host_fragment, f, "3").show(f).commit();
+                        mainGrid.setClickable(false);
+                        mainGrid.setVisibility(View.INVISIBLE);
+
+
+                        return true;
+                }
+                return false;
+            }
+        });
+
 
 
 ----------
