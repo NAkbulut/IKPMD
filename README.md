@@ -73,6 +73,18 @@ Alle fragments communiceren via de mainactivity. Hieronder is een schematische w
 ![](Untitled%20Diagram.png)
 
 ## Fragment navigatie
+De volgende statements worden gebruikt om van de een naar de andere fragment te navigeren, do note dat deze snippets in de mainactivity staan en ook vanuit daar aangeroepen worden.
+
+        try {
+            FragmentTransaction ft = getSupportFragmentManager().beginTransaction();
+            ft.replace(R.id.nav_host_fragment, d);
+            ft.setTransition(FragmentTransaction.TRANSIT_FRAGMENT_FADE);
+            ft.addToBackStack(null);
+            ft.commit();
+
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
 
 
 ----------
