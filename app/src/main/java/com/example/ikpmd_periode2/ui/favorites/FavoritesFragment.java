@@ -40,6 +40,12 @@ public class FavoritesFragment extends Fragment {
     int totalSPDEF;
     int totalSPD;
 
+    int totalTypeGrass = 0;
+    int totalTypeFire = 0;
+    int totalTypeWater = 0;
+    int totalTypeElectric = 0;
+    int totalTypePoison = 0;
+
 
     public View onCreateView(@NonNull LayoutInflater inflater,
                              ViewGroup container, Bundle savedInstanceState) {
@@ -147,24 +153,6 @@ public class FavoritesFragment extends Fragment {
                 //System.out.println("Fatboy Slim " + );
                 pokeimg.setImageResource(PokeDetails.pictureArray[PokeDetails.PokeIDs.get(pokenam.getText())-1]);
 
-                totalHP = totalHP + parseInt(hp);
-                totalATK = totalATK + parseInt(atk);
-                totalSPATK = totalSPATK + parseInt(spatk);
-                totalDEF = totalDEF + parseInt(def);
-                totalSPDEF = totalSPDEF + parseInt(spdef);
-                //totalSPD = totalSPD + parseInt(spd);
-
-                System.out.println("Totaal HP: " + totalHP);
-                System.out.println("Totaal ATK: " + totalATK);
-                System.out.println("Totaal SPATK: " + totalSPATK);
-                System.out.println("Totaal DEF: " + totalDEF);
-                System.out.println("Totaal SPDEF: " + totalSPDEF);
-                //System.out.println("Totaal SPD: " + totalSPD);
-
-                FirebaseDatabase database = FirebaseDatabase.getInstance();
-                DatabaseReference myRef = database.getReference(name);
-
-                myRef.setValue(totalHP + ", " + totalATK + ", " + totalSPATK + ", " + totalDEF + ", " + totalSPDEF);
             }
 
         }

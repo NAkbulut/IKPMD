@@ -8,7 +8,9 @@ import android.view.ViewGroup;
 
 import androidx.fragment.app.Fragment;
 
+import com.example.ikpmd_periode2.PokeDetails;
 import com.example.ikpmd_periode2.R;
+import com.example.ikpmd_periode2.ui.favorites.FavoritesFragment;
 import com.jjoe64.graphview.GraphView;
 import com.jjoe64.graphview.helper.StaticLabelsFormatter;
 import com.jjoe64.graphview.series.BarGraphSeries;
@@ -16,28 +18,40 @@ import com.jjoe64.graphview.series.DataPoint;
 
 
 public class GraphFragment extends Fragment {
+    int totalHP;
+    int totalATK;
+    int totalSPATK;
+    int totalDEF;
+    int totalSPDEF;
+    int totalSPD;
+
+    int totalTypeGrass;
+    int totalTypeFire;
+    int totalTypeWater;
+    int totalTypeElectric;
+    int totalTypePoison;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
+        initiateVars();
         View view = inflater.inflate(R.layout.fragment_graph, container, false);
         GraphView graph2 = view.findViewById(R.id.graph2);
         GraphView graph = view.findViewById(R.id.graph);
         BarGraphSeries<DataPoint> series2 = new BarGraphSeries<DataPoint>(new DataPoint[] {
-                new DataPoint(0, 10),
-                new DataPoint(1, 5),
-                new DataPoint(2, 3),
-                new DataPoint(3, 2),
-                new DataPoint(4, 6),
-                new DataPoint(5, 4)
+                new DataPoint(0, totalHP),
+                new DataPoint(1, totalATK),
+                new DataPoint(2, totalSPATK),
+                new DataPoint(3, totalDEF),
+                new DataPoint(4, totalSPDEF),
+                new DataPoint(5, totalSPD)
         });
         BarGraphSeries<DataPoint> series = new BarGraphSeries<DataPoint>(new DataPoint[] {
-                new DataPoint(0, 10),
-                new DataPoint(1, 5),
-                new DataPoint(2, 3),
-                new DataPoint(3, 6),
-                new DataPoint(4, 0),
-                new DataPoint(5, 4)
+                new DataPoint(0, totalTypeGrass),
+                new DataPoint(1, totalTypeFire),
+                new DataPoint(2, totalTypeWater),
+                new DataPoint(3, totalTypeElectric),
+                new DataPoint(4, totalTypePoison)
         });
         graph2.addSeries(series2);
         graph.addSeries(series);
@@ -58,8 +72,24 @@ public class GraphFragment extends Fragment {
         graph2.getGridLabelRenderer().setLabelFormatter(staticLabelsFormatter);
 
         StaticLabelsFormatter staticLabelsFormatter2 = new StaticLabelsFormatter(graph);
-        staticLabelsFormatter2.setHorizontalLabels(new String[] {"Grass", "Fire", "Water", "Electric", "Poison", "Other"});
+        staticLabelsFormatter2.setHorizontalLabels(new String[] {"Grass", "Fire", "Water", "Electric", "Poison"});
         graph.getGridLabelRenderer().setLabelFormatter(staticLabelsFormatter2);
 
         return view;
-}}
+    }
+
+    public void initiateVars() {
+        totalHP = PokeDetails.totalHP;
+        totalATK = PokeDetails.totalATK;
+        totalSPATK = PokeDetails.totalSPATK;
+        totalDEF = PokeDetails.totalDEF;
+        totalSPDEF = PokeDetails.totalSPDEF;
+        totalSPD = PokeDetails.totalSPD;
+
+        totalTypeGrass = PokeDetails.totalTypeGrass;
+        totalTypeFire = PokeDetails.totalTypeFire;
+        totalTypeWater = PokeDetails.totalTypeWater;
+        totalTypeElectric = PokeDetails.totalTypeElectric;
+        totalTypePoison = PokeDetails.totalTypePoison;
+    }
+}

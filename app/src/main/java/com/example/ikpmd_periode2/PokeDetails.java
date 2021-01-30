@@ -18,10 +18,14 @@ import androidx.fragment.app.Fragment;
 
 import com.example.ikpmd_periode2.ui.favorites.FavoritesFragment;
 import com.github.ivbaranov.mfb.MaterialFavoriteButton;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
 
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
+
+import static java.lang.Integer.parseInt;
 
 public class PokeDetails extends Fragment {
     public static String PokeStats = "";
@@ -29,6 +33,19 @@ public class PokeDetails extends Fragment {
     public static HashMap<String, Integer> PokeIDs = new HashMap<String, Integer>();
     public static final int[] pictureArray = {R.drawable.pokemon_1, R.drawable.pokemon_2, R.drawable.pokemon_3, R.drawable.pokemon_4, R.drawable.pokemon_5, R.drawable.pokemon_6, R.drawable.pokemon_7, R.drawable.pokemon_8, R.drawable.pokemon_9, R.drawable.pokemon_10, R.drawable.pokemon_11, R.drawable.pokemon_12, R.drawable.pokemon_13, R.drawable.pokemon_14, R.drawable.pokemon_15, R.drawable.pokemon_16, R.drawable.pokemon_17, R.drawable.pokemon_18, R.drawable.pokemon_19, R.drawable.pokemon_20, R.drawable.pokemon_21, R.drawable.pokemon_22, R.drawable.pokemon_23, R.drawable.pokemon_24, R.drawable.pokemon_25, R.drawable.pokemon_26, R.drawable.pokemon_27, R.drawable.pokemon_28, R.drawable.pokemon_29, R.drawable.pokemon_30, R.drawable.pokemon_31, R.drawable.pokemon_32, R.drawable.pokemon_33, R.drawable.pokemon_34, R.drawable.pokemon_35, R.drawable.pokemon_36, R.drawable.pokemon_37, R.drawable.pokemon_38, R.drawable.pokemon_39, R.drawable.pokemon_40, R.drawable.pokemon_41, R.drawable.pokemon_42, R.drawable.pokemon_43, R.drawable.pokemon_44, R.drawable.pokemon_45, R.drawable.pokemon_46, R.drawable.pokemon_47, R.drawable.pokemon_48, R.drawable.pokemon_49, R.drawable.pokemon_50, R.drawable.pokemon_51, R.drawable.pokemon_52, R.drawable.pokemon_53, R.drawable.pokemon_54, R.drawable.pokemon_55, R.drawable.pokemon_56, R.drawable.pokemon_57, R.drawable.pokemon_58, R.drawable.pokemon_59, R.drawable.pokemon_60, R.drawable.pokemon_61, R.drawable.pokemon_62, R.drawable.pokemon_63, R.drawable.pokemon_64, R.drawable.pokemon_65, R.drawable.pokemon_66, R.drawable.pokemon_67, R.drawable.pokemon_68, R.drawable.pokemon_69, R.drawable.pokemon_70, R.drawable.pokemon_71, R.drawable.pokemon_72, R.drawable.pokemon_73, R.drawable.pokemon_74, R.drawable.pokemon_75, R.drawable.pokemon_76, R.drawable.pokemon_77, R.drawable.pokemon_78, R.drawable.pokemon_79, R.drawable.pokemon_80, R.drawable.pokemon_81, R.drawable.pokemon_82, R.drawable.pokemon_83, R.drawable.pokemon_84, R.drawable.pokemon_85, R.drawable.pokemon_86, R.drawable.pokemon_87, R.drawable.pokemon_88, R.drawable.pokemon_89, R.drawable.pokemon_90, R.drawable.pokemon_91, R.drawable.pokemon_92, R.drawable.pokemon_93, R.drawable.pokemon_94, R.drawable.pokemon_95, R.drawable.pokemon_96, R.drawable.pokemon_97, R.drawable.pokemon_98, R.drawable.pokemon_99, R.drawable.pokemon_100, R.drawable.pokemon_101, R.drawable.pokemon_102, R.drawable.pokemon_103, R.drawable.pokemon_104, R.drawable.pokemon_105, R.drawable.pokemon_106, R.drawable.pokemon_107, R.drawable.pokemon_108, R.drawable.pokemon_109, R.drawable.pokemon_110, R.drawable.pokemon_111, R.drawable.pokemon_112, R.drawable.pokemon_113, R.drawable.pokemon_114, R.drawable.pokemon_115, R.drawable.pokemon_116, R.drawable.pokemon_117, R.drawable.pokemon_118, R.drawable.pokemon_119, R.drawable.pokemon_120, R.drawable.pokemon_121, R.drawable.pokemon_122, R.drawable.pokemon_123, R.drawable.pokemon_124, R.drawable.pokemon_125, R.drawable.pokemon_126, R.drawable.pokemon_127, R.drawable.pokemon_128, R.drawable.pokemon_129, R.drawable.pokemon_130, R.drawable.pokemon_131, R.drawable.pokemon_132, R.drawable.pokemon_133, R.drawable.pokemon_134, R.drawable.pokemon_135, R.drawable.pokemon_136, R.drawable.pokemon_137, R.drawable.pokemon_138, R.drawable.pokemon_139, R.drawable.pokemon_140, R.drawable.pokemon_141, R.drawable.pokemon_142, R.drawable.pokemon_143, R.drawable.pokemon_144, R.drawable.pokemon_145, R.drawable.pokemon_146, R.drawable.pokemon_147, R.drawable.pokemon_148, R.drawable.pokemon_149, R.drawable.pokemon_150, R.drawable.pokemon_151};
 
+
+    public static int totalHP = 0;
+    public static int totalATK = 0;
+    public static int totalSPATK = 0;
+    public static int totalDEF = 0;
+    public static int totalSPDEF = 0;
+    public static int totalSPD = 0;
+
+    public static int totalTypeGrass = 0;
+    public static int totalTypeFire = 0;
+    public static int totalTypeWater = 0;
+    public static int totalTypeElectric = 0;
+    public static int totalTypePoison = 0;
 
 
     @RequiresApi(api = Build.VERSION_CODES.N)
@@ -602,12 +619,124 @@ public class PokeDetails extends Fragment {
                             FavoritesFragment.FavCounter++;
                             AllFavs.add(pokemon);
                             System.out.println(FavoritesFragment.FavCounter);
+
+                            totalHP = totalHP + parseInt(hp);
+                            totalATK = totalATK + parseInt(atk);
+                            totalSPATK = totalSPATK + parseInt(spatk);
+                            totalDEF = totalDEF + parseInt(def);
+                            totalSPDEF = totalSPDEF + parseInt(spdef);
+                            totalSPD = totalSPD + parseInt(spd);
+
+                            if (type1.equals("grass")) {
+                                totalTypeGrass = totalTypeGrass +=1;
+                            }
+                            else if (type1.equals("fire")) {
+                                totalTypeFire = totalTypeFire +=1;
+                            }
+                            else if (type1.equals("water")) {
+                                totalTypeWater = totalTypeWater +=1;
+                            }
+                            else if (type1.equals("electric")) {
+                                totalTypeElectric = totalTypeElectric +=1;
+                            }
+                            else if (type1.equals("poison")) {
+                                totalTypePoison = totalTypePoison +=1;
+                            }
+
+                            if (type2.equals("grass")) {
+                                totalTypeGrass = totalTypeGrass +=1;
+                            }
+                            else if (type2.equals("fire")) {
+                                totalTypeFire = totalTypeFire +=1;
+                            }
+                            else if (type2.equals("water")) {
+                                totalTypeWater = totalTypeWater +=1;
+                            }
+                            else if (type2.equals("electric")) {
+                                totalTypeElectric = totalTypeElectric +=1;
+                            }
+                            else if (type2.equals("poison")) {
+                                totalTypePoison = totalTypePoison +=1;
+                            }
+
+                            System.out.println("Totaal HP: " + totalHP);
+                            System.out.println("Totaal ATK: " + totalATK);
+                            System.out.println("Totaal SPATK: " + totalSPATK);
+                            System.out.println("Totaal DEF: " + totalDEF);
+                            System.out.println("Totaal SPDEF: " + totalSPDEF);
+                            System.out.println("Totaal SPD: " + totalSPD);
+                            System.out.println("Totaal Grass: " + totalTypeGrass);
+                            System.out.println("Totaal Fire: " + totalTypeFire);
+                            System.out.println("Totaal Water: " + totalTypeWater);
+                            System.out.println("Totaal Electric: " + totalTypeElectric);
+                            System.out.println("Totaal Poison: " + totalTypePoison);
+
+                            FirebaseDatabase database = FirebaseDatabase.getInstance();
+                            DatabaseReference myRef = database.getReference(name);
+
+                            myRef.setValue(parseInt(hp) + ", " + parseInt(atk) + ", " + parseInt(spatk) + ", " + parseInt(def) + ", " + parseInt(spdef) + ", " + type1 + ", " + type2);
+
                         }else{
                             AllFavs.remove(pokemon);
                             System.out.println("This is allfavs: " + AllFavs);
                             FavoritesFragment.FavCounter--;
                             System.out.println(FavoritesFragment.FavCounter);
 
+                            totalHP = totalHP - parseInt(hp);
+                            totalATK = totalATK - parseInt(atk);
+                            totalSPATK = totalSPATK - parseInt(spatk);
+                            totalDEF = totalDEF - parseInt(def);
+                            totalSPDEF = totalSPDEF - parseInt(spdef);
+                            totalSPD = totalSPD - parseInt(spd);
+
+                            if (type1.equals("grass")) {
+                                totalTypeGrass = totalTypeGrass -=1;
+                            }
+                            else if (type1.equals("fire")) {
+                                totalTypeFire = totalTypeFire -=1;
+                            }
+                            else if (type1.equals("water")) {
+                                totalTypeWater = totalTypeWater -=1;
+                            }
+                            else if (type1.equals("electric")) {
+                                totalTypeElectric = totalTypeElectric -=1;
+                            }
+                            else if (type1.equals("poison")) {
+                                totalTypePoison = totalTypePoison -=1;
+                            }
+
+                            if (type2.equals("grass")) {
+                                totalTypeGrass = totalTypeGrass -=1;
+                            }
+                            else if (type2.equals("fire")) {
+                                totalTypeFire = totalTypeFire -=1;
+                            }
+                            else if (type2.equals("water")) {
+                                totalTypeWater = totalTypeWater -=1;
+                            }
+                            else if (type2.equals("electric")) {
+                                totalTypeElectric = totalTypeElectric -=1;
+                            }
+                            else if (type2.equals("poison")) {
+                                totalTypePoison = totalTypePoison -=1;
+                            }
+
+                            System.out.println("Totaal HP: " + totalHP);
+                            System.out.println("Totaal ATK: " + totalATK);
+                            System.out.println("Totaal SPATK: " + totalSPATK);
+                            System.out.println("Totaal DEF: " + totalDEF);
+                            System.out.println("Totaal SPDEF: " + totalSPDEF);
+                            System.out.println("Totaal SPD: " + totalSPD);
+                            System.out.println("Totaal Grass: " + totalTypeGrass);
+                            System.out.println("Totaal Fire: " + totalTypeFire);
+                            System.out.println("Totaal Water: " + totalTypeWater);
+                            System.out.println("Totaal Electric: " + totalTypeElectric);
+                            System.out.println("Totaal Poison: " + totalTypePoison);
+
+                            FirebaseDatabase database = FirebaseDatabase.getInstance();
+                            DatabaseReference myRef = database.getReference(name);
+
+                            myRef.removeValue();
                         }
                     }
 

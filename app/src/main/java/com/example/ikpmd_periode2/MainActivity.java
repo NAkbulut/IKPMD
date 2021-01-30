@@ -1026,7 +1026,6 @@ public class MainActivity extends AppCompatActivity {
     }
 
 
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -1060,7 +1059,6 @@ public class MainActivity extends AppCompatActivity {
         }
 
     }
-
 
     // doe dit als de app is gestart, moet als background task omdat je anders geen fragment ziet
     @Override
