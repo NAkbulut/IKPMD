@@ -150,6 +150,9 @@ Door deze fragments bovenaan te defineren kan je gemakkelijk de try catch statem
 # Schermen
 ## Loading DB
 ![](loadingdb.mp4)
+<video width="450" height="950" controls>
+  <source src="loadingdb.mp4" type="video/mp4">
+</video>
 ### XML
 
 ### JAVA
