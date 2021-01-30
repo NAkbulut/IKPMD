@@ -1,5 +1,5 @@
 # IKPMD - PokeDex
-[<img src="(https://www.1337.games/app/uploads/2020/03/pokemon-940x529.jpg)" width="940" height="529"/>]
+[<img src="https://www.1337.games/app/uploads/2020/03/pokemon-940x529.jpg" width="940" height="529"/>]
 
 
 **Nehir (S1121419 - INF2D - BDAM) en Yassir (S1113405 - INF3A - FICT)**
