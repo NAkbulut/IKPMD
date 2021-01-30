@@ -157,6 +157,64 @@ Deze fragment is een loading screen. Tijdens de zichtbaarheid van deze loading s
 ### XML
 
 ### JAVA
+Op de achtergrond wordt tijdens deze fragment de functie valuesToDB gerunned als thread. Deze functie zorgt ervoor dat er API calls worden gemaakt naar de PokeAPI, en de data in de lokale database wordt opgeslagen. Dit moet allemaal gedaan worden terwijl dat de Loading DB fragment draait. In de Oncreate wordt de loading DB fragment geinitialiseerd op de manier zoals bij [Fragment navigatie](#fragment-navigatie) te zien was. Verder wordt de functie valuesToDB in de onStart aangeroepen:
+```
+        //MainActivity dbhelper = this;
+        DatabaseHelper dbHelper2 = DatabaseHelper.getHelper(this);
+
+        if (dbHelper2.getProfilesCount(DatabaseInfo.PokemonTable.POKEMONTABLE) == 151) {
+
+            try {
+                FragmentTransaction ft = getSupportFragmentManager().beginTransaction();
+                ft.replace(R.id.nav_host_fragment, e);
+                ft.setTransition(FragmentTransaction.TRANSIT_FRAGMENT_FADE);
+                ft.addToBackStack(null);
+                ft.commit();
+
+
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
+            setGridFillables();
+        } else {
+            if (d.isAdded()) {
+                Runnable backGroundRunnable = new Runnable() {
+                    public void run() {
+                        try {
+                            valuesToDB();
+
+                            runOnUiThread(new Runnable() {
+                                @Override
+                                public void run() {
+                                    try {
+                                        //Thread.sleep(30000);
+                                        setGridFillables();
+                                    } catch (Exception e) {
+                                        e.printStackTrace();
+                                    }
+                                }
+                            });
+
+
+                        } catch (Exception e) {
+                            e.printStackTrace();
+                        }
+                    }
+                };
+                Thread sampleThread = new Thread(backGroundRunnable);
+                sampleThread.start();
+            }
+        }
+
+        if(e.isAdded()){
+            setGridFillables();
+        }
+```        
+
+
+
+
+Het enige java stuk wat er in deze fragment toe doet is de parent klasse (de standaard voor fragments) en welke XML-layout is gekozen 
 
 ----------
 
