@@ -1,6 +1,6 @@
 # IKPMD - PokeDex
 
-![] (https://www.1337.games/app/uploads/2020/03/pokemon-940x529.jpg)
+![](https://www.1337.games/app/uploads/2020/03/pokemon-940x529.jpg)
 
 **Nehir en Yassir**
 
