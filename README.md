@@ -15,7 +15,7 @@ IKPMD periode 2 - Eerste gelegenheid
 - [Inleiding](#Inleiding)
 - [Bronnen](#Bronnen)
 - [Projectstructuur_&_Extra_functies](#Projectstructuur_&_Extra_functies)
-- [Fragments & Mainactivity](#Fragments & Mainactivity)
+- [Fragments & Mainactivity](#projectstructuur--extra-functies)
 
 
 # Inleiding
