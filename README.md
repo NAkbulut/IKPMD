@@ -35,6 +35,7 @@ De app die in dit verslag beschreven is is een pokedex van alle eerste generatie
 - Fragment navigation issue: https://github.com/android/architecture-components-samples/issues/530
 - Graphs:
 - Pokemon sounds: https://veekun.com/dex/downloads#other-files
+- Images: https://pokeres.bastionbot.org/images/pokemon/1.png
 
 
 # Projectstructuur & Extra functies
