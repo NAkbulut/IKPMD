@@ -234,7 +234,55 @@ Deze fragment bevat een grid van alle first gen pokemon. Klik op de GIF hieronde
 
 [<img src="pokedex.gif" width="225" height="475"/>](https://www.youtube.com/watch?v=XdETn0bsa0E)
 ### XML
+De XML layout voor de pokedex is straight foward. Je hebt een scrollview om te scrollen, met daarin een lineair layout, waar dan weer een grid layout in zit.
+In de grid layout zitten 151 cardviews, waarin dan weer de imageviews en textviews zitten. De ID's voor deze cardviews en de child nodes ervan zijn semi-hardcoded met Excel en android studioshortcuts om het proces wat sneller te maken.
+Zo ziet een cardview + child nodes eruit:
+```
+<androidx.cardview.widget.CardView
+                android:id="@+id/pokecard1"
+                android:layout_width="30dp"
+                android:layout_height="30dp"
+                android:layout_rowWeight="1"
+                android:layout_columnWeight="1"
+                android:layout_marginLeft="16dp"
+                android:layout_marginRight="16dp"
+                android:layout_marginBottom="20dp"
+                android:elevation="4dp"
+                android:onClick="Switcher_main_to_poke"
+                app:cardCornerRadius="10dp"
+                tools:ignore="OnClick">
 
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="10dp"
+                    android:orientation="vertical"
+                    android:weightSum="3">
+
+                    <ImageView
+                        android:id="@+id/pokeimg1"
+                        android:layout_width="50dp"
+                        android:layout_height="50dp"
+                        android:layout_gravity="center_horizontal"
+                        android:src="@drawable/bulbasaur" />
+
+                    <com.iambedant.text.OutlineTextView
+                        android:id="@+id/pokename1"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center_horizontal"
+                        android:padding="5dp"
+                        android:text="@string/pkmn_name1"
+                        android:textAlignment="center"
+                        android:textColor="@android:color/black"
+                        android:textSize="20sp"
+                        android:textStyle="bold"
+                        app:outlineColor="@color/kloteding"
+                        app:outlineWidth="0.1" />
+
+                </LinearLayout>
+            </androidx.cardview.widget.CardView>
+```
 ### JAVA
 
 ----------
