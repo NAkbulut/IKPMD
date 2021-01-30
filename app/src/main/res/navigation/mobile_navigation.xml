@@ -23,7 +23,7 @@
 
     <fragment
         android:id="@+id/navigation_dashboard"
-        android:name="com.example.ikpmd_periode2.ui.dashboard.DashboardFragment"
+        android:name="com.example.ikpmd_periode2.ui.favorites.FavoritesFragment"
         android:label="@string/title_dashboard"
         android:layout_gravity="center"
         tools:layout="@layout/fragment_favorites" >

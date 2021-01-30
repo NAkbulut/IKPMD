@@ -1,14 +1,9 @@
 package com.example.ikpmd_periode2;
 
-import android.app.FragmentManager;
 import android.content.ContentValues;
-import android.content.Context;
 import android.database.Cursor;
-import android.net.ConnectivityManager;
-import android.net.NetworkInfo;
 import android.os.Bundle;
 import android.os.StrictMode;
-import android.util.Log;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.GridLayout;
@@ -29,9 +24,8 @@ import androidx.navigation.ui.NavigationUI;
 import com.example.ikpmd_periode2.database.DatabaseHelper;
 import com.example.ikpmd_periode2.database.DatabaseInfo;
 import com.example.ikpmd_periode2.ui.LoadingDBFragment;
-import com.example.ikpmd_periode2.ui.dashboard.DashboardFragment;
+import com.example.ikpmd_periode2.ui.favorites.FavoritesFragment;
 import com.example.ikpmd_periode2.ui.graphs.GraphFragment;
-import com.example.ikpmd_periode2.ui.home.HomeFragment;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
@@ -53,34 +47,24 @@ import me.sargunvohra.lib.pokekotlin.model.PokemonType;
 
 public class MainActivity extends AppCompatActivity {
     Fragment a = new PokeDetails();
-    Fragment b = new DashboardFragment();
-    Fragment c = new HomeFragment();
+    Fragment b = new FavoritesFragment();
     Fragment d = new LoadingDBFragment();
     Fragment e = new NavHostFragment();
     Fragment f = new GraphFragment();
     androidx.fragment.app.FragmentManager fm = getSupportFragmentManager();
 
 
-    ////////////////////////SELFWRITEN
-
-    //Switches view to pokedetails if clicked on a pokemonmodel in the mainactivity
-
 
     public void Switcher_main_to_poke(View v) {
         //Get pokecard number
-        //System.out.println("aka " + v.getId());
-        //System.out.println("aka " + v.getResources().getResourceName(v.getId()));
         String word = v.getResources().getResourceName(v.getId());
         String substr = word.substring(word.length() - 3);
-        //System.out.println("aka2 " + substr);
         String id =  substr.replaceAll("[A-Za-z]","");
-        //System.out.println("aka3 " + id);
 
         //Get involved textview
         String textviewID = "pokename" + id;
         int resID = getResources().getIdentifier(textviewID, "id", getPackageName());
         TextView pokenam = findViewById(resID);
-        //System.out.println("Bring it back " + pokenam.getText());
         String cardname = (String) pokenam.getText();
 
 
@@ -89,9 +73,6 @@ public class MainActivity extends AppCompatActivity {
         for (int i = 0; i < 151; ++i){
             String name = getAllDBItems().get(i).get(0);
             if(name.equals(cardname)){
-               // System.out.println("This is in DB: " + name);
-                //println("This is in pokecard: " + cardname);
-
                 String type1 = getAllDBItems().get(i).get(1);
                 String type2 = getAllDBItems().get(i).get(2);
                 String hp = getAllDBItems().get(i).get(3);
@@ -107,7 +88,7 @@ public class MainActivity extends AppCompatActivity {
         }
 
 
-       // System.out.println("shadowing grows"+allpkmnstats);
+        //Switch fragments
         try {
             FragmentTransaction ft = getSupportFragmentManager().beginTransaction();
             ft.replace(R.id.nav_host_fragment, a);
@@ -120,31 +101,19 @@ public class MainActivity extends AppCompatActivity {
         }
 
         PokeDetails.PokeStats = allpkmnstats;
-
-
-
-
-
-        //setPokeDetailsFillables();
-
     }
 
 
     public void Switcher_main_to_poke_fav(View x){
         //Get pokecard number
-        //System.out.println("aka " + x.getId());
-        //System.out.println("aka " + x.getResources().getResourceName(x.getId()));
         String word = x.getResources().getResourceName(x.getId());
         String substr = word.substring(word.length() - 3);
-        //System.out.println("aka2 " + substr);
         String id =  substr.replaceAll("[A-Za-z]","");
-       // System.out.println("aka3 " + id);
 
         //Get involved textview
         String textviewID = "favname" + id;
         int resID = getResources().getIdentifier(textviewID, "id", getPackageName());
         TextView pokenam = findViewById(resID);
-        //System.out.println("Bring it back " + pokenam.getText());
         String cardname = (String) pokenam.getText();
 
 
@@ -153,9 +122,6 @@ public class MainActivity extends AppCompatActivity {
         for (int i = 0; i < 151; ++i){
             String name = getAllDBItems().get(i).get(0);
             if(name.equals(cardname)){
-                //System.out.println("This is in DB: " + name);
-                //System.out.println("This is in pokecard: " + cardname);
-
                 String type1 = getAllDBItems().get(i).get(1);
                 String type2 = getAllDBItems().get(i).get(2);
                 String hp = getAllDBItems().get(i).get(3);
@@ -169,6 +135,8 @@ public class MainActivity extends AppCompatActivity {
                 allpkmnstats = name + ", "+ type1 + ", "+ type2 + ", "+ hp +", "+ atk +", "+ spatk +", "+ def +", "+ spdef +", "+ spd +", "+ weight +", "+ height;
             }
         }
+
+        //switch to fragment
         try {
             FragmentTransaction ft = getSupportFragmentManager().beginTransaction();
             ft.replace(R.id.nav_host_fragment, a);
@@ -203,7 +171,6 @@ public class MainActivity extends AppCompatActivity {
                         ContentValues values = new ContentValues();
 
                         String pokename = poketemp.getName();
-                        //System.out.println(pokename);
                         values.put(DatabaseInfo.PokemonTable_Columns.Name, pokename);
                         //System.out.println("NAME LOADED");
 
@@ -683,7 +650,7 @@ public class MainActivity extends AppCompatActivity {
         APICALL4.start();
 
         try {
-            Thread.sleep(30000);
+            Thread.sleep(90000);
         } catch (InterruptedException interruptedException) {
             interruptedException.printStackTrace();
         }
@@ -692,7 +659,7 @@ public class MainActivity extends AppCompatActivity {
         //checks how many rows in db table
         DatabaseHelper dbHelper2 = DatabaseHelper.getHelper(dbhelper);
         dbHelper2.getProfilesCount(DatabaseInfo.PokemonTable.POKEMONTABLE);
-        //getAllDBItems();
+
         // switches back to normal start screen instead of DB loading fragment
         try {
             FragmentTransaction ft = getSupportFragmentManager().beginTransaction();
@@ -705,49 +672,9 @@ public class MainActivity extends AppCompatActivity {
         } catch (Exception e) {
             e.printStackTrace();
         }
-
-
-
-
-
-
-
-
-
     }
 
 
-    public void Switcher_poke(View v) {
-        FragmentManager fm = getFragmentManager();
-        if (fm.getBackStackEntryCount() > 0) {
-            Log.i("MainActivity", "popping backstack");
-            //fm.popBackStack();
-            fm.popBackStack();
-        } else {
-            Log.i("MainActivity", "nothing on backstack, calling super");
-            //fm.popBackStack();
-            super.onBackPressed();
-        }
-
-    }
-
-
-    public boolean checkIfOnline() {
-        boolean haveConnectedWifi = false;
-        boolean haveConnectedMobile = false;
-
-        ConnectivityManager cm = (ConnectivityManager) getSystemService(Context.CONNECTIVITY_SERVICE);
-        NetworkInfo[] netInfo = cm.getAllNetworkInfo();
-        for (NetworkInfo ni : netInfo) {
-            if (ni.getTypeName().equalsIgnoreCase("WIFI"))
-                if (ni.isConnected())
-                    haveConnectedWifi = true;
-            if (ni.getTypeName().equalsIgnoreCase("MOBILE"))
-                if (ni.isConnected())
-                    haveConnectedMobile = true;
-        }
-        return haveConnectedWifi || haveConnectedMobile;
-    }
 
 
     //////////////////////ANDROID FRAMEWORK
@@ -770,8 +697,6 @@ public class MainActivity extends AppCompatActivity {
             }
         });
     }
-
-    //onCreate is wat moet er gebeuren bij buildtime
 
 
     public List<List<String>> getAllDBItems(){
@@ -823,12 +748,8 @@ public class MainActivity extends AppCompatActivity {
             pk_list.add(Weight);
             pk_list.add(Height);
             List_of_all_pokes.add(pk_list);
-            //System.out.println(pk_list);
         }
-        //System.out.println(List_of_all_pokes);
         return List_of_all_pokes;
-        //System.out.println(getAllDBItems(dbHelper2));
-        //dbHelper2.getProfilesCount(DatabaseInfo.PokemonTable.POKEMONTABLE);
     }
 
 
@@ -836,7 +757,6 @@ public class MainActivity extends AppCompatActivity {
 
 
     public void setGridFillables(){
-       // System.out.println("mind");
 
         MainActivity dbhelper = this;
         DatabaseHelper dbHelper2 = DatabaseHelper.getHelper(dbhelper);
@@ -1074,12 +994,6 @@ public class MainActivity extends AppCompatActivity {
             ImageView pokeimg_final = findViewById(resID_img_final);
             pokeimg_final.setImageResource(pictureArray[150]);
 
-
-
-
-
-
-            //String type2 = getAllDBItems().get(i).get(2);
         }
         // globally
 
@@ -1146,19 +1060,6 @@ public class MainActivity extends AppCompatActivity {
         }
 
     }
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
     // doe dit als de app is gestart, moet als background task omdat je anders geen fragment ziet

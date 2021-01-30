@@ -1,4 +1,4 @@
-package com.example.ikpmd_periode2.ui.dashboard;
+package com.example.ikpmd_periode2.ui.favorites;
 
 import android.content.res.ColorStateList;
 import android.os.Bundle;
@@ -8,7 +8,6 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.GridLayout;
 import android.widget.ImageView;
-import android.widget.LinearLayout;
 import android.widget.ProgressBar;
 import android.widget.TextView;
 
@@ -26,10 +25,11 @@ import java.util.List;
 import static android.graphics.Color.parseColor;
 import static java.lang.Integer.parseInt;
 
-public class DashboardFragment extends Fragment {
+public class FavoritesFragment extends Fragment {
 
     public static int FavCounter;
-    private DashboardViewModel dashboardViewModel;
+    public static int visblt;
+    private FavoritesViewModel favoritesViewModel;
     Fragment a = new PokeDetails();
     List allFavs = PokeDetails.AllFavs;
 
@@ -43,8 +43,8 @@ public class DashboardFragment extends Fragment {
 
     public View onCreateView(@NonNull LayoutInflater inflater,
                              ViewGroup container, Bundle savedInstanceState) {
-        dashboardViewModel =
-                new ViewModelProvider(this).get(DashboardViewModel.class);
+        favoritesViewModel =
+                new ViewModelProvider(this).get(FavoritesViewModel.class);
         View root = inflater.inflate(R.layout.fragment_favorites, container, false);
         return root;
     }
@@ -53,7 +53,6 @@ public class DashboardFragment extends Fragment {
     @Override
     public void onStart() {
         super.onStart();
-        LinearLayout yeet = getView().findViewById(R.id.yeet);
         setFavFillables();
 
 
@@ -66,16 +65,10 @@ public class DashboardFragment extends Fragment {
         for(Object entry : allFavs){
             for(int i=0; i<FavCounter; i++) {
                 v = layout.getChildAt(i);
-                //System.out.println("Visibility count: " + count);
-                //System.out.println("Visibility: " + v.getVisibility());
-                v.setVisibility(View.VISIBLE);
-
                 int e = i+1;
+
                 String newEntry = allFavs.get(i).toString().replace("[","").replace("]","");
                 String[] SplittedString = newEntry.split(", ");
-
-                //String[] SplittedString = PokeDetails.PokeStats.split(", ");
-
 
                 //set name
                 String textviewID = "favname" + e;
@@ -84,6 +77,14 @@ public class DashboardFragment extends Fragment {
                 String name= SplittedString[0];
                 pokenam.setText(name);
                 pokenam.setTextSize(TypedValue.COMPLEX_UNIT_SP, Float.parseFloat("20"));
+
+                //set visibility
+                if(SplittedString[0] == (pokenam.getText())){
+                    v.setVisibility(View.VISIBLE);
+                }else{
+                    v.setVisibility(View.INVISIBLE);
+                }
+
 
                 //set HP
                 String HP = "hp" + e;
