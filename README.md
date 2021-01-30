@@ -149,7 +149,7 @@ Door deze fragments bovenaan te defineren kan je gemakkelijk de try catch statem
 
 # Schermen
 ## Loading DB
-Deze fragment is een loading screen. Tijdens de zichtbaarheid van deze loading screen worden de API calls gemaakt. Zie de video hieronder voor een demo.
+Deze fragment is een loading screen. Tijdens de zichtbaarheid van deze loading screen worden de API calls gemaakt. Klik op de GIF hieronder voor een demo:
 
 [<img src="loadingdb.gif" width="225" height="475"/>](https://www.youtube.com/watch?v=9nxdhsyUO7g)
 
@@ -160,6 +160,9 @@ Deze fragment is een loading screen. Tijdens de zichtbaarheid van deze loading s
 ----------
 
 ## PokeDex
+Deze fragment bevat een grid avan alle first gen pokemon. Klik op de GIF hieronder voor een demo:
+
+[<img src="pokedex.gif" width="225" height="475"/>](https://www.youtube.com/watch?v=XdETn0bsa0E)
 ### XML
 
 ### JAVA
@@ -167,6 +170,9 @@ Deze fragment is een loading screen. Tijdens de zichtbaarheid van deze loading s
 ----------
 
 ## Favorites
+Deze fragment bevat een grid avan alle favorite pokemon. Klik op de GIF hieronder voor een demo:
+
+[<img src="favorites.gif" width="225" height="475"/>](https://www.youtube.com/watch?v=XdETn0bsa0E)
 ### XML
 
 ### JAVA
@@ -175,6 +181,9 @@ Deze fragment is een loading screen. Tijdens de zichtbaarheid van deze loading s
 ----------
 
 ## Pokedetails
+Deze fragment bevat een grid avan alle favorite pokemon. Klik op de GIF hieronder voor een demo:
+
+[<img src="pokedetails.gif" width="225" height="475"/>](https://www.youtube.com/watch?v=nC-LnVQLW-k)
 ### XML
 
 ### JAVA
