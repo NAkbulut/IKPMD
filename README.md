@@ -142,7 +142,28 @@ Door deze fragments bovenaan te defineren kan je gemakkelijk de try catch statem
             }
         });
 
+Daarnaast is er ook nog een stukje code ingebouwd voor het geval dat een user de "Go Back" knop gebruikt op zijn/haar telefoon. In essentie zorgt de code snippet hieronder ervoor dat er altijd terug gegaan wordt naar de main grid met alle first gen pokemen:
+```
+   // IF THE ANDROID BACK BUTTON IS CLICKED DO THIS PLEASE
+    @Override
+    public void onBackPressed() {
+        try {
+            FragmentTransaction ft = getSupportFragmentManager().beginTransaction();
+            ft.replace(R.id.nav_host_fragment, e);
+            ft.setTransition(FragmentTransaction.TRANSIT_FRAGMENT_FADE);
+            ft.addToBackStack(null);
+            ft.commit();
+            GridLayout mainGrid = findViewById(R.id.mainGrid);
+            mainGrid.setClickable(true);
+            mainGrid.setVisibility(View.VISIBLE);
+        } catch (Exception e) {
+            setContentView(R.layout.fragment_loading_d_b);
+            messWithFirebase();
+        }
 
+
+    }
+```
 
 ----------
 
