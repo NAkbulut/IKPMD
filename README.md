@@ -12,10 +12,13 @@ IKPMD periode 2 - Eerste gelegenheid
 
 # Inhoudsopgave
 
-[Inleiding](#Inleiding)\n
-[Bronnen](#Bronnen)\n
-[Projectstructuur_&_Extra_functies](#Projectstructuur_&_Extra_functies)\n
-[Fragments & Mainactivity](#Fragments & Mainactivity)\n
+[Inleiding](#Inleiding)
+
+[Bronnen](#Bronnen)
+
+[Projectstructuur_&_Extra_functies](#Projectstructuur_&_Extra_functies)
+
+[Fragments & Mainactivity](#Fragments & Mainactivity)
 
 
 # Inleiding
