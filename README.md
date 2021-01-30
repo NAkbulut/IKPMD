@@ -150,7 +150,7 @@ Door deze fragments bovenaan te defineren kan je gemakkelijk de try catch statem
 # Schermen
 ## Loading DB
 Deze fragment is een loading screen. Tijdens de zichtbaarheid van deze loading screen worden de API calls gemaakt. Zie de video hieronder voor een demo.
-[![Klik op deze knop](loadingdb.gif =225x475)](https://www.youtube.com/watch?v=9nxdhsyUO7g)
+[![Klik op deze knop](loadingdb.gif)](https://www.youtube.com/watch?v=9nxdhsyUO7g)
 
 ### XML
 
