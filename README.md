@@ -48,6 +48,17 @@ IKPMD periode 2 - Eerste gelegenheid
 # Inleiding
 De app die in dit verslag beschreven is is een pokedex van alle eerste generatie Pokemen. Deze app is gebouwd voor API 30 en is getest op een Google Pixel 3A. In GIT hebben wij alles in de master branche gedaan, dus het was een shitshow. Maar het heeft enigzins gewerkt. Als er vragen of opmerkingen zijn schiet een issue is of contact s1113405@student.hsleiden.nl.
 
+Features:
+- Het zien van alle first gen pokemen
+- Stats, geluiden en afbeeldingen van alle first gen pokemon zijn inzichtelijk
+- Pokemon kunnen worden toegevoegd en verwijdert van Favorites
+- Lokale database wordt gevuld met API calls
+- Firebase wordt gevuld met Favorites
+- Er is een graph fragment met allerlei statestieken
+
+Known bug:
+- Soms is de Loading DB fragment eerder klaar dan de setGridFillables functie. Dit heeft te maken met het feit dat thread states niet zo heel lekker gemonitoord kunnen worden. Met meer tijd is het waarschijnlijk te fixen, ik heb voor nu een timer gehardcode op 90 seconden. Als je na de loading DB screen een pokedex krijgt met witte achtergrond en alleen maar bulbasaurs. Start dan de app opnieuw op door naar de AVD home screen te gaan, en je app handmatig te openen. Als je dat doet dan laden de grid items in.
+
 ----------
 
 
