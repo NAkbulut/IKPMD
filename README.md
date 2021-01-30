@@ -12,7 +12,7 @@ IKPMD periode 2 - Eerste gelegenheid
 
 # Inhoudsopgave
 
-**[INLEIDING](#_9nvi5xgmjvpe) 2**
+**[INLEIDING](#Inleiding) 2**
 
 **[HYPOTHESE](#_75rf4vta81ax) 2**
 
@@ -34,7 +34,7 @@ IKPMD periode 2 - Eerste gelegenheid
 
 #
 
-# INLEIDING
+# Inleiding
 
 De app die in dit verslag beschreven is is een pokedex van alle eerste generatie Pokemen. Deze app is gebouwd voor API 30 en is getest op een Google Pixel 3A.
 
