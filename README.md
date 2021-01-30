@@ -172,7 +172,7 @@ Deze fragment bevat een grid van alle first gen pokemon. Klik op de GIF hieronde
 ## Favorites
 Deze fragment bevat een grid van alle favorite pokemon. Klik op de GIF hieronder voor een demo:
 
-[<img src="favorites.gif" width="225" height="475"/>](https://www.youtube.com/watch?v=XdETn0bsa0E)
+[<img src="favorites.gif" width="225" height="475"/>](https://www.youtube.com/watch?v=pn1e-YQCuhU)
 ### XML
 
 ### JAVA
