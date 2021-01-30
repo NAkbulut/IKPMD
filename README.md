@@ -621,7 +621,7 @@ public class DatabaseInfo {
 }
 ```
 
--Database helper
+- Database helper
 Dit gedeelte geeft hulpfunties om uberhaupt met de database te kunnen interacteren. Een voorbeeldfunctie die hierin verwerkt zit is bijvoorbeeld de oncreate functie. Deze zorgt ervoor dat de database wordt aangemaakt:
  
 ``` 
@@ -864,7 +864,164 @@ De meeste kleuren die met de app te maken hebben staan in colors.xml binnen res.
 
 ## Libraries
 
+Database:
+```
+import android.content.ContentValues;
+import android.content.Context;
+import android.database.Cursor;
+import android.database.DatabaseUtils;
+import android.database.sqlite.SQLiteDatabase;
+import android.database.sqlite.SQLiteOpenHelper;
+import android.provider.BaseColumns;
+```
+
+GraphFragment:
+```
+import android.graphics.Color;
+import android.os.Bundle;
+import android.view.LayoutInflater;
+import android.view.View;
+import android.view.ViewGroup;
+import androidx.fragment.app.Fragment;
+import com.example.ikpmd_periode2.PokeDetails;
+import com.example.ikpmd_periode2.R;
+import com.example.ikpmd_periode2.ui.favorites.FavoritesFragment;
+import com.jjoe64.graphview.GraphView;
+import com.jjoe64.graphview.helper.StaticLabelsFormatter;
+import com.jjoe64.graphview.series.BarGraphSeries;
+import com.jjoe64.graphview.series.DataPoint;
+```
+
+Mainactivity:
+```
+import android.content.ContentValues;
+import android.database.Cursor;
+import android.os.Bundle;
+import android.os.StrictMode;
+import android.view.MenuItem;
+import android.view.View;
+import android.widget.GridLayout;
+import android.widget.ImageView;
+import android.widget.TextView;
+import androidx.annotation.NonNull;
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.cardview.widget.CardView;
+import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentTransaction;
+import androidx.navigation.NavController;
+import androidx.navigation.Navigation;
+import androidx.navigation.fragment.NavHostFragment;
+import androidx.navigation.ui.AppBarConfiguration;
+import androidx.navigation.ui.NavigationUI;
+import com.example.ikpmd_periode2.database.DatabaseHelper;
+import com.example.ikpmd_periode2.database.DatabaseInfo;
+import com.example.ikpmd_periode2.ui.LoadingDBFragment;
+import com.example.ikpmd_periode2.ui.favorites.FavoritesFragment;
+import com.example.ikpmd_periode2.ui.graphs.GraphFragment;
+import com.google.android.material.bottomnavigation.BottomNavigationView;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
+import me.sargunvohra.lib.pokekotlin.client.PokeApi;
+import me.sargunvohra.lib.pokekotlin.client.PokeApiClient;
+import me.sargunvohra.lib.pokekotlin.model.Pokemon;
+import me.sargunvohra.lib.pokekotlin.model.PokemonStat;
+import me.sargunvohra.lib.pokekotlin.model.PokemonType;
+```
+
+PokedetailsFragment:
+```
+import android.content.res.ColorStateList;
+import android.media.MediaPlayer;
+import android.os.Build;
+import android.os.Bundle;
+import android.view.LayoutInflater;
+import android.view.View;
+import android.view.ViewGroup;
+import android.view.animation.Animation;
+import android.view.animation.AnimationUtils;
+import android.widget.ImageView;
+import android.widget.ProgressBar;
+import android.widget.TextView;
+import androidx.annotation.RequiresApi;
+import androidx.fragment.app.Fragment;
+import com.example.ikpmd_periode2.ui.favorites.FavoritesFragment;
+import com.github.ivbaranov.mfb.MaterialFavoriteButton;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
+import static java.lang.Integer.parseInt;
+```
+
+FavoritesFragment:
+```
+import android.content.res.ColorStateList;
+import android.os.Bundle;
+import android.util.TypedValue;
+import android.view.LayoutInflater;
+import android.view.View;
+import android.view.ViewGroup;
+import android.widget.GridLayout;
+import android.widget.ImageView;
+import android.widget.ProgressBar;
+import android.widget.TextView;
+import androidx.annotation.NonNull;
+import androidx.fragment.app.Fragment;
+import androidx.lifecycle.ViewModelProvider;
+import com.example.ikpmd_periode2.PokeDetails;
+import com.example.ikpmd_periode2.R;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+import java.util.List;
+import static android.graphics.Color.parseColor;
+import static java.lang.Integer.parseInt;
+```
+
 ## Maven
+Er is een repo toegevoegd en een aantal dependencies aan het build script vanwege de favoritebutton en firebase:
+```
+repositories {
+    mavenCentral()
+    maven { url 'https://dl.bintray.com/sargunv/maven' }
+    maven { url 'https://jitpack.io' }
+    google()
+    jcenter()
+}
+
+dependencies {
+    implementation platform('com.google.firebase:firebase-bom:26.1.1')
+    implementation 'com.google.firebase:firebase-database:19.5.1'
+    implementation 'com.google.firebase:firebase-analytics'
+    implementation 'me.sargunvohra.lib:pokekotlin:2.3.1'
+    implementation 'androidx.appcompat:appcompat:1.1.0'
+    implementation 'com.google.android.material:material:1.1.0'
+    implementation 'androidx.constraintlayout:constraintlayout:1.1.3'
+    implementation 'androidx.navigation:navigation-fragment:2.3.1'
+    implementation 'androidx.navigation:navigation-ui:2.3.1'
+    implementation 'com.github.ivbaranov:materialfavoritebutton:0.1.5'
+    implementation 'androidx.lifecycle:lifecycle-livedata-ktx:2.2.0'
+    implementation 'androidx.lifecycle:lifecycle-viewmodel-ktx:2.2.0'
+    implementation 'androidx.gridlayout:gridlayout:1.0.0'
+    implementation 'androidx.legacy:legacy-support-v4:1.0.0'
+    implementation 'com.google.firebase:firebase-database:19.3.0'
+    implementation 'com.github.PhilJay:MPAndroidChart:v3.0.3'
+    implementation 'com.jjoe64:graphview:4.2.2'
+    testImplementation 'junit:junit:4.+'
+    androidTestImplementation 'androidx.test.ext:junit:1.1.1'
+    androidTestImplementation 'androidx.test.espresso:espresso-core:3.2.0'
+    implementation 'com.github.bumptech.glide:glide:4.11.0'
+    annotationProcessor 'com.github.bumptech.glide:compiler:4.11.0'
+    implementation 'com.github.iamBedant:OutlineTextView:1.0.5'
+    implementation 'com.google.android.material:material:1.1.0'
+}
+```
 
 ----------
 ####
