@@ -284,6 +284,67 @@ Zo ziet een cardview + child nodes eruit:
             </androidx.cardview.widget.CardView>
 ```
 ### JAVA
+De functie in java die ertoe doet bij de homefragment is setGridFillables. Zoals de naam suggereerd wordt in deze functie alle gegevens verwerkt in de maingrid. Deze functie wordt in de onstart van de mainactivity aangeroepen. In dit hoofdstuk worden snippets gegeven van stukjes code en die worden toegelicht. Alle snippets zitten in een for loop die door 151 indeces loopt, want er zijn 151 first gen pokemen.
+- Set names
+```
+            //set name
+            String name = getAllDBItems().get(i).get(0);
+            int e = i + 1;
+            String textviewID = "pokename" + e;
+            int resID = this.getResources().getIdentifier(textviewID, "id", getPackageName());
+            TextView pokenam = findViewById(resID);
+            pokenam.setText(name);
+            pokenam.getText();
+```
+            
+- Set color 
+```
+           String type1 = getAllDBItems().get(i).get(1);
+            int q = i + 1;
+            String cardviewID = "pokecard" + q;
+            int resID_card = this.getResources().getIdentifier(cardviewID, "id", getPackageName());
+            CardView pokecard = findViewById(resID_card);
+            if(type1.equals("rock")){
+                pokecard.setCardBackgroundColor(getResources().getColor(R.color.rock));
+            }else if(type1.equals("ground")){
+                pokecard.setCardBackgroundColor(getResources().getColor(R.color.egg_yellow));
+            }else if(type1.equals("normal")){
+                pokecard.setCardBackgroundColor(getResources().getColor(R.color.normal));
+            }else if(type1.equals("fighting")){
+                pokecard.setCardBackgroundColor(getResources().getColor(R.color.fighting));
+            }else if(type1.equals("flying")){
+                pokecard.setCardBackgroundColor(getResources().getColor(R.color.flying));
+            }else if(type1.equals("poison")){
+                pokecard.setCardBackgroundColor(getResources().getColor(R.color.poison));
+            }else if(type1.equals("bug")){
+                pokecard.setCardBackgroundColor(getResources().getColor(R.color.bug));
+            }else if(type1.equals("ghost")){
+                pokecard.setCardBackgroundColor(getResources().getColor(R.color.ghost));
+            }else if(type1.equals("steel")){
+                pokecard.setCardBackgroundColor(getResources().getColor(R.color.steel));
+            }else if(type1.equals("???")){
+                pokecard.setCardBackgroundColor(getResources().getColor(R.color.special));
+            }else if(type1.equals("fire")){
+                pokecard.setCardBackgroundColor(getResources().getColor(R.color.fire));
+            }else if(type1.equals("water")){
+                pokecard.setCardBackgroundColor(getResources().getColor(R.color.water));
+            }else if(type1.equals("grass")){
+                pokecard.setCardBackgroundColor(getResources().getColor(R.color.grass));
+            }else if(type1.equals("electric")){
+                pokecard.setCardBackgroundColor(getResources().getColor(R.color.electric));
+            }else if(type1.equals("psychic")){
+                pokecard.setCardBackgroundColor(getResources().getColor(R.color.psychic));
+            }else if(type1.equals("ice")){
+                pokecard.setCardBackgroundColor(getResources().getColor(R.color.ice));
+            }else if(type1.equals("dragon")){
+                pokecard.setCardBackgroundColor(getResources().getColor(R.color.dragon));
+            }else if(type1.equals("dark")){
+                pokecard.setCardBackgroundColor(getResources().getColor(R.color.dark));
+            }else if(type1.equals("fairy")){
+                pokecard.setCardBackgroundColor(getResources().getColor(R.color.fairy));
+            }
+```           
+and so on, I think you get the idea....
 
 ----------
 
