@@ -10,6 +10,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.view.animation.Animation;
 import android.view.animation.AnimationUtils;
+import android.widget.GridLayout;
 import android.widget.ImageView;
 import android.widget.ProgressBar;
 import android.widget.TextView;
@@ -43,7 +44,7 @@ public class PokeDetails extends Fragment {
         try{
             setPokeDetailsFillables(root);
         }catch(Exception e){
-            System.out.println();
+           // System.out.println();
         }
         return root;
     }
@@ -51,12 +52,48 @@ public class PokeDetails extends Fragment {
     @Override
     public void onStart() {
         super.onStart();
+        checkIfInFav();
         playSound();
         Favo_Button();
 
 
 
     }
+
+
+    public void checkIfInFav(){
+        /*
+        TextView pokedetails_name = getView().findViewById(R.id.textName);
+        GridLayout layout = getView().findViewById(R.id.mainGrid);
+        int count = layout.getChildCount();
+        View v = null;
+
+
+        TextView pokedetails_name = getView().findViewById(R.id.textName);
+        for(int i=0; i<151; i++) {
+                //v = layout.getChildAt(i);
+                int e = i+1;
+
+                String textviewID = "favname" + e;
+                int resID = getResources().getIdentifier(textviewID, "id", getActivity().getPackageName());
+                TextView pokefav_name = findViewById(resID);
+                System.out.println("Name pokedetails " +pokedetails_name.getText());
+                System.out.println("Name fav " + pokefav_name);
+                try{
+                    if(pokedetails_name.getText() == pokefav_name.getText()){
+                        System.out.println("This pokemon is in fav: " + pokedetails_name.getText());
+                    }
+                }catch(Exception z){
+                    //
+                }
+
+        }
+
+         */
+
+
+    }
+
 
     @RequiresApi(api = Build.VERSION_CODES.N)
     public void setPokeDetailsFillables(View root){
@@ -563,9 +600,9 @@ public class PokeDetails extends Fragment {
         Integer sound_filename = PokeIDs.get(pokedetails_name.getText());
         //R.raw.s_100
         String textviewID = "s_" + sound_filename;
-        System.out.println("Time is now " + textviewID);
+        //System.out.println("Time is now " + textviewID);
         String path = "R.raw." +  textviewID;
-        System.out.println("Test this pls: " + Uri.parse(path));
+        //System.out.println("Test this pls: " + Uri.parse(path));
         int id = getContext().getResources().getIdentifier(textviewID, "raw", getContext().getPackageName());
 
 
@@ -602,7 +639,11 @@ public class PokeDetails extends Fragment {
                             String spatk = splittedString[5];
                             String def = splittedString[6];
                             String spdef = splittedString[7];
+                            String spd = splittedString[8];
+                            String weight = splittedString[9];
+                            String height = splittedString[10];
 
+                            /*
                             System.out.println(name);
                             System.out.println(hp);
                             System.out.println(atk);
@@ -610,11 +651,13 @@ public class PokeDetails extends Fragment {
                             System.out.println(def);
                             System.out.println(spdef);
 
+                             */
+
 
 
                             //Snackbar.make(buttonView, "Added to favorites", Snackbar.LENGTH_SHORT).show();
                             DashboardFragment.FavCounter++;
-                            pokemon.add(name  +", "+ hp +", "+ atk + ", " + spatk + ", " + def + ", " + spdef);
+                            pokemon.add(name  +", "+ hp +", "+ atk + ", " + spatk + ", " + def + ", " + spdef + ", " + spd + ", " + weight + ", " + height);
                             AllFavs.add(pokemon);
                             System.out.println(DashboardFragment.FavCounter);
                         }else{

@@ -15,10 +15,6 @@ public class HomeFragment extends Fragment {
     private HomeViewModel homeViewModel;
 
 
-    public HomeFragment(){
-        //yeet
-    }
-
     @Override
     public View onCreateView(LayoutInflater inflater,
                              ViewGroup container, Bundle savedInstanceState) {

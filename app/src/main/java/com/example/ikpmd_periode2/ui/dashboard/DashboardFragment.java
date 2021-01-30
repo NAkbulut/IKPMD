@@ -57,8 +57,8 @@ public class DashboardFragment extends Fragment {
         for(Object entry : allFavs){
             for(int i=0; i<FavCounter; i++) {
                 v = layout.getChildAt(i);
-                System.out.println("Visibility count: " + count);
-                System.out.println("Visibility: " + v.getVisibility());
+                //System.out.println("Visibility count: " + count);
+                //System.out.println("Visibility: " + v.getVisibility());
                 v.setVisibility(View.VISIBLE);
 
                 int e = i+1;
@@ -81,7 +81,7 @@ public class DashboardFragment extends Fragment {
                 int hpID = getResources().getIdentifier(HP, "id", getActivity().getPackageName());
                 ProgressBar pokehp = v.findViewById(hpID);
                 String hp = SplittedString[1];
-                System.out.println("HP: " + name + hp);
+                System.out.println("HP: " + name + Integer.parseInt(hp));
                 pokehp.setMax(250);
                 pokehp.setProgress(Integer.parseInt(hp));
 
@@ -91,7 +91,7 @@ public class DashboardFragment extends Fragment {
                 int atkID = getResources().getIdentifier(ATK, "id", getActivity().getPackageName());
                 ProgressBar pokeatk = v.findViewById(atkID);
                 String atk = SplittedString[2];
-                System.out.println("ATK: " + name + atk);
+                //System.out.println("ATK: " + name + atk);
                 pokeatk.setMax(134);
                 pokeatk.setProgress(Integer.parseInt(atk));
                 pokeatk.setProgressTintList(ColorStateList.valueOf(parseColor("#FF9800")));
@@ -101,7 +101,7 @@ public class DashboardFragment extends Fragment {
                 int spatkID = getResources().getIdentifier(SPATK, "id", getActivity().getPackageName());
                 ProgressBar pokespatk = v.findViewById(spatkID);
                 String spatk = SplittedString[3];
-                System.out.println("SPATK: " + name + spatk);
+                //System.out.println("SPATK: " + name + spatk);
                 pokespatk.setMax(194);
                 pokespatk.setProgress(Integer.parseInt(spatk));
                 pokespatk.setProgressTintList(ColorStateList.valueOf(parseColor("#2196F3")));
@@ -112,7 +112,7 @@ public class DashboardFragment extends Fragment {
                 int defID = getResources().getIdentifier(DEF, "id", getActivity().getPackageName());
                 ProgressBar pokedef = v.findViewById(defID);
                 String def = SplittedString[4];
-                System.out.println("DEF: " + name + def);
+                //System.out.println("DEF: " + name + def);
                 pokedef.setMax(180);
                 pokedef.setProgress(Integer.parseInt(def));
                 pokedef.setProgressTintList(ColorStateList.valueOf(parseColor("#FFEB3B")));
@@ -124,7 +124,7 @@ public class DashboardFragment extends Fragment {
                 int spdefID = getResources().getIdentifier(SPDEF, "id", getActivity().getPackageName());
                 ProgressBar pokespdef = v.findViewById(spdefID);
                 String spdef = SplittedString[5];
-                System.out.println("SPDEF: " + name + spdef);
+                //System.out.println("SPDEF: " + name + spdef);
                 pokespdef.setMax(255);
                 pokespdef.setProgress(Integer.parseInt(spdef));
                 pokespdef.setProgressTintList(ColorStateList.valueOf(parseColor("#4CAF50")));

@@ -68,19 +68,19 @@ public class MainActivity extends AppCompatActivity {
 
     public void Switcher_main_to_poke(View v) {
         //Get pokecard number
-        System.out.println("aka " + v.getId());
-        System.out.println("aka " + v.getResources().getResourceName(v.getId()));
+        //System.out.println("aka " + v.getId());
+        //System.out.println("aka " + v.getResources().getResourceName(v.getId()));
         String word = v.getResources().getResourceName(v.getId());
         String substr = word.substring(word.length() - 3);
-        System.out.println("aka2 " + substr);
+        //System.out.println("aka2 " + substr);
         String id =  substr.replaceAll("[A-Za-z]","");
-        System.out.println("aka3 " + id);
+        //System.out.println("aka3 " + id);
 
         //Get involved textview
         String textviewID = "pokename" + id;
         int resID = getResources().getIdentifier(textviewID, "id", getPackageName());
         TextView pokenam = findViewById(resID);
-        System.out.println("Bring it back " + pokenam.getText());
+        //System.out.println("Bring it back " + pokenam.getText());
         String cardname = (String) pokenam.getText();
 
 
@@ -89,8 +89,8 @@ public class MainActivity extends AppCompatActivity {
         for (int i = 0; i < 151; ++i){
             String name = getAllDBItems().get(i).get(0);
             if(name.equals(cardname)){
-                System.out.println("This is in DB: " + name);
-                System.out.println("This is in pokecard: " + cardname);
+               // System.out.println("This is in DB: " + name);
+                //println("This is in pokecard: " + cardname);
 
                 String type1 = getAllDBItems().get(i).get(1);
                 String type2 = getAllDBItems().get(i).get(2);
@@ -107,7 +107,7 @@ public class MainActivity extends AppCompatActivity {
         }
 
 
-        System.out.println("shadowing grows"+allpkmnstats);
+       // System.out.println("shadowing grows"+allpkmnstats);
         try {
             FragmentTransaction ft = getSupportFragmentManager().beginTransaction();
             ft.replace(R.id.nav_host_fragment, a);
@@ -132,19 +132,19 @@ public class MainActivity extends AppCompatActivity {
 
     public void Switcher_main_to_poke_fav(View x){
         //Get pokecard number
-        System.out.println("aka " + x.getId());
-        System.out.println("aka " + x.getResources().getResourceName(x.getId()));
+        //System.out.println("aka " + x.getId());
+        //System.out.println("aka " + x.getResources().getResourceName(x.getId()));
         String word = x.getResources().getResourceName(x.getId());
         String substr = word.substring(word.length() - 3);
-        System.out.println("aka2 " + substr);
+        //System.out.println("aka2 " + substr);
         String id =  substr.replaceAll("[A-Za-z]","");
-        System.out.println("aka3 " + id);
+       // System.out.println("aka3 " + id);
 
         //Get involved textview
         String textviewID = "favname" + id;
         int resID = getResources().getIdentifier(textviewID, "id", getPackageName());
         TextView pokenam = findViewById(resID);
-        System.out.println("Bring it back " + pokenam.getText());
+        //System.out.println("Bring it back " + pokenam.getText());
         String cardname = (String) pokenam.getText();
 
 
@@ -153,8 +153,8 @@ public class MainActivity extends AppCompatActivity {
         for (int i = 0; i < 151; ++i){
             String name = getAllDBItems().get(i).get(0);
             if(name.equals(cardname)){
-                System.out.println("This is in DB: " + name);
-                System.out.println("This is in pokecard: " + cardname);
+                //System.out.println("This is in DB: " + name);
+                //System.out.println("This is in pokecard: " + cardname);
 
                 String type1 = getAllDBItems().get(i).get(1);
                 String type2 = getAllDBItems().get(i).get(2);
@@ -1226,21 +1226,21 @@ public class MainActivity extends AppCompatActivity {
             public boolean onNavigationItemSelected(@NonNull MenuItem item) {
                 switch (item.getItemId()) {
                     case R.id.navigation_home:
-                        System.out.println("Yes a mattie");
+                        //println("Yes a mattie");
                         fm.beginTransaction().replace(R.id.nav_host_fragment, e, "1").show(e).commit();
                         mainGrid.setClickable(true);
                         mainGrid.setVisibility(View.VISIBLE);
 
                         return true;
                     case R.id.navigation_dashboard:
-                        System.out.println("Yes a mattie");
+                        //System.out.println("Yes a mattie");
                         fm.beginTransaction().replace(R.id.nav_host_fragment, b, "2").show(b).commit();
                         mainGrid.setClickable(false);
                         mainGrid.setVisibility(View.INVISIBLE);
 
                         return true;
                     case R.id.navigation_graph:
-                        System.out.println("Yes a mattie");
+                        //System.out.println("Yes a mattie");
                         fm.beginTransaction().replace(R.id.nav_host_fragment, f, "3").show(f).commit();
                         mainGrid.setClickable(false);
                         mainGrid.setVisibility(View.INVISIBLE);
@@ -1254,18 +1254,6 @@ public class MainActivity extends AppCompatActivity {
 
     }
 
-
-
-    //onStart is wat moet er gebeuren als de app wordt gestart
-
-
-    //onResume is wat moet er gebeuren als de app van de achtergrond wordt gehaald en weer terug geopend wordt
-
-    //onPause is wat moet er gebeuren bij een interupt, zoals een phone call
-
-    //onStop is wat moet er gebeuren als de app helemaal afgesloten wordt, dus ook van de achtergrond
-
-    //onDestroy is wat moet er gebeuren als de app verwijdert wordt.
 
 
 }
