@@ -33,6 +33,15 @@ IKPMD periode 2 - Eerste gelegenheid
   * [Graphs](#graphs)  
     + [XML](#xml-4)
     + [Java](#java-4)    
+- [Databases](#databases)
+  * [Lokale Database](#lokale-database)
+  * [Firebase](#firebase)  
+- [Assets](#assets)
+  * [Muziek](#muziek)
+  * [Afbeeldingen](#afbeeldingen)  
+  * [Kleuren](#kleuren)
+  * [Libraries](#libraries)  
+  * [Maven](#maven)
 
 ----------
 
