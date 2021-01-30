@@ -68,6 +68,8 @@ De app die in dit verslag beschreven is is een pokedex van alle eerste generatie
 
 # Projectstructuur & Extra functies
 ## Fragments & Mainactivity
+Alle fragments communiceren via de mainactivity. Hieronder is een schematische weergave gegeven van de werking van de communicatie tussen de fragments en de mainactivity:
+![](file:///C:/Users/Yassir/Downloads/Untitled%20Diagram.png)
 
 ## Fragment navigatie
 
