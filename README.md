@@ -12,16 +12,34 @@ IKPMD periode 2 - Eerste gelegenheid
 
 # Inhoudsopgave
 
-- [Inleiding](#Inleiding)
-- [Bronnen](#Bronnen)
+- [Inleiding](#inleiding)
+- [Bronnen](#bronnen)
 - [Projectstructuur & Extra functies](#projectstructuur--extra-functies)
   * [Fragments & Mainactivity](#fragments--mainactivity)
   * [Fragment navigatie](#fragment-navigatie)  
+- [Schermen](#schermen)
+  * [Loading DB](#loading-db)  
+    + [XML](#xml)
+    + [Java](#java)
+  * [PokeDex](#pokedex)  
+    + [XML](#xml-1)
+    + [Java](#java-1)
+  * [Favorites](#favorites)  
+    + [XML](#xml-2)
+    + [Java](#java-2) 
+  * [Pokedetails](#pokedetails)  
+    + [XML](#xml-3)
+    + [Java](#java-3)    
+  * [Graphs](#graphs)  
+    + [XML](#xml-4)
+    + [Java](#java-4)    
 
+----------
 
 # Inleiding
-De app die in dit verslag beschreven is is een pokedex van alle eerste generatie Pokemen. Deze app is gebouwd voor API 30 en is getest op een Google Pixel 3A. In GIT hebben wij alles in de master branche gedaan, dus het was een shitshow. Maar het heeft enigzins gewerkt.
+De app die in dit verslag beschreven is is een pokedex van alle eerste generatie Pokemen. Deze app is gebouwd voor API 30 en is getest op een Google Pixel 3A. In GIT hebben wij alles in de master branche gedaan, dus het was een shitshow. Maar het heeft enigzins gewerkt. Als er vragen of opmerkingen zijn schiet een issue is of contact s1113405@student.hsleiden.nl.
 
+----------
 
 
 
@@ -37,6 +55,7 @@ De app die in dit verslag beschreven is is een pokedex van alle eerste generatie
 - Pokemon sounds: https://veekun.com/dex/downloads#other-files
 - Images: https://pokeres.bastionbot.org/images/pokemon/1.png
 
+----------
 
 # Projectstructuur & Extra functies
 ## Fragments & Mainactivity
@@ -44,6 +63,7 @@ De app die in dit verslag beschreven is is een pokedex van alle eerste generatie
 ## Fragment navigatie
 
 
+----------
 
 
 
@@ -54,39 +74,37 @@ De app die in dit verslag beschreven is is een pokedex van alle eerste generatie
 
 ### JAVA
 
--------
+----------
 
 ## PokeDex
-
 ### XML
 
 ### JAVA
 
-------
+----------
 
 ## Favorites
-
 ### XML
 
 ### JAVA
 
-------
+
+----------
 
 ## Pokedetails
-
 ### XML
 
 ### JAVA
 
--------
+
+----------
 
 ## Graphs
-
 ### XML
 
 ### JAVA
 
-
+----------
 
 
 # Databases
@@ -94,6 +112,8 @@ De app die in dit verslag beschreven is is een pokedex van alle eerste generatie
 
 ## Firebase
 
+
+----------
 
 # Assets
 ## Muziek
@@ -106,5 +126,5 @@ De app die in dit verslag beschreven is is een pokedex van alle eerste generatie
 
 ## Maven
 
-
+----------
 ####
