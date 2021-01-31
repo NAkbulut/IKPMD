@@ -7,7 +7,7 @@
 
 31-1-2021
 
-IKPMD periode 2 - Eerste gelegenheid
+IKPMD Periode 2 - Eerste gelegenheid
 
 #
 
@@ -1158,9 +1158,137 @@ Deze fragment bevat een tweetal grafieken met daarin statestieken over je favori
 
 [<img src="graphs.gif" width="225" height="475"/>](https://www.youtube.com/watch?v=q6owxm8XAwI)
 ### XML
+De XML in de graph fragment geeft weer waar de grafieken moeten staan. Ook de titels van deze grafieken worden hier geplaatst. Binnen de root *FrameLayout* staan twee child *FrameLayout*'s. In elke *FrameLayout* zit een *TextView* object en een *GraphView* object. Het *GraphView* object wordt verder hieronder beschreven in het JAVA gedeelte van de documentatie. De XML is dus redelijk simpel en spreekt goed voor zich.
+```
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:translationY="-50px"
+    tools:context=".ui.graphs.GraphFragment">
 
+
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginBottom="210dp">
+
+        <TextView
+            android:id="@+id/textView2"
+            android:layout_width="400dp"
+            android:layout_height="70dp"
+            android:layout_marginLeft="80dp"
+            android:layout_marginTop="300dp"
+            android:text="Favorites; Frequent Types"
+            android:textColor="@color/white"
+            android:textSize="24dp"
+            android:textStyle="bold"
+            android:translationY="-600px" />
+
+        <com.jjoe64.graphview.GraphView
+            android:id="@+id/graph"
+            android:layout_width="350dp"
+            android:layout_height="200dp"
+            android:layout_gravity="center"
+            android:paddingBottom="90dp"
+            android:translationY="-50px" />
+
+    </FrameLayout>
+
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginTop="330dp">
+
+        <TextView
+            android:id="@+id/textView"
+            android:layout_width="400dp"
+            android:layout_height="70dp"
+            android:layout_marginLeft="80dp"
+            android:layout_marginTop="20dp"
+            android:text="Favorites; Average Stats"
+            android:textColor="@color/white"
+            android:textSize="24dp"
+            android:textStyle="bold" />
+
+        <com.jjoe64.graphview.GraphView
+            android:id="@+id/graph2"
+            android:layout_width="350dp"
+            android:layout_height="200dp"
+            android:layout_gravity="center"
+            android:translationY="-50px" />
+
+    </FrameLayout>
+
+</FrameLayout>
+```
 ### JAVA
+De waarden die gebruikt worden voor de grafieken in dit scherm zijn afkomstig van *Pokedetails*. We beginnen dus eerst met het importeren van deze waarden naar dit fragment.
+```
+    public void initiateVars() {
+        totalHP = PokeDetails.totalHP;
+        totalATK = PokeDetails.totalATK;
+        totalSPATK = PokeDetails.totalSPATK;
+        totalDEF = PokeDetails.totalDEF;
+        totalSPDEF = PokeDetails.totalSPDEF;
+        totalSPD = PokeDetails.totalSPD;
 
+        totalTypeGrass = PokeDetails.totalTypeGrass;
+        totalTypeFire = PokeDetails.totalTypeFire;
+        totalTypeWater = PokeDetails.totalTypeWater;
+        totalTypeElectric = PokeDetails.totalTypeElectric;
+        totalTypePoison = PokeDetails.totalTypePoison;
+    }
+```
+De methoden om de grafieken te plotten hebben we geimporteerd uit een GitHub Repository; [jjoe64 / GraphView](https://github.com/jjoe64/GraphView). Onze implementatie van deze library begint bij de OnCreate van dit scherm. De datapunten per grafiek worden ingevuld middels de geimporteerde waarden die hierboven beschreven zijn. De labels van deze grafieken zijn verder hardcoded. De rest van de regels code bestaat vooral uit de opmaak van de grafieken. Voor meer informatie over de toepassing van deze library verwijzen we graag door naar de desbetreffende library.
+```
+    public View onCreateView(LayoutInflater inflater, ViewGroup container,
+                             Bundle savedInstanceState) {
+        initiateVars();
+        View view = inflater.inflate(R.layout.fragment_graph, container, false);
+        GraphView graph2 = view.findViewById(R.id.graph2);
+        GraphView graph = view.findViewById(R.id.graph);
+        BarGraphSeries<DataPoint> series2 = new BarGraphSeries<DataPoint>(new DataPoint[] {
+                new DataPoint(0, totalHP),
+                new DataPoint(1, totalATK),
+                new DataPoint(2, totalSPATK),
+                new DataPoint(3, totalDEF),
+                new DataPoint(4, totalSPDEF),
+                new DataPoint(5, totalSPD)
+        });
+        BarGraphSeries<DataPoint> series = new BarGraphSeries<DataPoint>(new DataPoint[] {
+                new DataPoint(0, totalTypeGrass),
+                new DataPoint(1, totalTypeFire),
+                new DataPoint(2, totalTypeWater),
+                new DataPoint(3, totalTypeElectric),
+                new DataPoint(4, totalTypePoison)
+        });
+        graph2.addSeries(series2);
+        graph.addSeries(series);
+
+        series2.setSpacing(40);
+        series.setSpacing(40);
+        graph2.getGridLabelRenderer().setGridColor(Color.WHITE);
+        graph.getGridLabelRenderer().setGridColor(Color.WHITE);
+        graph2.getGridLabelRenderer().setHorizontalLabelsColor(Color.WHITE);
+        graph.getGridLabelRenderer().setHorizontalLabelsColor(Color.WHITE);
+        graph2.getGridLabelRenderer().setVerticalLabelsColor(Color.WHITE);
+        graph.getGridLabelRenderer().setVerticalLabelsColor(Color.WHITE);
+        series2.setColor(Color.rgb(149, 23, 34));
+        series.setColor(Color.rgb(149, 23, 34));
+
+        StaticLabelsFormatter staticLabelsFormatter = new StaticLabelsFormatter(graph2);
+        staticLabelsFormatter.setHorizontalLabels(new String[] {"HP", "ATK", "SP. ATK", "DEF", "SP. DEF", "SPD"});
+        graph2.getGridLabelRenderer().setLabelFormatter(staticLabelsFormatter);
+
+        StaticLabelsFormatter staticLabelsFormatter2 = new StaticLabelsFormatter(graph);
+        staticLabelsFormatter2.setHorizontalLabels(new String[] {"Grass", "Fire", "Water", "Electric", "Poison"});
+        graph.getGridLabelRenderer().setLabelFormatter(staticLabelsFormatter2);
+
+        return view;
+    }
+```
 ----------
 
 
@@ -1233,7 +1361,32 @@ Daarnaast zijn er nog een aantal functies uitgeschreven om bijvoorbeeld zelf sam
 ```
 
 ## Firebase
+In de Firebase Realtime Database slaan wij de gegevens op van Pokémon die gefavorite zijn. Wanneer deze geunfavorite worden, worden de desbetreffende records uiteraard uit de firebase verwijderd. Het inserten en verwijderen van deze records gebeurd in het scherm *Pokedetails*. Wanneer de *FavoriteButton* wordt ingedrukt waarna de state van de button veranderd naar True, wordt er een Firebase connectie geopend en wordt er naar de Realtime database geschreven.
+```
+FirebaseDatabase database = FirebaseDatabase.getInstance();
+DatabaseReference myRef = database.getReference(name);
 
+myRef.setValue(parseInt(hp) + ", " + parseInt(atk) + ", " + parseInt(spatk) + ", " + parseInt(def) + ", " + parseInt(spdef) + ", " + type1 + ", " + type2);
+```
+Wanneer de *FavoriteButton* wordt ingedrukt waarna de state van de button veranderd naar False, wordt er een Firebase connectie geopend en wordt er van de Realtime database verwijderd.
+```
+FirebaseDatabase database = FirebaseDatabase.getInstance();
+DatabaseReference myRef = database.getReference(name);
+
+myRef.removeValue();
+```
+De records in de Firebase Realtime database zien er als volgt uit:
+
+<img src="https://i.imgur.com/35Gw1J6.png" width="945" height="485"/>
+
+Deze database wordt realtime bijgehouden. Dit betekend dat als er naartoe wordt geschreven, dit direct te zien is in de console van de firebase. Hetzelfde geldt voor wanneer records verwijderd worden uit de firebase.
+De database zal tijdens de test en beoordelingsfase staan op *public*. Dit betekend dat iedereen naar de database kan schrijven en van de database kan lezen. Dit wordt beschreven in de regels van de realtime database.
+
+<img src="https://i.imgur.com/6XO7YxU.png" width="289" height="119"/>
+
+Buiten de test en beoordelingsfase zal de realtime database alleen toegankelijk zijn tot authenticated users.
+
+<img src="https://i.imgur.com/t5GudKN.png" width="350" height="118"/>
 
 ----------
 
