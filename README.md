@@ -47,7 +47,7 @@ IKPMD periode 2 - Eerste gelegenheid
 ----------
 
 # Inleiding
-De app die in dit verslag beschreven is is een pokedex van alle eerste generatie Pokemen. Deze app is gebouwd voor API 30 en is getest op een Google Pixel 3A. In GIT hebben wij alles in de master branche gedaan, dus het was een shitshow. Maar het heeft enigzins gewerkt. Als er vragen of opmerkingen zijn schiet een issue in of contact s1113405@student.hsleiden.nl.
+De app die in dit verslag beschreven is is een pokedex van alle eerste generatie Pokemen. Deze app is gebouwd voor API 30 en is getest op een Google Pixel 3A. In GIT hebben wij alles in de master branche gedaan, dus het was een shitshow. Maar het heeft enigzins gewerkt. Als er vragen of opmerkingen zijn, schiet dan een issue in.
 
 Features:
 - Het zien van alle first gen pokemen
@@ -178,7 +178,37 @@ Deze fragment is een loading screen. Tijdens de zichtbaarheid van deze loading s
 [<img src="loadingdb.gif" width="225" height="475"/>](https://www.youtube.com/watch?v=9nxdhsyUO7g)
 
 ### XML
+De XML van het Loading DB scherm is extreem simpel. Het is namelijk niet de bedoeling dat de eindgebruiker hier vaak te maken mee gaat krijgen; enkel bij de eerste keer van het opstarten van de applicatie zal de eindgebruiker dit scherm zien. De XML bestaat uit een *FrameLayout* waaronder een simpele *TextView* en een *ProgressBar* staan.
+```
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".ui.LoadingDBFragment">
 
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="#252426"
+        android:gravity="center"
+        android:text="Loading Database, go grab a snack ;)"
+        android:textColor="#FFFFFF"
+        android:textSize="15sp" />
+
+    <ProgressBar
+        android:id="@+id/progressBar"
+        style="?android:attr/progressBarStyle"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:foregroundTint="#F44336"
+        android:progressBackgroundTint="#F44336"
+        android:progressTint="#F44336"
+        android:secondaryProgressTint="#F44336"
+        android:indeterminateTint="#F44336"/>
+
+</FrameLayout>
+```
 ### JAVA
 Op de achtergrond wordt tijdens deze fragment de functie valuesToDB gerunned als thread. Deze functie zorgt ervoor dat er API calls worden gemaakt naar de PokeAPI, en de data in de lokale database wordt opgeslagen. Dit moet allemaal gedaan worden terwijl dat de Loading DB fragment draait. In de Oncreate wordt de loading DB fragment geinitialiseerd op de manier zoals bij [Fragment navigatie](#fragment-navigatie) te zien was. Verder wordt de functie valuesToDB in de onStart aangeroepen:
 ```
@@ -574,11 +604,552 @@ Deze fragment bevat een grid van alle favorite pokemon. Klik op de GIF hieronder
 
 [<img src="pokedetails.gif" width="225" height="475"/>](https://www.youtube.com/watch?v=nC-LnVQLW-k)
 ### XML
+De XML van Pokedetails bestaat uit een hoop *TextViews* en een aantal *ProgressBars* die de statistieken van de Pokémon weergeven. 
+Eigenlijk is alles aan de XML van Pokedetails erg simpel en spreekt het voor zich, op de *FavoritesButton* na. Deze is geimporteerd vanuit een GitHub repository; [IvBaranov / MaterialFavoriteButton](https://github.com/IvBaranov/MaterialFavoriteButton). Over het gebruik van deze library verwijzen we graag door naar de desbetreffende library. Wij hebben geen gebruik gemaakt van de animatie functie binnen deze library; onze *FavoriteButton* is static.
+```
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#2B2828"
+    android:elevation="1dp"
+    tools:context=".PokeDetails">
 
+    <com.github.ivbaranov.mfb.MaterialFavoriteButton
+        android:id="@+id/Favorite_Button"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_above="@+id/textName"
+        android:layout_alignParentEnd="true"
+        android:layout_marginEnd="10dp"
+        android:layout_marginBottom="167dp"
+        android:baselineAlignBottom="false"
+        android:elevation="1dp"
+        android:foregroundGravity="center"
+        app:mfb_animate_favorite="true"
+        app:mfb_bounce_duration="300"
+        app:mfb_favorite_image="@drawable/ic_baseline_star_24"
+        app:mfb_not_favorite_image="@drawable/ic_baseline_star_border_24"
+        app:mfb_padding="12"
+        app:mfb_rotation_angle="360"
+        app:mfb_rotation_duration="400"
+        app:mfb_size="64" />
+
+    <TextView
+        android:id="@+id/textName"
+        android:layout_width="187dp"
+        android:layout_height="82dp"
+        android:layout_below="@+id/imageView"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentEnd="true"
+        android:layout_marginStart="107dp"
+        android:layout_marginTop="-11dp"
+        android:layout_marginEnd="118dp"
+        android:gravity="center"
+        android:text="Bulbasaur"
+        android:textColor="#FFFFFF"
+        android:textSize="30dp" />
+
+
+
+    <androidx.gridlayout.widget.GridLayout
+        android:layout_width="180dp"
+        android:layout_height="180dp"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentBottom="true"
+        android:layout_marginStart="34dp"
+        android:layout_marginEnd="36dp"
+        android:layout_marginBottom="17dp">
+
+        <TextView
+            android:id="@+id/textHP"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:text="HP"
+            android:textColor="#A59B9B"
+            app:layout_column="0"
+            app:layout_row="0" />
+
+        <ProgressBar
+            android:id="@+id/progressHP"
+            style="?android:attr/progressBarStyleHorizontal"
+            android:layout_width="300dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="20dp"
+            android:gravity="center"
+            android:max="250"
+            android:progressBackgroundTint="#FFFFFF"
+            android:progressTint="#DF0C1E"
+            android:scaleY="3"
+            app:layout_column="1"
+            app:layout_row="0" />
+
+        <TextView
+            android:id="@+id/textATK"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:text="ATK"
+            android:textColor="#A59B9B"
+            app:layout_column="0"
+            app:layout_row="1" />
+
+        <ProgressBar
+            android:id="@+id/progressATK"
+            style="?android:attr/progressBarStyleHorizontal"
+            android:layout_width="300dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="20dp"
+            android:gravity="center"
+            android:max="134"
+            android:progressBackgroundTint="#FFFFFF"
+            android:progressTint="#FF9800"
+            android:scaleY="3"
+            app:layout_column="1"
+            app:layout_row="1" />
+
+        <TextView
+            android:id="@+id/textSPATK"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:text="SP. ATK"
+            android:textColor="#A59B9B"
+            app:layout_column="0"
+            app:layout_row="2" />
+
+        <ProgressBar
+            android:id="@+id/progressSPATK"
+            style="?android:attr/progressBarStyleHorizontal"
+            android:layout_width="300dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="20dp"
+            android:gravity="center"
+            android:max="194"
+            android:progressBackgroundTint="#FFFFFF"
+            android:progressTint="#2196F3"
+            android:scaleY="3"
+            app:layout_column="1"
+            app:layout_row="2" />
+
+        <TextView
+            android:id="@+id/textDEF"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:text="DEF"
+            android:textColor="#A59B9B"
+            app:layout_column="0"
+            app:layout_row="3" />
+
+        <ProgressBar
+            android:id="@+id/progressDEF"
+            style="?android:attr/progressBarStyleHorizontal"
+            android:layout_width="300dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="20dp"
+            android:gravity="center"
+            android:max="180"
+            android:progressBackgroundTint="#FFFFFF"
+            android:progressTint="#FFEB3B"
+            android:scaleY="3"
+            app:layout_column="1"
+            app:layout_row="3" />
+
+        <TextView
+            android:id="@+id/textSPDEF"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:text="SP. DEF"
+            android:textColor="#A59B9B"
+            app:layout_column="0"
+            app:layout_row="4" />
+
+        <ProgressBar
+            android:id="@+id/progressSPDEF"
+            style="?android:attr/progressBarStyleHorizontal"
+            android:layout_width="300dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="20dp"
+            android:gravity="center"
+            android:max="255"
+            android:progressBackgroundTint="#FFFFFF"
+            android:progressTint="#4CAF50"
+            android:scaleY="3"
+            app:layout_column="1"
+            app:layout_row="4" />
+
+        <TextView
+            android:id="@+id/textSPD"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:text="SPD"
+            android:textColor="#A59B9B"
+            app:layout_column="0"
+            app:layout_row="5" />
+
+        <ProgressBar
+            android:id="@+id/progressSPD"
+            style="?android:attr/progressBarStyleHorizontal"
+            android:layout_width="300dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="20dp"
+            android:gravity="center"
+            android:max="140"
+            android:progressBackgroundTint="#FFFFFF"
+            android:progressTint="#EA6FC7"
+            android:scaleY="3"
+            app:layout_column="1"
+            app:layout_row="5" />
+    </androidx.gridlayout.widget.GridLayout>
+
+    <TextView
+        android:id="@+id/textBaseStats"
+        android:layout_width="130dp"
+        android:layout_height="40dp"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentBottom="true"
+        android:layout_marginStart="80dp"
+        android:layout_marginEnd="80dp"
+        android:layout_marginBottom="220dp"
+        android:gravity="center"
+        android:text="Base Stats"
+        android:textColor="#FFFFFF"
+        android:textSize="20sp"
+        android:textStyle="bold"
+        android:visibility="visible" />
+
+    <TextView
+        android:id="@+id/textHeight"
+        android:layout_width="130dp"
+        android:layout_height="wrap_content"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentBottom="true"
+        android:layout_marginEnd="50dp"
+        android:layout_marginBottom="270dp"
+        android:gravity="center"
+        android:text="Height"
+        android:textColor="#A59B9B" />
+
+    <TextView
+        android:id="@+id/textHeightValue"
+        android:layout_width="130dp"
+        android:layout_height="40dp"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentBottom="true"
+        android:layout_marginEnd="50dp"
+        android:layout_marginBottom="290dp"
+        android:gravity="center"
+        android:text="0,69 M"
+        android:textColor="#FFFFFF"
+        android:textSize="20sp"
+        android:textStyle="bold"
+        android:visibility="visible" />
+
+    <TextView
+        android:id="@+id/textWeightValue"
+        android:layout_width="130dp"
+        android:layout_height="40dp"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentBottom="true"
+        android:layout_marginStart="50dp"
+        android:layout_marginBottom="290dp"
+        android:gravity="center"
+        android:text="6,9 KG"
+        android:textColor="#FFFFFF"
+        android:textSize="20sp"
+        android:textStyle="bold"
+        android:visibility="visible" />
+
+    <TextView
+        android:id="@+id/textWeight"
+        android:layout_width="130dp"
+        android:layout_height="wrap_content"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentBottom="true"
+        android:layout_marginStart="50dp"
+        android:layout_marginBottom="270dp"
+        android:gravity="center"
+        android:text="Weight"
+        android:textColor="#A59B9B" />
+
+    <TextView
+        android:id="@+id/textType"
+        android:layout_width="130dp"
+        android:layout_height="30dp"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentBottom="true"
+        android:layout_marginStart="50dp"
+        android:layout_marginBottom="345dp"
+        android:background="@drawable/poketag"
+        android:backgroundTint="#4CAF50"
+        android:gravity="center"
+        android:text="Grass"
+        android:textColor="#FFFFFF"
+        android:textStyle="bold" />
+
+    <TextView
+        android:id="@+id/textType2"
+        android:layout_width="130dp"
+        android:layout_height="30dp"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentBottom="true"
+        android:layout_marginEnd="50dp"
+        android:layout_marginBottom="345dp"
+        android:background="@drawable/poketag"
+        android:backgroundTint="#9C27B0"
+        android:gravity="center"
+        android:text="Poison"
+        android:textColor="#FFFFFF"
+        android:textStyle="bold"
+        android:visibility="visible" />
+
+    <ImageView
+        android:id="@+id/imageView"
+        android:layout_width="match_parent"
+        android:layout_height="232dp"
+        android:background="@drawable/bg"
+        android:backgroundTint="#75AA4F"
+        android:paddingTop="15dp"
+        android:paddingBottom="10dp"
+        android:scaleType="centerInside"
+        android:src="@drawable/bulbasaur" />
+
+</RelativeLayout>
+```
 ### JAVA
+In de JAVA van Pokedetails gebeuren een aantal dingen die beschreven moeten worden:
+- Het invullen van Pokedetails
+- Het afspelen van de geluiden
+- Het afspelen van de imageshake
+- De implementatie van de *FavoriteButton*
 
+Om te beginnen met het invullen van Pokedetails. De invulling gaat volgens een redelijk simpel concept; het haalt de statistieken en variabelen van elke Pokémon op van de root view. Deze worden vervolgens binnen het *Pokedetails* fragment opgeslagen en ingevuld in het *Pokedetails* template..
+```
+ public void setPokeDetailsFillables(View root){
+        //setname
+        TextView pokedetails_name = root.findViewById(R.id.textName);
+        String[] splittedString = PokeStats.split(", ");
+        pokedetails_name.setText(splittedString[0]);
 
+        //Set HP
+        ProgressBar pokedetails_hp = root.findViewById(R.id.progressHP);
+        pokedetails_hp.setProgress(Integer.parseInt(splittedString[3]),true);
 
+        //Set ATK
+        ProgressBar pokedetails_atk = root.findViewById(R.id.progressATK);
+        pokedetails_atk.setProgress(Integer.parseInt(splittedString[4]),true);
+
+        //Set SP_ATK
+        ProgressBar pokedetails_sp_atk = root.findViewById(R.id.progressSPATK);
+        pokedetails_sp_atk.setProgress(Integer.parseInt(splittedString[5]),true);
+
+        //Set DEF
+        ProgressBar pokedetails_def = root.findViewById(R.id.progressDEF);
+        pokedetails_def.setProgress(Integer.parseInt(splittedString[6]),true);
+
+        //Set SPDEF
+        ProgressBar pokedetails_sp_def = root.findViewById(R.id.progressSPDEF);
+        pokedetails_sp_def.setProgress(Integer.parseInt(splittedString[7]),true);
+
+        //Set SPD
+        ProgressBar pokedetails_spd = root.findViewById(R.id.progressSPD);
+        pokedetails_spd.setProgress(Integer.parseInt(splittedString[8]),true);
+
+        //Set weight
+        TextView pokedetails_weight = root.findViewById(R.id.textWeightValue);
+        Float realweight = Float.valueOf(splittedString[9])/10;
+        pokedetails_weight.setText(realweight + " KG");
+
+        //Set weight
+        TextView pokedetails_height = root.findViewById(R.id.textHeightValue);
+        Float realheight = Float.valueOf(splittedString[10])/10;
+        pokedetails_height.setText(realheight + " M");
+        
+        //Set type
+        TextView pokedetails_type1 = root.findViewById(R.id.textType);
+        pokedetails_type1.setText(splittedString[1]);
+        String type1 = (String) pokedetails_type1.getText();
+```
+De images van de Pokémon zijn hardcoded; het kijkt naar de Pokémon ID en op basis daarvan word de image opgehaald en ingevuld.
+```
+PokeIDs.put("bulbasaur", 1);
+PokeIDs.put("ivysaur", 2);
+PokeIDs.put("venusaur", 3);
+...
+PokeIDs.put("mewtwo", 150);
+PokeIDs.put("mew", 151);
+```
+Elke type heeft zijn eigen signature color. Deze worden in dezelfde methode gekoppeld aan de desbetreffende types.
+```
+ if(type1.equals("rock")){
+            pokedetails_type1.setBackgroundTintList(ColorStateList.valueOf(getResources().getColor(R.color.rock)));
+            imageView.setBackgroundTintList(ColorStateList.valueOf(getResources().getColor(R.color.rock)));
+        }else if(type1.equals("ground")){
+            pokedetails_type1.setBackgroundTintList(ColorStateList.valueOf(getResources().getColor(R.color.egg_yellow)));
+            imageView.setBackgroundTintList(ColorStateList.valueOf(getResources().getColor(R.color.egg_yellow)));
+            pokedetails_type1.setTextColor(getResources().getColor(R.color.black));
+        }else if(type1.equals("normal")){
+            pokedetails_type1.setBackgroundTintList(ColorStateList.valueOf(getResources().getColor(R.color.normal)));
+            imageView.setBackgroundTintList(ColorStateList.valueOf(getResources().getColor(R.color.normal)));
+...
+        }else if(type1.equals("dark")){
+            pokedetails_type1.setBackgroundTintList(ColorStateList.valueOf(getResources().getColor(R.color.dark)));
+            imageView.setBackgroundTintList(ColorStateList.valueOf(getResources().getColor(R.color.dark)));
+        }else if(type1.equals("fairy")){
+            pokedetails_type1.setBackgroundTintList(ColorStateList.valueOf(getResources().getColor(R.color.fairy)));
+            imageView.setBackgroundTintList(ColorStateList.valueOf(getResources().getColor(R.color.fairy)));
+            pokedetails_type1.setTextColor(getResources().getColor(R.color.black));
+        }
+```
+Voordat de geluiden afgespeeld kunnen worden, zijn deze eerst gekoppeld aan de desbetreffende Pokémon. Dit is hetzelfde gegaan als de images.
+```
+public void playSound(){
+        PokeIDs.put("bulbasaur", 1);
+        PokeIDs.put("ivysaur", 2);
+        PokeIDs.put("venusaur", 3);
+...
+        PokeIDs.put("mewtwo", 150);
+        PokeIDs.put("mew", 151);
+```
+Om de geluiden vervolgens daadwerkelijk af te spelen, gebruiken we een simpele *MediaPlayer*.
+```
+TextView pokedetails_name = getView().findViewById(R.id.textName);
+        Integer sound_filename = PokeIDs.get(pokedetails_name.getText());
+        String textviewID = "s_" + sound_filename;
+        int id = getContext().getResources().getIdentifier(textviewID, "raw", getContext().getPackageName());
+
+        MediaPlayer mPlayer = MediaPlayer.create(getContext(), id);
+        mPlayer.setVolume(0.1f, 0.1f);
+        mPlayer.start();
+```
+Tijdens het afspelen van dit geluidseffect, is er ook een imageshake aan de gang. Ook dit is redelijk simpel, direct onder de *MediaPlayer* toepassing gecodeerd.
+```
+        Animation shake;
+        shake = AnimationUtils.loadAnimation(getContext(), R.anim.shake);
+        ImageView image;
+        image = (ImageView) getView().findViewById(R.id.imageView);
+        image.startAnimation(shake);
+```
+De implementatie van de *FavoriteButton* is wat ingewikkelder. Als eerst slaan we elke statistiek en variabele van een Pokémon op in de daarvoor aangewezen variabelen.
+```
+        MaterialFavoriteButton favorite = getView().findViewById(R.id.Favorite_Button);
+        List<String> pokemon = new ArrayList<String>();
+        String[] splittedString = PokeStats.split(", ");
+        String name =  splittedString[0];
+        String hp = splittedString[3];
+        String atk = splittedString[4];
+        String spatk = splittedString[5];
+        String def = splittedString[6];
+        String spdef = splittedString[7];
+        String spd = splittedString[8];
+        String weight = splittedString[9];
+        String height = splittedString[10];
+        String type1 = splittedString[1];
+        String type2 = splittedString[2];
+```
+Wanneer er de *FavoriteButton* van state veranderd, kan het twee richtingen op zijn gegaan; een Pokémon is gefavorite of een Pokémon is geunfavorite. Om het grafiek en statistieken scherm in te kunnen vullen, zijn de totale waarde van de statistieken en de frequentie van de gefavoriten types nodig. Als een Pokémon wordt gefavorite, zullen bij dit totaal dus waarden moeten worden opgeteld.
+```
+        public void onFavoriteChanged(MaterialFavoriteButton buttonView, boolean favorite) {
+            if(favorite){
+                    FavoritesFragment.FavCounter++;
+                    AllFavs.add(pokemon);
+                    System.out.println(FavoritesFragment.FavCounter);
+
+                    totalHP = totalHP + parseInt(hp);
+                    totalATK = totalATK + parseInt(atk);
+                    totalSPATK = totalSPATK + parseInt(spatk);
+                    totalDEF = totalDEF + parseInt(def);
+                    totalSPDEF = totalSPDEF + parseInt(spdef);
+                    totalSPD = totalSPD + parseInt(spd);
+
+                    if (type1.equals("grass")) {
+                        totalTypeGrass = totalTypeGrass +=1;
+                    }
+                    else if (type1.equals("fire")) {
+                        totalTypeFire = totalTypeFire +=1;
+                    }
+                    else if (type1.equals("water")) {
+                        totalTypeWater = totalTypeWater +=1;
+                    }
+                    else if (type1.equals("electric")) {
+                        totalTypeElectric = totalTypeElectric +=1;
+                    }
+                    else if (type1.equals("poison")) {
+                        totalTypePoison = totalTypePoison +=1;
+                    }
+
+                    if (type2.equals("grass")) {
+                        totalTypeGrass = totalTypeGrass +=1;
+                    }
+                    else if (type2.equals("fire")) {
+                        totalTypeFire = totalTypeFire +=1;
+                    }
+                    else if (type2.equals("water")) {
+                        totalTypeWater = totalTypeWater +=1;
+                    }
+                    else if (type2.equals("electric")) {
+                        totalTypeElectric = totalTypeElectric +=1;
+                    }
+                    else if (type2.equals("poison")) {
+                        totalTypePoison = totalTypePoison +=1;
+                    }
+            }
+```
+Als een Pokémon geunfavorite wordt, zullen bij het totaal dus waarden moeten worden afgeteld.
+```
+            else{
+                    AllFavs.remove(pokemon);
+                    System.out.println("This is allfavs: " + AllFavs);
+                    FavoritesFragment.FavCounter--;
+                    System.out.println(FavoritesFragment.FavCounter);
+
+                    totalHP = totalHP - parseInt(hp);
+                    totalATK = totalATK - parseInt(atk);
+                    totalSPATK = totalSPATK - parseInt(spatk);
+                    totalDEF = totalDEF - parseInt(def);
+                    totalSPDEF = totalSPDEF - parseInt(spdef);
+                    totalSPD = totalSPD - parseInt(spd);
+
+                    if (type1.equals("grass")) {
+                        totalTypeGrass = totalTypeGrass -=1;
+                    }
+                    else if (type1.equals("fire")) {
+                        totalTypeFire = totalTypeFire -=1;
+                    }
+                    else if (type1.equals("water")) {
+                        totalTypeWater = totalTypeWater -=1;
+                    }
+                    else if (type1.equals("electric")) {
+                        totalTypeElectric = totalTypeElectric -=1;
+                    }
+                    else if (type1.equals("poison")) {
+                        totalTypePoison = totalTypePoison -=1;
+                    }
+
+                    if (type2.equals("grass")) {
+                        totalTypeGrass = totalTypeGrass -=1;
+                    }
+                    else if (type2.equals("fire")) {
+                        totalTypeFire = totalTypeFire -=1;
+                    }
+                    else if (type2.equals("water")) {
+                        totalTypeWater = totalTypeWater -=1;
+                    }
+                    else if (type2.equals("electric")) {
+                        totalTypeElectric = totalTypeElectric -=1;
+                    }
+                    else if (type2.equals("poison")) {
+                        totalTypePoison = totalTypePoison -=1;
+                    }
+```
 
 ----------
 
